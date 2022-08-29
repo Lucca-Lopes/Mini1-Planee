@@ -19,14 +19,18 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
+//                navigationTitle("Ola")
+//                    .font(.system(size: 32))
+//                    .offset(y: 25)
                 ForEach(items) { item in
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
                         Text("Oi")
+                        Spacer()
                         Text("R$ 200,00")
                             .foregroundColor(.gray)
-                            .padding(.leading, 190)
+//                            .padding(.leading, 190)
 //                        Text(item.timestamp!, formatter: itemFormatter)
                     }
                 }
