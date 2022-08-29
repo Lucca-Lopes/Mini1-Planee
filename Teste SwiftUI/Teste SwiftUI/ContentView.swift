@@ -23,7 +23,11 @@ struct ContentView: View {
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text("Oi")
+                        Text("R$ 200,00")
+                            .foregroundColor(.gray)
+                            .padding(.leading, 190)
+//                        Text(item.timestamp!, formatter: itemFormatter)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -38,7 +42,8 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select an item")
+//            Text("Select an item")
+            .navigationTitle(Text("Meus Orçamentos"))
         }
     }
 
@@ -83,6 +88,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+//        ContentView()
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
