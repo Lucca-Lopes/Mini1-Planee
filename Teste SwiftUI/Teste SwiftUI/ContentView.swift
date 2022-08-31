@@ -10,8 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
-//    @State var editando = false
-//    @State var selection = Set<String>()
+    @State var editando = false
+    @State var selection = Set<String>()
     
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -19,38 +19,21 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.ordem, ascending: true)],
         animation: .default)
     
-//    @Environment(\.editMode) private var editMode: Binding<EditMode>? {
-//        get {
-//            return self
-//        }
-//        set {
-//
-//        }
-//    }
-    
     private var items: FetchedResults<Item>
 
     var body: some View {
         NavigationView {
             List {
-//                navigationTitle("Ola")
-//                    .font(.system(size: 32))
-//                    .offset(y: 25)
-//                .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
                 ForEach(items) { item in
                     NavigationLink {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
                         Text("Orçamento \(item.ordem+1)")
                             .lineLimit(1)
-//                            .padding()
                         Spacer()
-//                            .frame(minWidth: 10, idealWidth: 100, maxWidth: 300, minHeight: 10, idealHeight: 10, maxHeight: 10, alignment: .center)
-//                            .padding()
+//                            .frame(minWidth: 1, idealWidth: 50, maxWidth: 50)
                         Text("R$\(Int.random(in: 2000 ... 10000))")
                             .foregroundColor(.gray)
-//                            .padding(.leading, 190)
-//                        Text(item.timestamp!, formatter: itemFormatter)
                     }
                 }
                 .onMove(perform: moverItem)
@@ -58,13 +41,12 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        EditButton()
-                    } label: {
-                        Text(EditMode == EditMode.a ? "Ok" : "Editar")
-                        Text("Alguma coisa")
+                    Button(action: {
+                        self.editando.toggle()
+                    }) {
+                        Text(editando ? "Ok" : "Editar")
+                            .frame(width: 80, height: 40)
                     }
-                    
                 }
                 ToolbarItem {
                     Button(action: addItem) {
@@ -72,8 +54,8 @@ struct ContentView: View {
                     }
                 }
             }
-//            Text("Select an item")
             .navigationTitle(Text("Meus Orçamentos"))
+            .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive)).animation(Animation.spring(), value: editando)
         }
     }
 
@@ -151,13 +133,21 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        ContentView()
+//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}
+  
+#if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ContentView()
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }
-    
+#endif
+
 //extension EditMode {
 //    mutating func toggle() {
 //            self = self == .active ? .inactive : .active
