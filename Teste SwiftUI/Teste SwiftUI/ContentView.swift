@@ -25,20 +25,26 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text("Orçamento \(item.ordem+1)")
-                            .lineLimit(1)
-                        if !editando{
+                    if editando {
+                        HStack {
+                            Text("Orçamento \(item.ordem)")
+                                .lineLimit(1)
                             Spacer()
-                        }else{
-                            
+                            Text("R$\(item.ordem*150)")
+                                    .foregroundColor(.gray)
                         }
-//                            .frame(minWidth: 1, idealWidth: 50, maxWidth: 50)
-//                            .padding()
-                        Text("R$\(Int.random(in: 2000 ... 10000))")
-                            .foregroundColor(.gray)
+                    }
+                    else {
+                        NavigationLink {
+                            Text("Orçamento \(item.ordem)")
+                        }
+                        label: {
+                            Text("Orçamento \(item.ordem)")
+                                .lineLimit(1)
+                            Spacer()
+                            Text("R$\(item.ordem*150)")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 .onMove(perform: moverItem)
@@ -48,6 +54,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         self.editando.toggle()
+                        
                     }) {
                         Text(editando ? "Ok" : "Editar")
                     }
@@ -59,7 +66,8 @@ struct ContentView: View {
                 }
             }
             .navigationTitle(Text("Meus Orçamentos"))
-            .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive)).animation(Animation.spring(), value: editando)
+            .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
+//            .animation(Animation.easeIn , value: editando)
         }
     }
 
