@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057A456328C12089004756EE /* TelaInicialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057A456228C12089004756EE /* TelaInicialView.swift */; };
 		2B666FE228B00CC1003892A6 /* Teste_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */; };
 		2B666FE428B00CC1003892A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE328B00CC1003892A6 /* ContentView.swift */; };
 		2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE528B00CC3003892A6 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057A456228C12089004756EE /* TelaInicialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaInicialView.swift; sourceTree = "<group>"; };
 		2B666FDE28B00CC1003892A6 /* Teste SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teste SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teste_SwiftUIApp.swift; sourceTree = "<group>"; };
 		2B666FE328B00CC1003892A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */,
 				2B666FE328B00CC1003892A6 /* ContentView.swift */,
+				057A456228C12089004756EE /* TelaInicialView.swift */,
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B666FEB28B00CC3003892A6 /* Persistence.swift in Sources */,
+				057A456328C12089004756EE /* TelaInicialView.swift in Sources */,
 				2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */,
 				2B666FE428B00CC1003892A6 /* ContentView.swift in Sources */,
 				2B666FE228B00CC1003892A6 /* Teste_SwiftUIApp.swift in Sources */,
