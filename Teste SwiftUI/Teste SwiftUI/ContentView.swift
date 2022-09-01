@@ -30,9 +30,12 @@ struct ContentView: View {
                     } label: {
                         Text("Orçamento \(item.ordem+1)")
                             .lineLimit(1)
-//                            .padding()
-                        Spacer()
-                            .frame(minWidth: 1, idealWidth: 50, maxWidth: 50)
+                        if !editando{
+                            Spacer()
+                        }else{
+                            
+                        }
+//                            .frame(minWidth: 1, idealWidth: 50, maxWidth: 50)
 //                            .padding()
                         Text("R$\(Int.random(in: 2000 ... 10000))")
                             .foregroundColor(.gray)
@@ -47,7 +50,6 @@ struct ContentView: View {
                         self.editando.toggle()
                     }) {
                         Text(editando ? "Ok" : "Editar")
-                            .frame(width: 80, height: 40)
                     }
                 }
                 ToolbarItem {
