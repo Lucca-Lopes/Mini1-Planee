@@ -35,6 +35,8 @@ struct ContentView: View {
                         }
                     }
                     else {
+//                        let tco = tela_criar_orcamento()
+//                        Utilitarios().criaNavigationLink(textoPrincipal: "Orçamento \(item.ordem)", textoSecundario: "Orçamento \(item.ordem)", destino: tco)
                         NavigationLink {
                             Text("Orçamento \(item.ordem)")
                         }
