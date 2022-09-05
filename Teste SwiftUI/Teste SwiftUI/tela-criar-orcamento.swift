@@ -12,23 +12,54 @@ struct tela_criar_orcamento: View {
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
+    @State var hora: Int = 1
+    @State var minuto: Int = 0
+    
     var body: some View {
         NavigationView {
             List{
-                Section(header: Text("Gastos")
-                    .bold()
+                Section(header: Text("Custos")
                 ) {
-        
-                    NavigationLink {
-                        Text("Gastos fixos")
-                    }
-                    label: {
-                        Text("Gastos fixos")
-                            .lineLimit(1)
-                        Spacer()
-                        Text("R$ 1250,00")
-                            .foregroundColor(.gray)
-                    }
+//                    NavigationLink {
+//                        Text("Gastos")
+//                    }
+//                    label: {
+//                        Text("Gastos")
+//                            .lineLimit(1)
+//                        Spacer()
+//                        Text("R$ 1250,00")
+//                            .foregroundColor(.gray)
+//                    }
+                    Utilitarios().criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
+                    Utilitarios().criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
+                }
+                
+                Section(header: Text("Mão de obra")
+                ) {
+                    Utilitarios().criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
+                    Utilitarios().criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
+                    HStack {
+//                        Text("Tempo de trabalho")
+//                        Spacer()
+                        NavigationLink {
+                            Picker("Tempo de trabalho", selection: $hora) {
+                                ForEach(1..<101) {
+                                    Text("\($0) horas")
+                                }
+                            }.pickerStyle(WheelPickerStyle())
+                        }
+                        label: {
+                            Text("Tempo de trabalho")
+                //                .lineLimit(1)
+//                            Spacer()
+                //                .padding()
+                            
+                        }
+//                        }
+                        
+//                        }
+                            
+//                    }
                 }
                 
             }
@@ -46,4 +77,5 @@ struct tela_criar_orcamento_Previews: PreviewProvider {
         tela_criar_orcamento()
         
     }
+}
 }

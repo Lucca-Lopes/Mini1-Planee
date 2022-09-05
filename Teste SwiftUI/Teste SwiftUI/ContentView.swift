@@ -78,7 +78,6 @@ struct ContentView: View {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
             newItem.ordem = (items.last?.ordem ?? 0) + 1
-
             do {
                 try viewContext.save()
             } catch {
