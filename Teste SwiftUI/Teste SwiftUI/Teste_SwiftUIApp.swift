@@ -14,7 +14,7 @@ struct Teste_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-           TelaInicialView()
+            TelaInicialView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
