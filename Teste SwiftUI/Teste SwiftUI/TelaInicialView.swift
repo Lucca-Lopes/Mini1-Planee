@@ -18,20 +18,21 @@ struct TelaInicialView: View {
     var body: some View {
         NavigationView{
             VStack {
-        
+//                Text("")
+//                    .frame(width: screenWidth * 0.99, height: screenHeight * 0.01, alignment: .leading)
+                
                 Text("Valor da hora de trabalho:")
                     .bold()
-                    .padding()
-                //                    .frame(width: screenWidth * 0.75, height: screenHeight * 0.05)
-                //                    .position(x: screenWidth * 0.3, y: screenHeight * 0.03)
-                
+                .padding()
+                .frame(width: screenWidth * 0.99, height: screenHeight * 0.05, alignment: .leading)
+
                 Text("R$ 20,13")
                     .bold()
-                //                .padding()
-                //                    .bold()
-                //                    .frame(width: screenWidth * 0.75, height: screenHeight * 0.05)
+                    .font(.system(size: 20))
+                .frame(width: screenWidth * 0.9, height: screenHeight * 0.0, alignment: .leading)
                 
-                //                    .position(x: screenWidth * 0.3, y: screenHeight * 0.02)
+                Text("")
+                    .frame(height: screenHeight * 0.05)
                 
                 Form{
                     
@@ -86,22 +87,14 @@ struct TelaInicialView: View {
             }
         }
         label: {
-            Text("Criar Orçamento")
+            Text(titulo)
                 .foregroundColor(.black)
                 .bold()
-            .padding()
+                .font(.system(size: 22))
+                .frame(height: 55)
+//            .padding()
         }
         return destino
     }
 }
-
-//    RoundedRectangle(cornerRadius: 40, style: .continuous)
-//        .foregroundColor(Color.gray)
-//        .position(x: screenWidth * 0.5, y: screenHeight * 0.5)
-
-//struct TelaInicialView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaInicialView(teste: ContentView())
-//    }
-//}
 
