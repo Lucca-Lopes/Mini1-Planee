@@ -56,6 +56,7 @@ struct TelaInicialView: View {
                     }
                 }
                 .cornerRadius(40)
+                .ignoresSafeArea()
             }
             .navigationTitle("Nome do app")
         }
