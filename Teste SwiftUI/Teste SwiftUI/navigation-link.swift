@@ -28,19 +28,11 @@ public class Utilitarios {
             default:
                 ContentView()
             }
-//
-//            if destino == "tela_criar_orcamento" {
-//                tela_criar_orcamento()
-//            }
-//            else {
-//                ContentView()
-//            }
         }
         label: {
             Text(textoPrincipal)
 //                .lineLimit(1)
             Spacer()
-//                .padding()
             Text(textoSecundario)
                 .foregroundColor(.gray)
         }

@@ -12,24 +12,15 @@ struct tela_criar_orcamento: View {
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
-    @State var hora: Int = 1
+    @State var hora: String = ""
     @State var minuto: Int = 0
+    
     
     var body: some View {
         NavigationView {
             List{
                 Section(header: Text("Custos")
                 ) {
-//                    NavigationLink {
-//                        Text("Gastos")
-//                    }
-//                    label: {
-//                        Text("Gastos")
-//                            .lineLimit(1)
-//                        Spacer()
-//                        Text("R$ 1250,00")
-//                            .foregroundColor(.gray)
-//                    }
                     Utilitarios().criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
                     Utilitarios().criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
                 }
@@ -39,36 +30,60 @@ struct tela_criar_orcamento: View {
                     Utilitarios().criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
                     Utilitarios().criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
                     HStack {
-//                        Text("Tempo de trabalho")
-//                        Spacer()
-                        NavigationLink {
-                            Picker("Tempo de trabalho", selection: $hora) {
-                                ForEach(1..<101) {
-                                    Text("\($0) horas")
-                                }
-                            }.pickerStyle(WheelPickerStyle())
-                        }
-                        label: {
-                            Text("Tempo de trabalho")
-                //                .lineLimit(1)
-//                            Spacer()
-                //                .padding()
-                            
-                        }
-//                        }
+                        Text("Tempo de trabalho")
+                        Spacer()
+                        TextField(
+                            ":",
+                            value: $hora,
+                            formatter: NumberFormatter()
+                        )
+                            .multilineTextAlignment(.center)
+                            .keyboardType(.numberPad)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: screenWidth * 0.2, height: screenHeight * 0.03, alignment: .trailing)
+                    }
+                    HStack {
+                        Text("Custo total")
+                            .bold()
+                        Spacer()
+                        Text("R$ 200,00")
+                            .bold()
+                            .foregroundColor(.gray)
+                    }
+                }
+                
+                Section(header: Text("")
+                ) {
+                    HStack {
+                        Text("Lucro")
+                        Spacer()
+                        TextField(
+                            "0%",
+                            value: $hora,
+                            formatter: NumberFormatter()
+                        )
+                        .multilineTextAlignment(.trailing)
+                            .keyboardType(.numberPad)
+                            .textFieldStyle(.roundedBorder)
+                            .frame(width: screenWidth * 0.2, height: screenHeight * 0.03, alignment: .trailing)
+                    }
+                }
+                
+                Section(header: Text("")
+                ) {
+                    Button {
+                        print("salvou")
+                    } label: {
+                        Text("Salvar").bold()
+                    }
                         
-//                        }
-                            
-//                    }
+                    
+                    .frame(width: screenWidth * 0.8, height: screenHeight * 0.03, alignment: .center)
                 }
                 
             }
             .navigationTitle("Novo orçamento")
         }
-        
-//        Text("Tela")
-//            .position(x: screenWidth * 0.5, y: screenHeight * 0.5)
-//            .frame(width: screenWidth / 2, height: screenHeight * 0.5)
     }
 }
 
@@ -77,5 +92,4 @@ struct tela_criar_orcamento_Previews: PreviewProvider {
         tela_criar_orcamento()
         
     }
-}
 }

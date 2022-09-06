@@ -13,8 +13,8 @@ struct Teste_SwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-            
+//            ContentView()
+            tela_criar_orcamento()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
