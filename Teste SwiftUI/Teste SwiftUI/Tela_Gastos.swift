@@ -9,14 +9,8 @@ import SwiftUI
 
 struct Tela_Gastos: View {
    
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
-    
-    @State var hora: String = ""
-    @State var minuto: Int = 0
-    
-    
     var body: some View {
+        
         NavigationView {
             List{
                 Section(header: Text("Computador")
@@ -38,7 +32,7 @@ struct Tela_Gastos: View {
                     Utilitarios().criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
                 }
             }
-            .navigationTitle("Novo orçamento")
+            .navigationTitle("Gastos")
         }
     }
 }
