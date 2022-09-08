@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Tela_Gastos: View {
+    
+    @State var editando = false
    
     var body: some View {
         
@@ -30,8 +32,23 @@ struct Tela_Gastos: View {
                 Section(header: Text("")
                 ) {
                     Utilitarios().criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
+                    
                 }
             }
+            .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    self.editando.toggle()
+                                }) {
+                                    Text(editando ? "Ok" : "Editar")
+                                }
+                            }
+                            ToolbarItem {
+                                Button("add item") {
+                                    Label("Add Item", systemImage: "plus")
+                                }
+                            }
+                        }
             .navigationTitle("Gastos")
         }
     }
