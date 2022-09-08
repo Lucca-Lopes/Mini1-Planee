@@ -10,6 +10,11 @@ import SwiftUI
 struct Tela_Gastos: View {
     
     @State var editando = false
+    @State var mostrarSheet = false
+    
+    
+    
+    @Environment(\.managedObjectContext) private var viewContext
    
     var body: some View {
         
@@ -44,14 +49,19 @@ struct Tela_Gastos: View {
                                 }
                             }
                             ToolbarItem {
-                                Button("add item") {
+                                Button("action: sheet") {
                                     Label("Add Item", systemImage: "plus")
                                 }
                             }
                         }
             .navigationTitle("Gastos")
+            .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
         }
     }
+}
+extension View{
+    
+    func metadeDaSheet<SheetView:
 }
 
     

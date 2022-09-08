@@ -24,7 +24,6 @@ public class Utilitarios {
                 
             case "Custo por hora":
                 ContentView()
-                
             default:
                 ContentView()
             }
