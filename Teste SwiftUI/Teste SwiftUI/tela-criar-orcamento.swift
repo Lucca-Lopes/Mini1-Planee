@@ -14,12 +14,15 @@ struct tela_criar_orcamento: View {
     
     @State var hora: String = ""
     @State var minuto: Int = 0
+    @State var titulo: String = ""
     
     let utilitarios = Utilitarios()
     
     var body: some View {
         NavigationView {
             List{
+                TextField("Titulo", text: $titulo)
+                
                 Section(header: Text("Custos")
                 ) {
                     utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
@@ -83,7 +86,12 @@ struct tela_criar_orcamento: View {
                 }
                 
             }
-            .navigationTitle("Novo orçamento")
+            .toolbar{
+                ToolbarItem(placement: .principal){
+                    Text("Novo orçamento")
+                        .bold()
+                }
+            }
         }
     }
 }
