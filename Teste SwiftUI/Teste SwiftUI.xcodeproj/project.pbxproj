@@ -15,6 +15,7 @@
 		2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */; };
 		2B91625F28C14B7300FDEBD9 /* tela-criar-orcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B91625E28C14B7300FDEBD9 /* tela-criar-orcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* navigation-link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* navigation-link.swift */; };
+		2BFD718228CA851B00AA5F29 /* tela-despesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* tela-despesas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		2B666FED28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Teste_SwiftUI.xcdatamodel; sourceTree = "<group>"; };
 		2B91625E28C14B7300FDEBD9 /* tela-criar-orcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "tela-criar-orcamento.swift"; sourceTree = "<group>"; };
 		2BCB0C3C28C2982A006793CC /* navigation-link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "navigation-link.swift"; sourceTree = "<group>"; };
+		2BFD718128CA851B00AA5F29 /* tela-despesas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "tela-despesas.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +63,13 @@
 			children = (
 				2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */,
 				2B91625E28C14B7300FDEBD9 /* tela-criar-orcamento.swift */,
+				2BFD718128CA851B00AA5F29 /* tela-despesas.swift */,
+				2BCB0C3C28C2982A006793CC /* navigation-link.swift */,
 				2B666FE328B00CC1003892A6 /* ContentView.swift */,
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
 				2B666FE728B00CC3003892A6 /* Preview Content */,
-				2BCB0C3C28C2982A006793CC /* navigation-link.swift */,
 			);
 			path = "Teste SwiftUI";
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				2BCB0C3D28C2982A006793CC /* navigation-link.swift in Sources */,
 				2B666FE228B00CC1003892A6 /* Teste_SwiftUIApp.swift in Sources */,
 				2B91625F28C14B7300FDEBD9 /* tela-criar-orcamento.swift in Sources */,
+				2BFD718228CA851B00AA5F29 /* tela-despesas.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
