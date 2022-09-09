@@ -49,8 +49,13 @@ struct Tela_Gastos: View {
                                 }
                             }
                             ToolbarItem {
-                                Button("action: sheet") {
+                                Button(action: {
+                                    mostrarSheet = true
+                                }, label: {
                                     Label("Add Item", systemImage: "plus")
+                                })
+                                .sheet(isPresented: $mostrarSheet){
+                                    ModalView()
                                 }
                             }
                         }
@@ -58,13 +63,16 @@ struct Tela_Gastos: View {
             .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
         }
     }
-}
-extension View{
     
-    func metadeDaSheet<SheetView:
+    struct ModalView: View {
+        var body: some View{
+            VStack{
+                Text("Ola, sou a model view")
+            }
+        }
+        
+    }
 }
-
-    
 
 struct Tela_Gastos_Previews: PreviewProvider {
     static var previews: some View {
