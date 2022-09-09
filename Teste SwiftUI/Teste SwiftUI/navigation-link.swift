@@ -9,6 +9,9 @@ import SwiftUI
 
 public class Utilitarios {
     
+    let screenWidth = UIScreen.main.bounds.size.width
+    let screenHeight = UIScreen.main.bounds.size.height
+    
     func criaNavigationLink(textoPrincipal: String, textoSecundario: String, destino: String) -> some View {
         let navigationLink = NavigationLink {
             
@@ -37,6 +40,45 @@ public class Utilitarios {
                 .foregroundColor(.gray)
         }
         return navigationLink
+    }
+    
+    func criaDespesa(editando: Bool, nomeSelecionado: String) -> some View {
+        
+        let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
+        
+        @State var nomeSelecionado: String = nomeSelecionado
+        @State var preco: Float = 0.0
+        
+        let celula = HStack {
+            if !editando {
+                Text(nomeSelecionado)
+                Spacer()
+                Text("R$ \(preco)")
+                    .foregroundColor(.gray)
+            }
+            else {
+                Picker("Escolha um nome",
+                       selection: $nomeSelecionado) {
+                    ForEach(nomes, id: \.self) { nome in
+                        Text(nome)
+                    }
+                    .foregroundColor(.black)
+                }
+                .pickerStyle(.menu)
+                Spacer()
+                TextField(
+                    "Oi",
+                    value: $preco,
+                    formatter: NumberFormatter()
+                )
+                .multilineTextAlignment(.trailing)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
+                
+            }
+        }
+        return celula
     }
     
 //    func distinguirTela(nome: String) -> some View {

@@ -14,7 +14,8 @@ struct Teste_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            tela_criar_orcamento()
+//            tela_criar_orcamento()
+            tela_despesas()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
