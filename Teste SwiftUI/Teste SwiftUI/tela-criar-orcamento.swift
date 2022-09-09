@@ -72,27 +72,27 @@ struct tela_criar_orcamento: View {
                             .frame(width: screenWidth * 0.2, height: screenHeight * 0.03, alignment: .trailing)
                     }
                 }
-                
-                Section(header: Text("")
-                ) {
-                    Button {
-                        print("salvou")
-                    } label: {
-                        Text("Salvar").bold()
-                    }
-                        
-                    
-                    .frame(width: screenWidth * 0.8, height: screenHeight * 0.03, alignment: .center)
-                }
-                
             }
+//            .navigationBarHidden(true)
+            
             .toolbar{
                 ToolbarItem(placement: .principal){
                     Text("Novo orçamento")
                         .bold()
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing)
+                {
+                    Button{
+                        print("Adicionou")
+                    }label:{
+                        Text("Adicionar")
+                    }
+                }
             }
+            .frame(width: screenWidth, height: screenHeight * 0.85, alignment: .center)
         }
+        
     }
 }
 
