@@ -67,6 +67,8 @@ struct Tela_Gastos: View {
     struct SheetView: View {
         
         @State var editando = false
+        let tg = Tela_Gastos()
+        
         
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
@@ -108,10 +110,12 @@ struct Tela_Gastos: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        self.editando.toggle()
-                    }) {
-                        // Arrumar so com OK
-                        Text(editando ? "Ok" : "Editar")
+                        tg.mostrarSheet = false
+                    }, label: {
+                        Label("Add Item", systemImage: "plus")
+                    })
+                    .sheet(isPresented: tg.$mostrarSheet){
+                       Tela_Gastos()
                     }
                 }
             }
