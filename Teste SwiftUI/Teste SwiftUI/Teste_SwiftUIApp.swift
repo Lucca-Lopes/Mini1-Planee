@@ -14,7 +14,7 @@ struct Teste_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            tela_criar_orcamento()
+            tela_valor_HdT()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
