@@ -68,9 +68,14 @@ struct Tela_Gastos: View {
         
         @State var editando = false
         
+        let screenWidth = UIScreen.main.bounds.size.width
+        let screenHeight = UIScreen.main.bounds.size.height
+        
+        
         var body: some View{
             
             NavigationView{
+                
             List{
                 Section() {
                     HStack{
@@ -110,6 +115,7 @@ struct Tela_Gastos: View {
                     }
                 }
             }
+            .frame(width: screenWidth, height: screenHeight * 0.85, alignment: .center)
         }
       }
     }
