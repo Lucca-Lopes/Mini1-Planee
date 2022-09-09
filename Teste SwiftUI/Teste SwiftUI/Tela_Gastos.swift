@@ -55,7 +55,7 @@ struct Tela_Gastos: View {
                                     Label("Add Item", systemImage: "plus")
                                 })
                                 .sheet(isPresented: $mostrarSheet){
-                                    ModalView()
+                                    SheetView()
                                 }
                             }
                         }
@@ -64,13 +64,53 @@ struct Tela_Gastos: View {
         }
     }
     
-    struct ModalView: View {
+    struct SheetView: View {
+        
+        @State var editando = false
+        
         var body: some View{
-            VStack{
-                Text("Ola, sou a model view")
+            
+            NavigationView{
+            Form{
+                Section() {
+                    HStack{
+                    Text("Título")
+                    Spacer()
+                    Text("Cadeira")
+                        .foregroundColor(.gray)
+                    }
+                    HStack{
+                        Text("Valor total")
+                        Spacer()
+                        Text("R$ 720,00")
+                            .foregroundColor(.gray)
+                    }
+                    HStack{
+                        Text("Vida útil")
+                        Spacer()
+                        Text("75 meses")
+                            .foregroundColor(.gray)
+                    }
+                        
+                }
+                .multilineTextAlignment(.trailing)
+            }
+            .toolbar{
+                ToolbarItem(placement: .principal){
+                    Text("Adiconar gasto")
+                        .bold()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.editando.toggle()
+                    }) {
+                        // Arrumar so com OK
+                        Text(editando ? "Ok" : "Editar")
+                    }
+                }
             }
         }
-        
+      }
     }
 }
 
