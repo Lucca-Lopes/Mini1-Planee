@@ -71,7 +71,7 @@ struct Tela_Gastos: View {
         var body: some View{
             
             NavigationView{
-            Form{
+            List{
                 Section() {
                     HStack{
                     Text("Título")
@@ -95,6 +95,7 @@ struct Tela_Gastos: View {
                 }
                 .multilineTextAlignment(.trailing)
             }
+            .listStyle(.grouped)
             .toolbar{
                 ToolbarItem(placement: .principal){
                     Text("Adiconar gasto")
