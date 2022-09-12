@@ -22,7 +22,6 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView {
             List {
                 ForEach(items) { item in
                     if editando {
@@ -69,9 +68,11 @@ struct ContentView: View {
                 }
             }
             .navigationTitle(Text("Meus Orçamentos"))
+
             .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
 //            .animation(Animation.easeIn , value: editando)
         }
+
     }
 
     private func addItem() {
