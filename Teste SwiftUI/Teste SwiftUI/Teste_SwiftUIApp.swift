@@ -18,7 +18,7 @@ struct Teste_SwiftUIApp: App {
             tela_valor_HdT()
 
 //            tela_criar_orcamento()
-            tela_despesas()
+//            tela_despesas()
 
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
 		00826C0028CBCD4D004B935B /* tela-valor-HdT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00826BFF28CBCD4D004B935B /* tela-valor-HdT.swift */; };
-
 		0500C47828C8081F008A9042 /* Tela_Gastos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500C47728C8081F008A9042 /* Tela_Gastos.swift */; };
-
 		2B666FE228B00CC1003892A6 /* Teste_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */; };
 		2B666FE428B00CC1003892A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE328B00CC1003892A6 /* ContentView.swift */; };
 		2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE528B00CC3003892A6 /* Assets.xcassets */; };
@@ -24,11 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
 		00826BFF28CBCD4D004B935B /* tela-valor-HdT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "tela-valor-HdT.swift"; sourceTree = "<group>"; };
-
 		0500C47728C8081F008A9042 /* Tela_Gastos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tela_Gastos.swift; sourceTree = "<group>"; };
-
 		2B666FDE28B00CC1003892A6 /* Teste SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teste SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teste_SwiftUIApp.swift; sourceTree = "<group>"; };
 		2B666FE328B00CC1003892A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,19 +66,16 @@
 			isa = PBXGroup;
 			children = (
 				2B666FE128B00CC1003892A6 /* Teste_SwiftUIApp.swift */,
+				00826BFF28CBCD4D004B935B /* tela-valor-HdT.swift */,
 				2B91625E28C14B7300FDEBD9 /* tela-criar-orcamento.swift */,
 				0500C47728C8081F008A9042 /* Tela_Gastos.swift */,
 				2BFD718128CA851B00AA5F29 /* tela-despesas.swift */,
 				2B666FE328B00CC1003892A6 /* ContentView.swift */,
-				2BCB0C3C28C2982A006793CC /* navigation-link.swift */,
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
 				2B666FE728B00CC3003892A6 /* Preview Content */,
-
 				2BCB0C3C28C2982A006793CC /* navigation-link.swift */,
-				00826BFF28CBCD4D004B935B /* tela-valor-HdT.swift */,
-
 			);
 			path = "Teste SwiftUI";
 			sourceTree = "<group>";
@@ -174,11 +165,8 @@
 				2B666FE228B00CC1003892A6 /* Teste_SwiftUIApp.swift in Sources */,
 				0500C47828C8081F008A9042 /* Tela_Gastos.swift in Sources */,
 				2B91625F28C14B7300FDEBD9 /* tela-criar-orcamento.swift in Sources */,
-
 				00826C0028CBCD4D004B935B /* tela-valor-HdT.swift in Sources */,
-
 				2BFD718228CA851B00AA5F29 /* tela-despesas.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ struct Tela_Gastos: View {
     @State var editando = false
     @State var mostrarSheet = false
     
-    
+    let utilitarios = Utilitarios()
     
     @Environment(\.managedObjectContext) private var viewContext
    
@@ -22,21 +22,21 @@ struct Tela_Gastos: View {
             List{
                 Section(header: Text("Computador")
                 ) {
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 10.250,00", destino: "tela_criar_orcamento")
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "43 meses", destino: "tela_criar_orcamento")
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 238,37", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 10.250,00", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "43 meses", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 238,37", destino: "tela_criar_orcamento")
                 }
                 
                 Section(header: Text("Calculadora")
                 ) {
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 150,00", destino: "tela_criar_orcamento")
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "80 meses", destino: "tela_criar_orcamento")
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 1,86", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 150,00", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "80 meses", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 1,86", destino: "tela_criar_orcamento")
                    
                 }
                 Section(header: Text("")
                 ) {
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
                     
                 }
             }
