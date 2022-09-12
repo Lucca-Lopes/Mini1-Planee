@@ -14,12 +14,15 @@ struct tela_criar_orcamento: View {
     
     @State var hora: String = ""
     @State var minuto: Int = 0
+    @State var titulo: String = ""
     
     let utilitarios = Utilitarios()
     
     var body: some View {
         NavigationView {
             List{
+                TextField("Titulo", text: $titulo)
+                
                 Section(header: Text("Custos")
                 ) {
                     utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
@@ -69,22 +72,27 @@ struct tela_criar_orcamento: View {
                             .frame(width: screenWidth * 0.2, height: screenHeight * 0.03, alignment: .trailing)
                     }
                 }
-                
-                Section(header: Text("")
-                ) {
-                    Button {
-                        print("salvou")
-                    } label: {
-                        Text("Salvar").bold()
-                    }
-                        
-                    
-                    .frame(width: screenWidth * 0.8, height: screenHeight * 0.03, alignment: .center)
+            }
+//            .navigationBarHidden(true)
+            
+            .toolbar{
+                ToolbarItem(placement: .principal){
+                    Text("Novo orçamento")
+                        .bold()
                 }
                 
+                ToolbarItem(placement: .navigationBarTrailing)
+                {
+                    Button{
+                        print("Adicionou")
+                    }label:{
+                        Text("Adicionar")
+                    }
+                }
             }
-            .navigationTitle("Novo orçamento")
+            .frame(width: screenWidth, height: screenHeight * 0.85, alignment: .center)
         }
+        
     }
 }
 
