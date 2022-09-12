@@ -67,11 +67,13 @@ struct Tela_Gastos: View {
     struct SheetView: View {
         
         @State var editando = false
-        let tg = Tela_Gastos()
+        @State var mostrarTelaGastos = Tela_Gastos()
         
         
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
+        
+        @Environment(\.presentationMode) var mode: Binding<PresentationMode>
         
         
         var body: some View{
@@ -110,13 +112,10 @@ struct Tela_Gastos: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        tg.mostrarSheet = false
+                        self.mode.wrappedValue.dismiss()
                     }, label: {
-                        Label("Add Item", systemImage: "plus")
+                        Text("OK")
                     })
-                    .sheet(isPresented: tg.$mostrarSheet){
-                       Tela_Gastos()
-                    }
                 }
             }
             .frame(width: screenWidth, height: screenHeight * 0.85, alignment: .center)
