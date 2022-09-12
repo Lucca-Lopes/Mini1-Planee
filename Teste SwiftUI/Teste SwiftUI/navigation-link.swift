@@ -42,11 +42,11 @@ public class Utilitarios {
         return navigationLink
     }
     
-    func criaDespesa(editando: Bool, nomeSelecionado: String) -> some View {
+    func criaDespesa(editando: Bool) -> some View {
         
         let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
         
-        @State var nomeSelecionado: String = nomeSelecionado
+        @State var nomeSelecionado: String = "Luz"
         @State var preco: Float = 0.0
         
         let celula = HStack {
@@ -70,7 +70,9 @@ public class Utilitarios {
                     "Oi",
                     value: $preco,
                     formatter: NumberFormatter()
+                    
                 )
+                
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)

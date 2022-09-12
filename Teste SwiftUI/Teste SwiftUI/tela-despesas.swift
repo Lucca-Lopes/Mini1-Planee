@@ -24,58 +24,17 @@ struct tela_despesas: View {
     var body: some View {
         NavigationView {
             List {
-//                HStack {
-//                    if !editando {
-//                        Text(nomeSeleionado)
-//                        Spacer()
-//                        Text(preco)
-//                            .foregroundColor(.gray)
-//                    }
-//                    else {
-//                        Picker("Escolha um nome",
-//                               selection: $nomeSeleionado) {
-//                            ForEach(nomes, id: \.self) { nome in
-//                                Text(nome)
-//                            }
-//                            .foregroundColor(.black)
-//                        }
-//                        .pickerStyle(.menu)
-//                        Spacer()
-//                        TextField(
-//                            "Oi",
-//                            value: $preco,
-//                            formatter: NumberFormatter()
-//                        )
-//                        .multilineTextAlignment(.trailing)
-//                        .keyboardType(.numberPad)
-//                        .textFieldStyle(.roundedBorder)
-//                        .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
-//
-//                    }
-//                }
-                utilitarios.criaDespesa(editando: editando, nomeSelecionado: nomeSeleionado)
-//                    Text("Luz")
-//                    padding()
-//                    Image(systemName: "chevron.right")
-                    //criar text, spcer, text nessa ordem, ao clicar em editar o primeiro text vira um picker pra selecionar o nome e o segundo text vira um textfield
-//                    NavigationLink {
-//                        ContentView()
-//                    }
-//                    label: {
-//                        Text("Luz")
-//                        Spacer()
-//                        TextField(
-//                            "R$ 00,00",
-//                            value: $hora,
-//                            formatter: NumberFormatter()
-//                        )
-//                        .multilineTextAlignment(.trailing)
-//                            .keyboardType(.numberPad)
-//                            .textFieldStyle(.roundedBorder)
-//                            .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
-//                    }
-                    
-//                }
+                
+                utilitarios.criaDespesa(editando: editando)
+                Section(header: Text("")
+                ) {
+                    HStack {
+                        Text("Valor total")
+                        Spacer()
+                        Text("R$ 464,25")
+                            .foregroundColor(.gray)
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -86,12 +45,25 @@ struct tela_despesas: View {
                         Text(editando ? "Ok" : "Editar")
                     }
                 }
+                ToolbarItem {
+                    Button(action: printar) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
             }
             .navigationTitle("Despesas")
             .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
         }
     }
 }
+
+func printar(){
+    print("Adicionou")
+}
+
+//func criarDespesa() {
+//    Utilitarios().criaDespesa(editando: false)
+//}
 
 struct tela_despesas_Previews: PreviewProvider {
     static var previews: some View {
