@@ -15,20 +15,21 @@ struct tela_criar_orcamento: View {
     @State var hora: String = ""
     @State var minuto: Int = 0
     
+    let utilitarios = Utilitarios()
     
     var body: some View {
         NavigationView {
             List{
                 Section(header: Text("Custos")
                 ) {
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
                 }
                 
                 Section(header: Text("Mão de obra")
                 ) {
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
-                    Utilitarios().criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
+                    utilitarios.criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
                     HStack {
                         Text("Tempo de trabalho")
                         Spacer()

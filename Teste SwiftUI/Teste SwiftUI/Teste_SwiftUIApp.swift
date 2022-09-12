@@ -15,7 +15,7 @@ struct Teste_SwiftUIApp: App {
         WindowGroup {
 //            ContentView()
 //            tela_criar_orcamento()
-            Tela_Gastos()
+            tela_despesas()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
