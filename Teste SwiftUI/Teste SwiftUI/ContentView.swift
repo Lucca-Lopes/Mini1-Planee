@@ -58,7 +58,8 @@ struct ContentView: View {
                         self.editando.toggle()
                         
                     }) {
-                        Text(editando ? "Ok" : "Editar")
+                        Text(editando ? "Ok" :
+                                "Editar")
                     }
                 }
                 ToolbarItem {
