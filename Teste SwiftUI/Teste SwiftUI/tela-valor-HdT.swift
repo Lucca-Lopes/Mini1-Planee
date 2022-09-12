@@ -19,29 +19,29 @@ struct tela_valor_HdT: View {
     var body: some View {
         NavigationView{
             VStack {
+                Text("")
+                    .frame(height: screenHeight * 0.05)
                 Text("Valor da Hora de Trabalho")
                     .font(.system(size: 34, weight: .heavy))
                     .frame(width: screenWidth * 0.9, height: screenHeight * 0.1, alignment: .leading)
                 List{
-                    Section(header: Text("")){
-                        HStack{
-                            Text("Pretensão salarial")
-                            Spacer()
-                            TextField("R$2.400,00", text: $valor)
-                                .multilineTextAlignment(.trailing)
-                        }
-                        HStack{
-                            Text("Dias de trabalho")
-                            Spacer()
-                            TextField("20 dias", text: $dias)
-                                .multilineTextAlignment(.trailing)
-                        }
-                        HStack{
-                            Text("Horas diárias")
-                            Spacer()
-                            TextField("5h", text: $horasDiarias)
-                                .multilineTextAlignment(.trailing)
-                        }
+                    HStack{
+                        Text("Pretensão salarial")
+                        Spacer()
+                        TextField("R$2.400,00", text: $valor)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack{
+                        Text("Dias de trabalho")
+                        Spacer()
+                        TextField("20 dias", text: $dias)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    HStack{
+                        Text("Horas diárias")
+                        Spacer()
+                        TextField("5h", text: $horasDiarias)
+                            .multilineTextAlignment(.trailing)
                     }
                     
                     Section(header: Text(""))
@@ -68,16 +68,6 @@ struct tela_valor_HdT: View {
                     }
                 }
             }
-//            .toolbar {
-//                ToolbarItem(placement: .principal) {
-//                    Text("Valor da Hora de Trabalho").font(.headline)
-//                        .fixedSize(horizontal: false, vertical: true)
-//                }
-//            }
-            
-//            .navigationTitle("Valor da Hora de Trabalho")
-    
-//            .frame(width: screenWidth, height: screenHeight * 0.75, alignment: .center)
         }
     }
 }
