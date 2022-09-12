@@ -21,7 +21,7 @@ struct tela_valor_HdT: View {
             VStack {
                 Text("Valor da Hora de Trabalho")
                     .font(.system(size: 34, weight: .heavy))
-                    .frame(width: screenWidth * 0.9, height: screenHeight * 0.1, alignment: .topLeading)
+                    .frame(width: screenWidth * 0.9, height: screenHeight * 0.1, alignment: .leading)
                 List{
                     Section(header: Text("")){
                         HStack{
@@ -56,6 +56,17 @@ struct tela_valor_HdT: View {
                 .listStyle(.insetGrouped)
                 .frame(width: screenWidth, height: screenHeight * 0.85, alignment: .center)
                 
+            }
+            .background(Color(red: 0, green: 0, blue: 0.4, opacity: 0.0515))
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing)
+                {
+                    Button{
+                        print("Salvou")
+                    }label:{
+                        Text("Salvar")
+                    }
+                }
             }
 //            .toolbar {
 //                ToolbarItem(placement: .principal) {
