@@ -18,13 +18,13 @@ public class Utilitarios {
             switch destino {
             case "Gastos":
                 Tela_Gastos()
-
-                
+     
             case "Valor da hora de trabalho":
                 ContentView()
                 
             case "Custo por hora":
                 ContentView()
+
                 
             default:
                 ContentView()
@@ -94,19 +94,19 @@ public class Utilitarios {
         let destino = NavigationLink {
             switch titulo {
             case "Criar orçamento":
-                ContentView()
+                tela_criar_orcamento()
 
             case "Meus orçamentos":
                 ContentView()
 
             case "Calcular o valor da hora":
-                ContentView()
+                tela_valor_HdT()
 
             case "Despesas":
-                ContentView()
+                tela_despesas()
 
             case "Gastos":
-                ContentView()
+                Tela_Gastos()
 
             default:
                 ContentView()
