@@ -17,16 +17,15 @@ public class Utilitarios {
             
             switch destino {
             case "Gastos":
-                ContentView()
-                
-            case "Despesas":
-                ContentView()
+                Tela_Gastos()
+
                 
             case "Valor da hora de trabalho":
                 ContentView()
                 
             case "Custo por hora":
                 ContentView()
+                
             default:
                 ContentView()
             }
@@ -90,6 +89,39 @@ public class Utilitarios {
 //            return ContentView()
 //        }
 //    }
+    
+    func criaNLHome(titulo: String) -> some View {
+        let destino = NavigationLink {
+            switch titulo {
+            case "Criar orçamento":
+                ContentView()
+
+            case "Meus orçamentos":
+                ContentView()
+
+            case "Calcular o valor da hora":
+                ContentView()
+
+            case "Despesas":
+                ContentView()
+
+            case "Gastos":
+                ContentView()
+
+            default:
+                ContentView()
+            }
+        }
+        label: {
+            Text(titulo)
+                .foregroundColor(.black)
+                .bold()
+                .font(.system(size: 22))
+                .frame(height: 55)
+//            .padding()
+        }
+        return destino
+    }
     
 }
  

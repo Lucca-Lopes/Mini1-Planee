@@ -15,6 +15,7 @@ struct Teste_SwiftUIApp: App {
         WindowGroup {
 //            ContentView()
             TelaInicialView()
+//            Tela_Gastos()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

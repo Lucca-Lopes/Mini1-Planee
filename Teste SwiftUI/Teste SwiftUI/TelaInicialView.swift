@@ -11,6 +11,7 @@ struct TelaInicialView: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
+    let utilitarios = Utilitarios()
     
     @State private var rowHeight: CGFloat = 40
     @State private var headerHeight: CGFloat = 60
@@ -37,23 +38,33 @@ struct TelaInicialView: View {
                 Form{
                     
                     Section{
-                        criaBotao(titulo: "Criar orçamento")
+                        utilitarios.criaNLHome(titulo: "Criar orçamento")
+//                        utilitarios.criaNavigationLink(destino:"Criar orçamento")
+//                        utilitarios.criaNavigationLink(textoPrincipal: "Criar orçamento", textoSecundario: "", destino: "Criar orçamento")
                     }
                     
                     Section{
-                      criaBotao(titulo: "Meus orçamentos")
+                        utilitarios.criaNLHome(titulo: "Meus orçamentos")
+//                        utilitarios.criaNavigationLink(destino: "Meus orçamentos")
+//                        utilitarios.criaNavigationLink(textoPrincipal: "Meus orçamentos", textoSecundario: "", destino: "Meus orçamentos")
                     }
                     
                     Section{
-                        criaBotao(titulo: "Calcular valor da hora")
+                        utilitarios.criaNLHome(titulo: "Calcular valor da hora")
+//                        utilitarios.criaNavigationLink(destino: "Calcular valor da hora")
+//                        utilitarios.criaNavigationLink(textoPrincipal: "Calcular valor da hora", textoSecundario: "", destino: "Calcular valor da hora")
                     }
                     
                     Section{
-                        criaBotao(titulo: "Despesas")
+                        utilitarios.criaNLHome(titulo: "Despesas")
+//                        utilitarios.criaNavigationLink(destino: "Despesas")
+//                        utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "", destino: "Despesas")
                     }
                     
                     Section{
-                        criaBotao(titulo: "Gastos")
+                        utilitarios.criaNLHome(titulo: "Gastos")
+//                        utilitarios.criaNavigationLink(destino: "Gastos")
+//                        utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "", destino: "Gastos")
                     }
                 }
                 .cornerRadius(40)
@@ -63,38 +74,38 @@ struct TelaInicialView: View {
         }
         
     }
-
-    func criaBotao(titulo: String) -> some View{
-        let destino = NavigationLink {
-            switch titulo{
-            case "Criar orçamento":
-                ContentView()
-
-            case "Meus orçamentos":
-                ContentView()
-
-            case "Calcular o valor da hora":
-                ContentView()
-
-            case "Despesas":
-                ContentView()
-
-            case "Gastos":
-                ContentView()
-
-            default:
-                ContentView()
-            }
-        }
-        label: {
-            Text(titulo)
-                .foregroundColor(.black)
-                .bold()
-                .font(.system(size: 22))
-                .frame(height: 55)
-//            .padding()
-        }
-        return destino
-    }
 }
-
+//    func criaBotao(titulo: String) -> some View{
+//        let destino = NavigationLink {
+//            switch titulo{
+//            case "Criar orçamento":
+//                ContentView()
+//
+//            case "Meus orçamentos":
+//                ContentView()
+//
+//            case "Calcular o valor da hora":
+//                ContentView()
+//
+//            case "Despesas":
+//                ContentView()
+//
+//            case "Gastos":
+//                ContentView()
+//
+//            default:
+//                ContentView()
+//            }
+//        }
+//        label: {
+//            Text(titulo)
+//                .foregroundColor(.black)
+//                .bold()
+//                .font(.system(size: 22))
+//                .frame(height: 55)
+////            .padding()
+//        }
+//        return destino
+//    }
+//}
+//
