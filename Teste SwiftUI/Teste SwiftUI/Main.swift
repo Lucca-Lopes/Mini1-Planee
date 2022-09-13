@@ -8,14 +8,12 @@
 import SwiftUI
 
 @main
-struct Teste_SwiftUIApp: App {
+struct Main: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-//            ContentView()
             TelaInicialView()
-//            Tela_Gastos()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

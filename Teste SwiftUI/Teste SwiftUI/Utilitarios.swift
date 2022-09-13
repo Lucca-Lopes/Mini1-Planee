@@ -17,22 +17,21 @@ public class Utilitarios {
             
             switch destino {
             case "Gastos":
-                Tela_Gastos()
+                TelaGastos()
 
                 
             case "Valor da hora de trabalho":
-                ContentView()
+                TelaValorHdT()
                 
             case "Custo por hora":
-                ContentView()
+                TelaDespesas()
                 
             default:
-                ContentView()
+                TelaInicialView()
             }
         }
         label: {
             Text(textoPrincipal)
-//                .lineLimit(1)
             Spacer()
             Text(textoSecundario)
                 .foregroundColor(.gray)
@@ -81,35 +80,26 @@ public class Utilitarios {
         return celula
     }
     
-//    func distinguirTela(nome: String) -> some View {
-//        switch nome {
-//        case "tela_criar_orcamento":
-//            return tela_criar_orcamento()
-//        default:
-//            return ContentView()
-//        }
-//    }
-    
     func criaNLHome(titulo: String) -> some View {
         let destino = NavigationLink {
             switch titulo {
             case "Criar orçamento":
-                ContentView()
+                TelaCriarOrcamento()
 
             case "Meus orçamentos":
-                ContentView()
+                TelaMeusOrcamentos()
 
-            case "Calcular o valor da hora":
-                ContentView()
+            case "Calcular valor da hora":
+                TelaValorHdT()
 
             case "Despesas":
-                ContentView()
+                TelaDespesas()
 
             case "Gastos":
-                ContentView()
+                TelaGastos()
 
             default:
-                ContentView()
+                TelaInicialView()
             }
         }
         label: {
@@ -118,7 +108,6 @@ public class Utilitarios {
                 .bold()
                 .font(.system(size: 22))
                 .frame(height: 55)
-//            .padding()
         }
         return destino
     }

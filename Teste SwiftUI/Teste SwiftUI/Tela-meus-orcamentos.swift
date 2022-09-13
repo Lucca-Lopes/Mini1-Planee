@@ -3,79 +3,75 @@
 //  Teste SwiftUI
 //
 //  Created by Lucca Lopes on 19/08/22.
-//oi
+//
 
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct TelaMeusOrcamentos: View {
     
     @State var editando = false
     @State var selection = Set<String>()
     
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.ordem, ascending: true)],
         animation: .default)
     
     private var items: FetchedResults<Item>
-
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    if editando {
-                        HStack {
-                            Text("Orçamento \(item.ordem)")
-                                .lineLimit(1)
-                            Spacer()
-                            Text("R$\(item.ordem*150)")
-                                    .foregroundColor(.gray)
-                        }
-                    }
-                    else {
-//                        let tco = tela_criar_orcamento()
-//                        Utilitarios().criaNavigationLink(textoPrincipal: "Orçamento \(item.ordem)", textoSecundario: "Orçamento \(item.ordem)", destino: tco)
-                        NavigationLink {
-                            Text("Orçamento \(item.ordem)")
-                        }
-                        label: {
-                            Text("Orçamento \(item.ordem)")
-                                .lineLimit(1)
-                            Spacer()
-                            Text("R$\(item.ordem*150)")
-                                .foregroundColor(.gray)
-                        }
+        List {
+            ForEach(items) { item in
+                if editando {
+                    HStack {
+                        Text("Orçamento \(item.ordem)")
+                            .lineLimit(1)
+                        Spacer()
+                        Text("R$\(item.ordem*150)")
+                            .foregroundColor(.gray)
                     }
                 }
-                .onMove(perform: moverItem)
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.editando.toggle()
-                        
-                    }) {
-                        Text(editando ? "Ok" :
-                                "Editar")
+                else {
+                    NavigationLink {
+                        TelaOrcamento()
                     }
+                label: {
+                    Text("Orçamento \(item.ordem)")
+                        .lineLimit(1)
+                    Spacer()
+                    Text("R$\(item.ordem*150)")
+                        .foregroundColor(.gray)
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
                 }
             }
-            .navigationTitle(Text("Meus Orçamentos"))
-
-            .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
-//            .animation(Animation.easeIn , value: editando)
+            .onMove(perform: moverItem)
+            .onDelete(perform: deleteItems)
         }
-
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    self.editando.toggle()
+                    
+                }) {
+                    Text(editando ? "Ok" :
+                            "Editar")
+                }
+            }
+            ToolbarItem {
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
+                }
+            }
+        }
+        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("Meus Orçamentos")
+        
+        
+        .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
@@ -125,11 +121,11 @@ struct ContentView: View {
             print(error.localizedDescription)
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -149,23 +145,10 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        ContentView()
-//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//    }
-//}
-  
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TelaMeusOrcamentos()
     }
 }
 #endif
-
-//extension EditMode {
-//    mutating func toggle() {
-//            self = self == .active ? .inactive : .active
-//    }
-//}
