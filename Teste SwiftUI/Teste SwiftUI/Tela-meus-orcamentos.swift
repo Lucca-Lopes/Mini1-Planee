@@ -65,10 +65,8 @@ struct TelaMeusOrcamentos: View {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Meus Orçamentos")
-        
-        
+        .navigationBarTitleDisplayMode(.large)
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
     

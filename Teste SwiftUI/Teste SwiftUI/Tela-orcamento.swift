@@ -55,8 +55,8 @@ struct TelaOrcamento: View {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Orçamento 1")
+        .navigationBarTitleDisplayMode(.large)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing)
             {
