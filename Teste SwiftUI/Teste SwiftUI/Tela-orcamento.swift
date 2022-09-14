@@ -54,6 +54,16 @@ struct TelaOrcamento: View {
                     Text("25%")
                 }
             }
+            
+            Section(header: Text("")
+            ) {
+                HStack {
+                    Text("Valor total")
+                    Spacer()
+                    Text("R$ 2000,00")
+                        .bold()
+                }
+            }
         }
         .navigationTitle("Orçamento 1")
         .navigationBarTitleDisplayMode(.large)
