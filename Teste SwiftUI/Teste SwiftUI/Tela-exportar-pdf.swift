@@ -10,7 +10,19 @@ import SwiftUI
 struct Tela_exportar_pdf: View {
     
     @State var item: String = ""
-    @State private var todosBotoes = false
+    
+    @State private var todosBotoes = false {
+        didSet {
+            LigaTodosBotoes()
+        }
+    }
+    
+    @State var nomes: [String] = ["Gastos", "Despesas" "Valor da hora de trabalho", "Custos por hora", "Tempo estimado de trabalho", "Custo total", "Lucro"]
+    
+//    @State var botoes: [String: Bool] = ["Gastos" : false, "Despesas" : false, "Valor da hora de trabalho" : false, "Custos por hora" : false, "Tempo estimado de trabalho" : false, "Custo total" : false, "Lucro" : false]
+
+    @State var botoes: [Bool] = [false, false, false, false, false, false, false, false]
+    
     @State private var selecionartudo = false
     @State private var gastos = false
     @State private var despesas = false
@@ -26,10 +38,22 @@ struct Tela_exportar_pdf: View {
         NavigationView{
         List{
             Section{
-            HStack {
-                Toggle("Selecionar tudo", isOn: $todosBotoes )
+                HStack {
+                    Toggle("Selecionar tudo", isOn: $todosBotoes)
+                        .onTapGesture {
+                            if todosBotoes != true {
+                                LigaTodosBotoes()
+                            }
+                        }
+                }
             }
+            
+            ForEach(nomes) { nome in
+                HStack{
+                    Toggle("Gastos", isOn: botoes[nome.index])
+                }
             }
+            
             HStack{
 //                Toggle("Gastos", isOn: $todosBotoes )
                 Toggle("Gastos", isOn: $gastos )
@@ -76,7 +100,13 @@ struct Tela_exportar_pdf: View {
     }
 }
     func LigaTodosBotoes(){
-        Toggle("Selecionar tudo", isOn: $todosBotoes)
+        gastos = true
+        despesas = true
+        valordahora = true
+        custoporhora = true
+        tempoestimado = true
+        custototal = true
+        lucro = true
     }
 
 }
