@@ -13,7 +13,8 @@ struct Main: App {
 
     var body: some Scene {
         WindowGroup {
-            TelaInicialView()
+//            TelaInicialView()
+            Tela_exportar_pdf()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

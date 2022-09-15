@@ -16,6 +16,10 @@ struct TelaValorHdT: View {
     @State var dias: String = ""
     @State var horasDiarias: String = ""
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    var nameTextField: UITextField!
+    
     var body: some View {
         VStack {
             Text("")
@@ -61,7 +65,15 @@ struct TelaValorHdT: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    print("Salvou")
+//                    self.mode.wrappedValue.dismiss()
+                    do {
+                        try viewContext.save()
+                        print("Salvou")
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                   
                 }label:{
                     Text("Salvar")
                 }
