@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TelaValorHdT: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
-    @State var valor: String = ""
-    @State var dias: String = ""
-    @State var horasDiarias: String = ""
+    @State var valor: Double = 0.0
+    @State var dias: Int = 0
+    @State var horasDiarias: Int = 0
+    @State var valorFinal: Double = 0.0
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(entity: ValorHoraDeTrabalho.entity(), sortDescriptors: [])
+    var VdT: FetchedResults<ValorHoraDeTrabalho>
+    
+//    @FetchRequest(entity: Orcamento.entity(), sortDescriptors: [])
+//    var Orcamento: FetchedResults<Orcamento>
     
     var body: some View {
         VStack {
@@ -27,19 +37,19 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Pretensão salarial")
                     Spacer()
-                    TextField("R$2.400,00", text: $valor)
+                    TextField("R$2.400,00", value: $valor, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
                 }
                 HStack{
                     Text("Dias de trabalho")
                     Spacer()
-                    TextField("20 dias", text: $dias)
+                    TextField("20 dias", value: $dias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
                 }
                 HStack{
                     Text("Horas diárias")
                     Spacer()
-                    TextField("5h", text: $horasDiarias)
+                    TextField("5h", value: $horasDiarias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
                 }
                 
@@ -48,7 +58,7 @@ struct TelaValorHdT: View {
                     HStack{
                         Text("Valor da hora de trabalho:")
                         Spacer()
-                        Text("R$24,00")
+                        Text("R$ \(valorFinal)")
                     }
                 }
             }
@@ -61,13 +71,34 @@ struct TelaValorHdT: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    print("Salvou")
+                    salvarHdT()
                 }label:{
                     Text("Salvar")
                 }
             }
         }
     }
+    
+    func salvarHdT(){
+        
+        valorFinal = (valor / Double(dias)) / Double(horasDiarias)
+        
+        let valorDaHora = ValorHoraDeTrabalho(context: viewContext)
+        valorDaHora.pretensaoSalarial = valor
+        valorDaHora.dias = Int64(dias)
+        valorDaHora.horas = Int64(horasDiarias)
+        valorDaHora.valorFinal = valorFinal
+            
+        do {
+                    try viewContext.save()
+                } catch {
+                    let error = error as NSError
+                    fatalError("An error occured: \(error)")
+                }
+
+        print(valorDaHora)
+    }
+    
 }
 
 struct tela_valor_HdT_Previews: PreviewProvider {
