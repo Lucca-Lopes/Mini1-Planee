@@ -39,23 +39,23 @@ public class Utilitarios {
         return navigationLink
     }
     
-    func criaDespesa(editando: Bool) -> some View {
+    func criaDespesa(editando: Bool, nomeAtual: String, precoAtual: Double) -> some View {
         
         let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-        
-        @State var nomeSelecionado: String = "Luz"
-        @State var preco: Float = 0.0
+//
+        @State var nome = nomeAtual
+        @State var preco = precoAtual
         
         let celula = HStack {
             if !editando {
-                Text(nomeSelecionado)
+                Text(nome)
                 Spacer()
                 Text("R$ \(preco)")
                     .foregroundColor(.gray)
             }
             else {
                 Picker("Escolha um nome",
-                       selection: $nomeSelecionado) {
+                       selection: $nome) {
                     ForEach(nomes, id: \.self) { nome in
                         Text(nome)
                     }

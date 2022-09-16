@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TelaDespesas: View {
     
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(entity: Despesa.entity(), sortDescriptors: [])
+    var despesa: FetchedResults<Despesa>
+
     let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
     @State var preco: String = "R$ 82,90"
@@ -23,8 +29,10 @@ struct TelaDespesas: View {
     
     var body: some View {
         List {
-            
-            utilitarios.criaDespesa(editando: editando)
+            ForEach(despesa) { despesa in
+                utilitarios.criaDespesa(editando: editando)
+            }
+//            utilitarios.criaDespesa(editando: editando)
             Section(header: Text("")
             ) {
                 HStack {

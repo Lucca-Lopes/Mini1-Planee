@@ -12,6 +12,8 @@ struct TelaInicialView: View {
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
     let utilitarios = Utilitarios()
     
     @State private var rowHeight: CGFloat = 40

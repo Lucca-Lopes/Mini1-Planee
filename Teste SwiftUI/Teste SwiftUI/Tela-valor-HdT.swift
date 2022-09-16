@@ -19,7 +19,7 @@ struct TelaValorHdT: View {
     @State var valorFinal: Double = 0.0
     
     @Environment(\.managedObjectContext) private var viewContext
-    
+
     @FetchRequest(entity: ValorHoraDeTrabalho.entity(), sortDescriptors: [])
     var VdT: FetchedResults<ValorHoraDeTrabalho>
     
