@@ -12,6 +12,8 @@ public class Utilitarios {
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
+//    @Environment(\.managedObjectContext) private var viewContext
+    
     func criaNavigationLink(textoPrincipal: String, textoSecundario: String, destino: String) -> some View {
         let navigationLink = NavigationLink {
             
@@ -39,46 +41,7 @@ public class Utilitarios {
         return navigationLink
     }
     
-    func criaDespesa(editando: Bool, nomeAtual: String, precoAtual: Double) -> some View {
-        
-        let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-//
-        @State var nome = nomeAtual
-        @State var preco = precoAtual
-        
-        let celula = HStack {
-            if !editando {
-                Text(nome)
-                Spacer()
-                Text("R$ \(preco)")
-                    .foregroundColor(.gray)
-            }
-            else {
-                Picker("Escolha um nome",
-                       selection: $nome) {
-                    ForEach(nomes, id: \.self) { nome in
-                        Text(nome)
-                    }
-                    .foregroundColor(.black)
-                }
-                .pickerStyle(.menu)
-                Spacer()
-                TextField(
-                    "Oi",
-                    value: $preco,
-                    formatter: NumberFormatter()
-                    
-                )
-                
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.numberPad)
-                .textFieldStyle(.roundedBorder)
-                .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
-                
-            }
-        }
-        return celula
-    }
+    
     
     func criaNLHome(titulo: String) -> some View {
         let destino = NavigationLink {

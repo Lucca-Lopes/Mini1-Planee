@@ -16,6 +16,7 @@
 		2B666FE928B00CC3003892A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE828B00CC3003892A6 /* Preview Assets.xcassets */; };
 		2B666FEB28B00CC3003892A6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FEA28B00CC3003892A6 /* Persistence.swift */; };
 		2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */; };
+		2B7310D028D904DB009CEAB2 /* Item-da-lista-de-despesa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7310CF28D904DB009CEAB2 /* Item-da-lista-de-despesa.swift */; };
 		2B89E79528D115490057205C /* Tela-orcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B89E79428D115490057205C /* Tela-orcamento.swift */; };
 		2B91625F28C14B7300FDEBD9 /* Tela-criar-orcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B91625E28C14B7300FDEBD9 /* Tela-criar-orcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
@@ -33,6 +34,7 @@
 		2B666FE828B00CC3003892A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2B666FEA28B00CC3003892A6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2B666FED28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Teste_SwiftUI.xcdatamodel; sourceTree = "<group>"; };
+		2B7310CF28D904DB009CEAB2 /* Item-da-lista-de-despesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item-da-lista-de-despesa.swift"; sourceTree = "<group>"; };
 		2B89E79428D115490057205C /* Tela-orcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tela-orcamento.swift"; sourceTree = "<group>"; };
 		2B91625E28C14B7300FDEBD9 /* Tela-criar-orcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tela-criar-orcamento.swift"; sourceTree = "<group>"; };
 		2BCB0C3C28C2982A006793CC /* Utilitarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitarios.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
 				2B666FE728B00CC3003892A6 /* Preview Content */,
+				2B7310CF28D904DB009CEAB2 /* Item-da-lista-de-despesa.swift */,
 			);
 			path = "Teste SwiftUI";
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				057A456328C12089004756EE /* Tela-inicial.swift in Sources */,
 				2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */,
 				2B666FE428B00CC1003892A6 /* Tela-meus-orcamentos.swift in Sources */,
+				2B7310D028D904DB009CEAB2 /* Item-da-lista-de-despesa.swift in Sources */,
 				2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */,
 				2B666FE228B00CC1003892A6 /* Main.swift in Sources */,
 				0500C47828C8081F008A9042 /* Tela-gastos.swift in Sources */,
