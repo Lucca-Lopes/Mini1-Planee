@@ -144,16 +144,17 @@ struct Tela_exportar_pdf_Previews: PreviewProvider {
 }
 
 struct SheetCompartilhada: UIViewControllerRepresentable{
-    var urls: [Any]
-    
-    func fazerViewController(context: Context) -> UIActivityViewController {
+    func makeUIViewController(context: Context) -> UIViewController {
         let controlador = UIActivityViewController(activityItems: urls, applicationActivities: nil)
         
         return controlador
     }
     
-    func atualizaUIViewController(_ uiViewController: UIActivityViewController, context: Context){
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         
     }
+    
+    var urls: [Any]
+    
 }
 
