@@ -34,6 +34,10 @@ struct Tela_exportar_pdf: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    //Propriedades PDf
+    @State var PDFUrl: URL?
+    @State var mostraSheetCp: Bool = false
+    
     var body: some View {
         NavigationView{
         List{
@@ -92,7 +96,8 @@ struct Tela_exportar_pdf: View {
 //                        self.environmentObject(gastos)
                     } completion: { status, url in
                         if let url = url,status{
-                            print(url)
+                            self.PDFUrl = url
+                            self.mostraSheetCp.toggle()
                         }
                         else{
                             print("Falha para produzir o PDF")
@@ -113,6 +118,13 @@ struct Tela_exportar_pdf: View {
         .navigationBarTitle("Informações a enviar")
         .navigationBarTitleDisplayMode(.inline)
     }
+        .sheet(isPresented: $mostraSheetCp){
+            PDFUrl = nil
+        } content: {
+            if let PDFUrl = PDFUrl {
+                SheetCompartilhada(urls: [PDFUrl])
+            }
+        }
 }
     func LigaTodosBotoes(){
         gastos = true
@@ -131,9 +143,17 @@ struct Tela_exportar_pdf_Previews: PreviewProvider {
     }
 }
 
-struct SheetCompartilhada: UIViewRepresentable{
-    
-    
+struct SheetCompartilhada: UIViewControllerRepresentable{
     var urls: [Any]
+    
+    func fazerViewController(context: Context) -> UIActivityViewController {
+        let controlador = UIActivityViewController(activityItems: urls, applicationActivities: nil)
+        
+        return controlador
+    }
+    
+    func atualizaUIViewController(_ uiViewController: UIActivityViewController, context: Context){
+        
+    }
 }
 

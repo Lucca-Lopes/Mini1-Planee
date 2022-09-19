@@ -44,8 +44,10 @@ extension View{
         let pdfView = converterParaView {
           TelaInicialView()
         }
-    
+        pdfView.tag = 1009
         let size = pdfView.contentSize
+        //Remove o espaco em branco do topo
+        pdfView.frame = CGRect(x: 0,y: PegarSafeArea().top, width: size.width, height: size.height)
         
         pegarControlaorRaiz().view.insertSubview(pdfView, at: 0)
         
@@ -63,7 +65,20 @@ extension View{
             completion(false,nil)
             print(error.localizedDescription)
         }
+        
+        //remove o added view
+        pegarControlaorRaiz().view.subviews.forEach { view in
+            if view.tag == 1009{
+                print("Remover")
+                view.removeFromSuperview()
+            }
+        }
     }
+    
+    func limitesTela()->CGRect{
+        return UIScreen.main.bounds
+    }
+    
     func pegarControlaorRaiz()->UIViewController{
         guard let tela = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
             return .init()
@@ -72,6 +87,16 @@ extension View{
             return .init()
         }
         return raiz
+    }
+    
+    func PegarSafeArea()->UIEdgeInsets{
+        guard let tela = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
+            return .zero
+        }
+        guard let safeArea = tela.windows.first?.safeAreaInsets else{
+            return .zero
+        }
+        return safeArea
     }
 }
 
