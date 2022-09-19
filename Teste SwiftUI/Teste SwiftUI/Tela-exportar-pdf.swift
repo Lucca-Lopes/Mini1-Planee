@@ -17,7 +17,7 @@ struct Tela_exportar_pdf: View {
         }
     }
     
-    @State var nomes: [String] = ["Gastos", "Despesas" "Valor da hora de trabalho", "Custos por hora", "Tempo estimado de trabalho", "Custo total", "Lucro"]
+//    @State var nomes: [String] = ["Gastos", "Despesas" "Valor da hora de trabalho", "Custos por hora", "Tempo estimado de trabalho", "Custo total", "Lucro"]
     
 //    @State var botoes: [String: Bool] = ["Gastos" : false, "Despesas" : false, "Valor da hora de trabalho" : false, "Custos por hora" : false, "Tempo estimado de trabalho" : false, "Custo total" : false, "Lucro" : false]
 
@@ -48,11 +48,11 @@ struct Tela_exportar_pdf: View {
                 }
             }
             
-            ForEach(nomes) { nome in
-                HStack{
-                    Toggle("Gastos", isOn: botoes[nome.index])
-                }
-            }
+//            ForEach(nomes) { nome in
+//                HStack{
+//                    Toggle("Gastos", isOn: botoes[nome.index])
+//                }
+//            }
             
             HStack{
 //                Toggle("Gastos", isOn: $todosBotoes )
@@ -87,12 +87,27 @@ struct Tela_exportar_pdf: View {
         .listStyle(.grouped)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
+                Button{
+                    exportarPDF {
+//                        self.environmentObject(gastos)
+                    } completion: { status, url in
+                        if let url = url,status{
+                            print(url)
+                        }
+                        else{
+                            print("Falha para produzir o PDF")
+                        }
+                    }
+//                        .environmentObject()
                     //Criar a funcao de exportar pdf
-                    self.mode.wrappedValue.dismiss()
-                }, label: {
-                    Text("Enviar")
-                })
+//                    self.mode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "square.and.arrow.up.fill")
+                        .font(.title2)
+                        .foregroundColor(Color.black.opacity(0.7))
+//                    Text("Enviar")
+                    
+                }
             }
         }
         .navigationBarTitle("Informações a enviar")
@@ -108,7 +123,6 @@ struct Tela_exportar_pdf: View {
         custototal = true
         lucro = true
     }
-
 }
 
 struct Tela_exportar_pdf_Previews: PreviewProvider {
@@ -116,3 +130,10 @@ struct Tela_exportar_pdf_Previews: PreviewProvider {
         Tela_exportar_pdf()
     }
 }
+
+struct SheetCompartilhada: UIViewRepresentable{
+    
+    
+    var urls: [Any]
+}
+
