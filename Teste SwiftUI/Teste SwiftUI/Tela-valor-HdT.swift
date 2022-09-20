@@ -30,6 +30,7 @@ struct TelaValorHdT: View {
         VStack {
             Text("")
                 .frame(height: screenHeight * 0.05)
+                .accessibilityHidden(true)
             Text("Valor da Hora de Trabalho")
                 .font(.system(size: 34, weight: .heavy))
                 .frame(width: screenWidth * 0.9, height: screenHeight * 0.1, alignment: .leading)
@@ -53,7 +54,8 @@ struct TelaValorHdT: View {
                         .multilineTextAlignment(.trailing)
                 }
                 
-                Section(header: Text(""))
+                Section(header: Text("")
+                    .accessibility(hidden: true))
                 {
                     HStack{
                         Text("Valor da hora de trabalho:")
@@ -75,6 +77,8 @@ struct TelaValorHdT: View {
                 }label:{
                     Text("Salvar")
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Botão Salvar")
             }
         }
     }

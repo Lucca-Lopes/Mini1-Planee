@@ -32,8 +32,9 @@ struct TelaDespesas: View {
             ForEach(despesa) { despesa in
                 utilitarios.criaDespesa(editando: editando)
             }
-//            utilitarios.criaDespesa(editando: editando)
+
             Section(header: Text("")
+                .accessibilityHidden(true)
             ) {
                 HStack {
                     Text("Valor total")
@@ -56,6 +57,8 @@ struct TelaDespesas: View {
                 Button(action: printar) {
                     Label("Add Item", systemImage: "plus")
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Botão adicionar")
             }
         }
         .navigationTitle("Despesas")

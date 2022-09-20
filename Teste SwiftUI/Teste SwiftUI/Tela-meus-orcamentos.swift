@@ -63,12 +63,11 @@ struct TelaMeusOrcamentos: View {
                 NavigationLink {
                     TelaCriarOrcamento()
                 }
-            label: {
-                Label("Add Item", systemImage: "plus")
-            }
-//                Button(action: ) {
-//                    Label("Add Item", systemImage: "plus")
-//                }
+                label: {
+                    Label("Add Item", systemImage: "plus")
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Botão Adicionar")
             }
         }
         .navigationTitle("Meus Orçamentos")

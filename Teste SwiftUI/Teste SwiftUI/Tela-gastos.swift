@@ -20,6 +20,8 @@ struct TelaGastos: View {
         
         List{
             Section(header: Text("Computador")
+                .accessibilityRemoveTraits(.isHeader)
+                .accessibilityLabel("Seção Computador")
             ) {
                 utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 10.250,00", destino: "tela_criar_orcamento")
                 utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "43 meses", destino: "tela_criar_orcamento")
@@ -27,6 +29,8 @@ struct TelaGastos: View {
             }
             
             Section(header: Text("Calculadora")
+                .accessibilityRemoveTraits(.isHeader)
+                .accessibilityLabel("Seção Calculadora")
             ) {
                 utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 150,00", destino: "tela_criar_orcamento")
                 utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "80 meses", destino: "tela_criar_orcamento")
@@ -34,6 +38,7 @@ struct TelaGastos: View {
                 
             }
             Section(header: Text("")
+                .accessibility(hidden: true)
             ) {
                 utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
                 
@@ -56,6 +61,8 @@ struct TelaGastos: View {
                 .sheet(isPresented: $mostrarSheet){
                     SheetView()
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Botão Adicionar")
             }
         }
         .navigationTitle("Gastos")
