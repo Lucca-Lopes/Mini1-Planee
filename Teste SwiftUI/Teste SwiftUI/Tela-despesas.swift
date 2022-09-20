@@ -21,7 +21,7 @@ struct TelaDespesas: View {
     @FetchRequest(entity: Despesa.entity(), sortDescriptors: [])
     var despesas: FetchedResults<Despesa>
 
-//    let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
+    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
     @State var preco: String = "R$ 82,90"
     @State var nomeSeleionado: String = "Luz"
@@ -32,11 +32,30 @@ struct TelaDespesas: View {
     
     var body: some View {
         List {
-            ForEach(despesas) { despesaAtual in
-                Item_da_lista_de_despesa(item: despesaAtual, editando: editando, nome: $nome, valor: $valor)
+            ForEach (despesas) { despesaAtual in
+                NavigationLink {
+                    ItemDespesa(entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
+                }
+            label: {
+                Text(despesaAtual.nome ?? "Luz")
+                    .lineLimit(1)
+                Spacer()
+                Text("R$\(despesaAtual.valor)")
+                    .foregroundColor(.gray)
+//                    let despesa = despesaAtual
+//                    if !editando {
+//                        ItemDespesaSemEditar(entidade: despesaAtual)
+//                    }
+//                    else {
+//                        ItemDespesaEditando(nome: despesaAtual.nome ?? "Luz", valor: despesaAtual.valor, entidade: despesaAtual)
+//                    }
+                }
+            }
+                
+//                Item_da_lista_de_despesa(item: despesaAtual, editando: editando, nome: $nome, valor: $valor)
                 
 //                criaDespesa(editando: editando, nomeAtual: &despesaAtual.nome!, preco: &despesaAtual.valor)
-            }
+            
             Section(header: Text("")
             ) {
                 HStack {
@@ -69,56 +88,6 @@ struct TelaDespesas: View {
         .navigationTitle("Despesas")
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
-//
-//    func criaDespesa(editando: Bool, nomeAtual: inout String, precoAtual: inout Double, despesaAtual: Despesa) -> some View {
-//
-//        let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-//
-//        @Binding var nome: String
-//
-//
-//
-////        @Published var preco = preco
-//
-//        let celula = HStack {
-//            let despesa = despesaAtual
-//            if !editando {
-//                Text(nomeAtual)
-//                Spacer()
-//                Text("R$ \(precoAtual)")
-//                    .foregroundColor(.gray)
-//            }
-//            else {
-//                Picker("Escolha um nome",
-//                       selection: $nome) {
-//                    ForEach(opcoes, id: \.self) { opcao in
-//                        Text(opcao)
-//                    }
-//                    .foregroundColor(.black)
-//                }
-//                .pickerStyle(.menu)
-//                Spacer()
-//                TextField(
-//                    "Oi",
-//                    value: despesa.valor,
-//                    formatter: NumberFormatter()
-//
-//                )
-//
-//                .multilineTextAlignment(.trailing)
-//                .keyboardType(.numberPad)
-//                .textFieldStyle(.roundedBorder)
-//                .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
-//
-//            }
-//        }
-//        nomeAtual = nome
-////        despesaAtual.valor = preco
-////        if editando {
-////            salvarCD()
-////        }
-//        return celula
-//    }
     
     func salvarCD(){
         do {
@@ -128,7 +97,6 @@ struct TelaDespesas: View {
             fatalError("An error occured: \(error)")
         }
     }
-
     
     func addDespesa(){
             

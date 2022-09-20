@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Despesa" representedClassName=".Despesa" syncable="YES" codeGenerationType="class">
         <attribute name="nome" attributeType="String" defaultValueString="Luz"/>
-        <attribute name="valor" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="valor" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Gasto" representedClassName=".Gasto" syncable="YES" codeGenerationType="class">
         <attribute name="custo" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>

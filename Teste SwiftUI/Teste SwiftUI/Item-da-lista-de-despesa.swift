@@ -7,72 +7,123 @@
 
 import SwiftUI
 
-struct Item_da_lista_de_despesa: View {
+struct ItemDespesa: View {
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
     let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
-    let item: Despesa
-    var editando: Bool
-//    {
-//        get {
-//            return false
-//        }
-//        set {
-//            if newValue == false {
-//                item.nome = nome
-//                item.valor = valor
-//            }
-//        }
-//    }
+    var entidade: Despesa
     
-    @Binding var nome: String
-    @Binding var valor: Double
+    @State var nome: String
+    @State var valor: Double
     
     var body: some View {
-        HStack {
-            if !editando {
-                Text(item.nome ?? "Luz")
+        Form {
+            HStack {
+                Text("Nome")
                 Spacer()
-                Text("R$ \(item.valor)")
+                TextField("Nome", text: $nome)
                     .foregroundColor(.gray)
+                    .multilineTextAlignment(.trailing)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
+
             }
-            else {
-                Picker("Escolha um nome",
-                       selection: $nome) {
-                    ForEach(opcoes, id: \.self) { opcao in
-                        Text(opcao)
-                    }
-                    .foregroundColor(.black)
-                }
-                .pickerStyle(.menu)
+            HStack {
+                Text("Valor")
                 Spacer()
                 TextField(
-                    "Oi",
+                    "R$ 0,00",
                     value: $valor,
                     formatter: NumberFormatter()
                 )
-                
+                .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
-               
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    salvarCD()
+                    self.mode.wrappedValue.dismiss()
+                }) {
+                    Text("Salvar")
+                }
             }
         }
     }
     
-    func atualizarParametros(nomeAtual: inout String, valorAtual: inout Double) {
-        nomeAtual = nome
-        valorAtual = valor
+    func salvarCD(){
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("An error occured: \(error)")
+        }
     }
     
 }
 
-//struct Item_da_lista_de_despesa_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Item_da_lista_de_despesa()
+
+struct ItemDespesaEditando: View {
+    
+    let screenWidth = UIScreen.main.bounds.size.width
+    let screenHeight = UIScreen.main.bounds.size.height
+    
+    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
+
+    @State var nome: String
+    @State var valor: Double
+    var entidade: Despesa
+    
+//    var completion: (String, String) -> Void
+    
+    var body: some View {
+        HStack {
+            Picker("Escolha um nome",
+                   selection: $nome) {
+                ForEach(opcoes, id: \.self) { opcao in
+                    Text(opcao)
+                }
+                .foregroundColor(.black)
+            }
+                   .pickerStyle(.menu)
+            Spacer()
+            TextField(
+                "Oi",
+                value: $valor,
+                formatter: NumberFormatter()
+            )
+            .multilineTextAlignment(.trailing)
+            .keyboardType(.numberPad)
+            .textFieldStyle(.roundedBorder)
+            .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
+        }
+    }
+}
+
+struct ItemDespesaSemEditar: View {
+    var entidade: Despesa
+    
+    var body: some View {
+        HStack {
+            Text(entidade.nome ?? "Luz")
+            Spacer()
+            Text("R$ \(entidade.valor)")
+                .foregroundColor(.gray)
+        }
+    }
+}
+
+//    func salvarAtualizacao(nome: String, valor: Double) {
+//
 //    }
 //}
