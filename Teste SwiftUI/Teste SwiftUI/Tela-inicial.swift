@@ -6,6 +6,7 @@
 //
 import CoreData
 import SwiftUI
+import Accessibility
 
 struct TelaInicialView: View {
     
@@ -34,27 +35,38 @@ struct TelaInicialView: View {
                 
                 Text("")
                     .frame(height: screenHeight * 0.05)
+                    .accessibilityHidden(true)
                 
                 Form{
                     
                     Section{
                         utilitarios.criaNLHome(titulo: "Criar orçamento")
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Botão Criar Orçamento")
                     }
                     
                     Section{
                         utilitarios.criaNLHome(titulo: "Meus orçamentos")
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Botão Meus Orçamentos")
                     }
                     
                     Section{
                         utilitarios.criaNLHome(titulo: "Calcular valor da hora")
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Botão Calcular valor da hora")
                     }
                     
                     Section{
                         utilitarios.criaNLHome(titulo: "Despesas")
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Botão Despesas")
                     }
                     
                     Section{
                         utilitarios.criaNLHome(titulo: "Gastos")
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Botão Gastos")
                     }
                 }
                 .cornerRadius(40)

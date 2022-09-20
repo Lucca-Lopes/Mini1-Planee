@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Accessibility
 
 public class Utilitarios {
     
@@ -39,12 +40,12 @@ public class Utilitarios {
         return navigationLink
     }
     
-    func criaDespesa(editando: Bool, nomeAtual: String, precoAtual: Double) -> some View {
+    func criaDespesa(editando: Bool) -> some View {
         
         let nomes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
 //
-        @State var nome = nomeAtual
-        @State var preco = precoAtual
+        @State var nome = "Luz"
+        @State var preco = 0.0
         
         let celula = HStack {
             if !editando {

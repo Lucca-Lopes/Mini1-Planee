@@ -21,14 +21,20 @@ struct TelaCriarOrcamento: View {
     var body: some View {
         List{
             TextField("Titulo", text: $titulo)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Insira um titulo")
             
             Section(header: Text("Custos")
+                .accessibilityRemoveTraits(.isHeader)
+                .accessibilityLabel("Seção Custos")
             ) {
                 utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
                 utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
             }
             
             Section(header: Text("Mão de obra")
+                .accessibilityRemoveTraits(.isHeader)
+                .accessibilityLabel("Seção Mão de Obra")
             ) {
                 utilitarios.criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
                 utilitarios.criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
@@ -56,6 +62,7 @@ struct TelaCriarOrcamento: View {
             }
             
             Section(header: Text("")
+                .accessibilityHidden(true)
             ) {
                 HStack {
                     Text("Lucro")
@@ -81,6 +88,8 @@ struct TelaCriarOrcamento: View {
                 }label:{
                     Text("Adicionar")
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Botão Adicionar")
             }
         }
         .navigationBarTitle("Novo orçamento")
