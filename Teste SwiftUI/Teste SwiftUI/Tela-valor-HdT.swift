@@ -58,7 +58,7 @@ struct TelaValorHdT: View {
                     HStack{
                         Text("Valor da hora de trabalho:")
                         Spacer()
-                        Text("R$ \(valorFinal)")
+                        Text("R$ " + String(format: "%.2f", valorFinal))
                     }
                 }
             }
