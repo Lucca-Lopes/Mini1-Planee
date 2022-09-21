@@ -128,10 +128,73 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
+    func fetchOrcamento() {
+        let request = NSFetchRequest<Orcamento>(entityName: "Orcamento")
+        
+        do {
+            orcamentos = try manager.context.fetch(request)
+        } catch let error {
+            print("Erro ao fazer o fetch. \(error)")
+        }
+    }
     
+    func fetchDespesa() {
+        let request = NSFetchRequest<Despesa>(entityName: "Despesa")
+        
+        do {
+            despesas = try manager.context.fetch(request)
+        } catch let error {
+            print("Erro ao fazer o fetch. \(error)")
+        }
+    }
+    
+    func fetchGasto() {
+        let request = NSFetchRequest<Gasto>(entityName: "Gasto")
+        
+        do {
+            gastos = try manager.context.fetch(request)
+        } catch let error {
+            print("Erro ao fazer o fetch. \(error)")
+        }
+    }
+    
+    func fetchVdH() {
+        let request = NSFetchRequest<ValorHoraDeTrabalho>(entityName: "ValorHoraDeTrabalho")
+        
+        do {
+            valorDaHora = try manager.context.fetch(request)
+        } catch let error {
+            print("Erro ao fazer o fetch. \(error)")
+        }
+    }
+    
+    func deletarOrcamento(indexSet: IndexSet) {
+        guard let index = indexSet.first else {return}
+        let entidade = orcamentos[index]
+        manager.container.viewContext.delete(entidade)
+        salvar()
+    }
+    
+    func deletarDespesa(indexSet: IndexSet) {
+        guard let index = indexSet.first else {return}
+        let entidade = despesas[index]
+        manager.container.viewContext.delete(entidade)
+        salvar()
+    }
+    
+    func deletarGasto(indexSet: IndexSet) {
+        guard let index = indexSet.first else {return}
+        let entidade = gastos[index]
+        manager.container.viewContext.delete(entidade)
+        salvar()
+    }
     
     
     func salvar(){
         manager.salvar()
+        fetchOrcamento()
+        fetchDespesa()
+        fetchGasto()
+        fetchVdH()
     }
 }

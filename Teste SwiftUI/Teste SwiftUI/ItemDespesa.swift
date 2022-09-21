@@ -11,7 +11,7 @@ struct ItemDespesa: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @Environment(\.managedObjectContext) private var viewContext
+//    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     let screenWidth = UIScreen.main.bounds.size.width
@@ -54,7 +54,7 @@ struct ItemDespesa: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    salvarCD()
+                    vm.atualizarDespesa(entidade: entidade, nome: nome, valor: valor)
                     self.mode.wrappedValue.dismiss()
                 }) {
                     Text("Salvar")
@@ -62,68 +62,58 @@ struct ItemDespesa: View {
             }
         }
     }
-    
-    func salvarCD(){
-        do {
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("An error occured: \(error)")
-        }
-    }
-    
 }
 
 
-struct ItemDespesaEditando: View {
-    
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
-    
-    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-
-    @State var nome: String
-    @State var valor: Double
-    var entidade: Despesa
-    
-//    var completion: (String, String) -> Void
-    
-    var body: some View {
-        HStack {
-            Picker("Escolha um nome",
-                   selection: $nome) {
-                ForEach(opcoes, id: \.self) { opcao in
-                    Text(opcao)
-                }
-                .foregroundColor(.black)
-            }
-                   .pickerStyle(.menu)
-            Spacer()
-            TextField(
-                "Oi",
-                value: $valor,
-                formatter: NumberFormatter()
-            )
-            .multilineTextAlignment(.trailing)
-            .keyboardType(.numberPad)
-            .textFieldStyle(.roundedBorder)
-            .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
-        }
-    }
-}
-
-struct ItemDespesaSemEditar: View {
-    var entidade: Despesa
-    
-    var body: some View {
-        HStack {
-            Text(entidade.nome ?? "Luz")
-            Spacer()
-            Text("R$ \(entidade.valor)")
-                .foregroundColor(.gray)
-        }
-    }
-}
+//struct ItemDespesaEditando: View {
+//
+//    let screenWidth = UIScreen.main.bounds.size.width
+//    let screenHeight = UIScreen.main.bounds.size.height
+//
+//    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
+//
+//    @State var nome: String
+//    @State var valor: Double
+//    var entidade: Despesa
+//
+////    var completion: (String, String) -> Void
+//
+//    var body: some View {
+//        HStack {
+//            Picker("Escolha um nome",
+//                   selection: $nome) {
+//                ForEach(opcoes, id: \.self) { opcao in
+//                    Text(opcao)
+//                }
+//                .foregroundColor(.black)
+//            }
+//                   .pickerStyle(.menu)
+//            Spacer()
+//            TextField(
+//                "Oi",
+//                value: $valor,
+//                formatter: NumberFormatter()
+//            )
+//            .multilineTextAlignment(.trailing)
+//            .keyboardType(.numberPad)
+//            .textFieldStyle(.roundedBorder)
+//            .frame(width: screenWidth * 0.35, height: screenHeight * 0.03, alignment: .leading)
+//        }
+//    }
+//}
+//
+//struct ItemDespesaSemEditar: View {
+//    var entidade: Despesa
+//
+//    var body: some View {
+//        HStack {
+//            Text(entidade.nome ?? "Luz")
+//            Spacer()
+//            Text("R$ \(entidade.valor)")
+//                .foregroundColor(.gray)
+//        }
+//    }
+//}
 
 //    func salvarAtualizacao(nome: String, valor: Double) {
 //

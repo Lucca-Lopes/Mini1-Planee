@@ -18,11 +18,12 @@ struct TelaDespesas: View {
     @State var nome = "Luz"
     @State var valor = 0.0
     
-    @Environment(\.managedObjectContext) private var viewContext
+//    @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: Despesa.entity(), sortDescriptors: [])
-    var despesas: FetchedResults<Despesa>
+//    @FetchRequest(entity: Despesa.entity(), sortDescriptors: [])
+//    var despesas: FetchedResults<Despesa>
 
+    
     let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
     @State var preco: String = "R$ 82,90"
@@ -34,7 +35,7 @@ struct TelaDespesas: View {
     
     var body: some View {
         List {
-            ForEach (despesas) { despesaAtual in
+            ForEach (vm.despesas) { despesaAtual in
                 NavigationLink {
                     ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
@@ -72,7 +73,7 @@ struct TelaDespesas: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     if editando {
-                        salvarCD()
+                        vm.salvar()
                     }
                     self.editando.toggle()
                     
@@ -82,7 +83,7 @@ struct TelaDespesas: View {
                 }
             }
             ToolbarItem {
-                Button(action: addDespesa) {
+                Button(action: vm.addDespesa) {
                     Label("Add Item", systemImage: "plus")
                 }
             }
@@ -91,29 +92,29 @@ struct TelaDespesas: View {
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
     
-    func salvarCD(){
-        do {
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("An error occured: \(error)")
-        }
-    }
-    
-    func addDespesa(){
-            
-        let despesa = Despesa(context: viewContext)
-        despesa.valor = 0.0
-            
-        do {
-                    try viewContext.save()
-                } catch {
-                    let error = error as NSError
-                    fatalError("An error occured: \(error)")
-                }
-
-        print(despesa)
-    }
+//    func salvarCD(){
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            let error = error as NSError
+//            fatalError("An error occured: \(error)")
+//        }
+//    }
+//
+//    func addDespesa(){
+//
+//        let despesa = Despesa(context: viewContext)
+//        despesa.valor = 0.0
+//
+//        do {
+//                    try viewContext.save()
+//                } catch {
+//                    let error = error as NSError
+//                    fatalError("An error occured: \(error)")
+//                }
+//
+//        print(despesa)
+//    }
     
 }
 
