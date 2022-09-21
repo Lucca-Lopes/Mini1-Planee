@@ -29,7 +29,7 @@ public class Utilitarios {
                 TelaDespesas()
                 
             default:
-                TelaInicialView()
+                TelaInicial()
             }
         }
         label: {
@@ -62,7 +62,7 @@ public class Utilitarios {
                 TelaGastos()
 
             default:
-                TelaInicialView()
+                TelaInicial()
             }
         }
         label: {

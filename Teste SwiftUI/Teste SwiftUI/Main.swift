@@ -13,7 +13,7 @@ struct Main: App {
 
     var body: some Scene {
         WindowGroup {
-            TelaInicialView()
+            TelaInicial()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
