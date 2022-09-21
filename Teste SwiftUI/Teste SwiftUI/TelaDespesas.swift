@@ -10,6 +10,8 @@ import CoreData
 
 struct TelaDespesas: View {
     
+    @ObservedObject var vm: PlaneeViewModel
+    
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
@@ -34,7 +36,7 @@ struct TelaDespesas: View {
         List {
             ForEach (despesas) { despesaAtual in
                 NavigationLink {
-                    ItemDespesa(entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
+                    ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
             label: {
                 Text(despesaAtual.nome ?? "Luz")
@@ -115,8 +117,8 @@ struct TelaDespesas: View {
     
 }
 
-struct tela_despesas_Previews: PreviewProvider {
-    static var previews: some View {
-        TelaDespesas()
-    }
-}
+//struct tela_despesas_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TelaDespesas()
+//    }
+//}

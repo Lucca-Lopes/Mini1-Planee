@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TelaInicial: View {
     
+    @StateObject var vm = PlaneeViewModel()
+    
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
@@ -38,23 +40,73 @@ struct TelaInicial: View {
                 Form{
                     
                     Section{
-                        utilitarios.criaNLHome(titulo: "Criar orçamento")
+//                        utilitarios.criaNLHome(titulo: "Criar orçamento", vm: &vm)
+                        NavigationLink {
+                            TelaCriarOrcamento(vm: vm)
+                        }
+                        label: {
+                            Text("Criar orçamento")
+                                .foregroundColor(.black)
+                                .bold()
+                                .font(.system(size: 22))
+                                .frame(height: 55)
+                        }
                     }
                     
                     Section{
-                        utilitarios.criaNLHome(titulo: "Meus orçamentos")
+                        NavigationLink {
+                            TelaMeusOrcamentos(vm: vm)
+                        }
+                        label: {
+                            Text("Meus orçamentos")
+                                .foregroundColor(.black)
+                                .bold()
+                                .font(.system(size: 22))
+                                .frame(height: 55)
+                        }
+//                        utilitarios.criaNLHome(titulo: "Meus orçamentos", vm: &vm)
                     }
                     
                     Section{
-                        utilitarios.criaNLHome(titulo: "Calcular valor da hora")
+                        NavigationLink {
+                            TelaValorHdT(vm: vm)
+                        }
+                        label: {
+                            Text("Calcular valor da hora")
+                                .foregroundColor(.black)
+                                .bold()
+                                .font(.system(size: 22))
+                                .frame(height: 55)
+                        }
+//                        utilitarios.criaNLHome(titulo: "Calcular valor da hora", vm: &vm)
                     }
                     
                     Section{
-                        utilitarios.criaNLHome(titulo: "Despesas")
+                        NavigationLink {
+                            TelaDespesas(vm: vm)
+                        }
+                        label: {
+                            Text("Despesas")
+                                .foregroundColor(.black)
+                                .bold()
+                                .font(.system(size: 22))
+                                .frame(height: 55)
+                        }
+//                        utilitarios.criaNLHome(titulo: "Despesas", vm: &vm)
                     }
                     
                     Section{
-                        utilitarios.criaNLHome(titulo: "Gastos")
+                        NavigationLink {
+                            TelaGastos(vm: vm)
+                        }
+                        label: {
+                            Text("Gastos")
+                                .foregroundColor(.black)
+                                .bold()
+                                .font(.system(size: 22))
+                                .frame(height: 55)
+                        }
+//                        utilitarios.criaNLHome(titulo: "Gastos", vm: &vm)
                     }
                 }
                 .cornerRadius(40)

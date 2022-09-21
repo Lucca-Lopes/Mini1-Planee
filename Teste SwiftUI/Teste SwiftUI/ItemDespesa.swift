@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ItemDespesa: View {
     
+    @ObservedObject var vm: PlaneeViewModel
+    
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     

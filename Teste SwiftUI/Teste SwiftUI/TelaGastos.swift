@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TelaGastos: View {
     
+    @ObservedObject var vm: PlaneeViewModel
+    
     @State var editando = false
     @State var mostrarSheet = false
     
@@ -21,21 +23,26 @@ struct TelaGastos: View {
         List{
             Section(header: Text("Computador")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 10.250,00", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "43 meses", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 238,37", destino: "tela_criar_orcamento")
+                HStack {
+                    Text("Valor total")
+                    Spacer()
+                    Text("R$ 980,00")
+                }
+//                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 10.250,00", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "43 meses", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 238,37", destino: "tela_criar_orcamento")
             }
             
             Section(header: Text("Calculadora")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 150,00", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "80 meses", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 1,86", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 150,00", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "80 meses", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 1,86", destino: "tela_criar_orcamento")
                 
             }
             Section(header: Text("")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
                 
             }
         }
@@ -54,7 +61,7 @@ struct TelaGastos: View {
                     Label("Add Item", systemImage: "plus")
                 })
                 .sheet(isPresented: $mostrarSheet){
-                    SheetView()
+                    SheetView(vm: vm)
                 }
             }
         }
@@ -63,16 +70,18 @@ struct TelaGastos: View {
     }
 }
 
-struct Tela_Gastos_Previews: PreviewProvider {
-    static var previews: some View {
-        TelaGastos()
-    }
-}
+//struct Tela_Gastos_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TelaGastos(vm: vm)
+//    }
+//}
 
 struct SheetView: View {
     
+    @ObservedObject var vm: PlaneeViewModel
+    
     @State var editando = false
-    @State var mostrarTelaGastos = TelaGastos()
+//    @State var mostrarTelaGastos = TelaGastos(vm: $vm)
     @State var item: String = ""
     
     let screenWidth = UIScreen.main.bounds.size.width

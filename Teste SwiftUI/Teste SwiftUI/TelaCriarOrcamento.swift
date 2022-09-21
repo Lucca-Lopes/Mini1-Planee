@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TelaCriarOrcamento: View {
+    
+    @ObservedObject var vm: PlaneeViewModel
     
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
@@ -24,14 +27,46 @@ struct TelaCriarOrcamento: View {
             
             Section(header: Text("Custos")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
+                NavigationLink {
+                    TelaGastos(vm: vm)
+               }
+               label: {
+                   Text("Gastos")
+                   Spacer()
+                   Text("R$ 1.250,00")
+                       .foregroundColor(.gray)
+               }
+                NavigationLink {
+                     TelaGastos(vm: vm)
+                }
+                label: {
+                    Text("Despesas")
+                    Spacer()
+                    Text("R$ 980,00")
+                        .foregroundColor(.gray)
+                }
+//                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
             }
             
             Section(header: Text("Mão de obra")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
+                NavigationLink {
+                     TelaValorHdT(vm: vm)
+                }
+                label: {
+                    Text("Despesas")
+                    Spacer()
+                    Text("R$ 980,00")
+                        .foregroundColor(.gray)
+                }
+                HStack {
+                    Text("Despesas")
+                    Spacer()
+                    Text("R$ 980,00")
+                }
+//                utilitarios.criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
                 HStack {
                     Text("Tempo de trabalho")
                     Spacer()
@@ -91,9 +126,9 @@ struct TelaCriarOrcamento: View {
     }
 }
 
-struct tela_criar_orcamento_Previews: PreviewProvider {
-    static var previews: some View {
-        TelaCriarOrcamento()
-        
-    }
-}
+//struct tela_criar_orcamento_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TelaCriarOrcamento()
+//        
+//    }
+//}

@@ -12,12 +12,12 @@ import CoreData
 struct Main: App {
     let persistenceController = PersistenceController.shared
     
-    @StateObject var vm = PlaneeViewModel()
+//    @StateObject var vm = PlaneeViewModel()
 
     var body: some Scene {
         WindowGroup {
             TelaInicial()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
@@ -119,6 +119,17 @@ class PlaneeViewModel: ObservableObject {
         entidade.custo = entidade.valor / Double(entidade.vidaUtil)
         salvar()
     }
+    
+    func atualizarVdH(entidade: ValorHoraDeTrabalho, pretensaoSalarial: Double, dias: Int, horas: Int){
+        entidade.pretensaoSalarial = pretensaoSalarial
+        entidade.dias = Int64(dias)
+        entidade.horas = Int64(horas)
+        entidade.valorFinal = (entidade.pretensaoSalarial / Double(entidade.dias)) / Double(entidade.horas)
+        salvar()
+    }
+    
+    
+    
     
     func salvar(){
         manager.salvar()

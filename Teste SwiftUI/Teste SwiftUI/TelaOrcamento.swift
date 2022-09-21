@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TelaOrcamento: View {
+    
+    @ObservedObject var vm: PlaneeViewModel
     
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
@@ -22,30 +25,45 @@ struct TelaOrcamento: View {
         List{
             Section(header: Text("Custos")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
+                NavigationLink {
+                    TelaGastos(vm: vm)
+               }
+               label: {
+                   Text("Gastos")
+                   Spacer()
+                   Text("R$ 1.250,00")
+                       .foregroundColor(.gray)
+               }
+                NavigationLink {
+                     TelaGastos(vm: vm)
+                }
+                label: {
+                    Text("Despesas")
+                    Spacer()
+                    Text("R$ 980,00")
+                        .foregroundColor(.gray)
+                }
+//                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
+//                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
             }
             
             Section(header: Text("Mão de obra")
             ) {
-                utilitarios.criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
-                utilitarios.criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
-                HStack {
-                    Text("Tempo de trabalho")
+                NavigationLink {
+                     TelaValorHdT(vm: vm)
+                }
+                label: {
+                    Text("Despesas")
                     Spacer()
-                    Text("6h 30min")
+                    Text("R$ 980,00")
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("Custo total")
-                        .bold()
+                    Text("Despesas")
                     Spacer()
-                    Text("R$ 200,00")
-                        .bold()
-                        .foregroundColor(.gray)
+                    Text("R$ 980,00")
                 }
             }
-            
             Section(header: Text("")
             ) {
                 HStack {

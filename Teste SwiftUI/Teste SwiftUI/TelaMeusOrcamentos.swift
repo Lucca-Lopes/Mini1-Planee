@@ -10,6 +10,8 @@ import CoreData
 
 struct TelaMeusOrcamentos: View {
     
+    @ObservedObject var vm: PlaneeViewModel
+    
     @State var editando = false
     @State var selection = Set<String>()
     
@@ -35,7 +37,7 @@ struct TelaMeusOrcamentos: View {
                 }
                 else {
                     NavigationLink {
-                        TelaOrcamento()
+                        TelaOrcamento(vm: vm)
                     }
                 label: {
                     Text("Orçamento \(item.ordem)")
@@ -61,7 +63,7 @@ struct TelaMeusOrcamentos: View {
             }
             ToolbarItem {
                 NavigationLink {
-                    TelaCriarOrcamento()
+                    TelaCriarOrcamento(vm: vm)
                 }
             label: {
                 Label("Add Item", systemImage: "plus")
@@ -148,11 +150,11 @@ private let itemFormatter: DateFormatter = {
     formatter.timeStyle = .medium
     return formatter
 }()
-
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        TelaMeusOrcamentos()
-    }
-}
-#endif
+//
+//#if DEBUG
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TelaMeusOrcamentos()
+//    }
+//}
+//#endif

@@ -10,6 +10,9 @@ import CoreData
 
 struct TelaValorHdT: View {
     
+    @ObservedObject var vm: PlaneeViewModel
+
+    
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
@@ -101,8 +104,8 @@ struct TelaValorHdT: View {
     
 }
 
-struct tela_valor_HdT_Previews: PreviewProvider {
-    static var previews: some View {
-        TelaValorHdT()
-    }
-}
+//struct tela_valor_HdT_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TelaValorHdT()
+//    }
+//}
