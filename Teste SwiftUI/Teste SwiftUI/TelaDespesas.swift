@@ -15,19 +15,14 @@ struct TelaDespesas: View {
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     
-    @State var nome = "Luz"
+    @State var nome = ""
     @State var valor = 0.0
+    @State var valorTotal = 0.0
     
-//    @Environment(\.managedObjectContext) private var viewContext
+//    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
-//    @FetchRequest(entity: Despesa.entity(), sortDescriptors: [])
-//    var despesas: FetchedResults<Despesa>
-
-    
-    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-    
-    @State var preco: String = "R$ 82,90"
-    @State var nomeSeleionado: String = "Luz"
+//    @State var preco: String = "R$ 82,90"
+//    @State var nomeSeleionado: String = "Luz"
     
     @State var editando = false
     
@@ -37,34 +32,23 @@ struct TelaDespesas: View {
         List {
             ForEach (vm.despesas) { despesaAtual in
                 NavigationLink {
-                    ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
+                    ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "Nova despesa", valor: despesaAtual.valor)
                 }
-            label: {
-                Text(despesaAtual.nome ?? "Luz")
-                    .lineLimit(1)
-                Spacer()
-                Text("R$\(despesaAtual.valor)")
-                    .foregroundColor(.gray)
-//                    let despesa = despesaAtual
-//                    if !editando {
-//                        ItemDespesaSemEditar(entidade: despesaAtual)
-//                    }
-//                    else {
-//                        ItemDespesaEditando(nome: despesaAtual.nome ?? "Luz", valor: despesaAtual.valor, entidade: despesaAtual)
-//                    }
+                label: {
+                    Text(despesaAtual.nome ?? "")
+                        .lineLimit(1)
+                    Spacer()
+                    Text("R$\(despesaAtual.valor)")
+                        .foregroundColor(.gray)
                 }
             }
-                
-//                Item_da_lista_de_despesa(item: despesaAtual, editando: editando, nome: $nome, valor: $valor)
-                
-//                criaDespesa(editando: editando, nomeAtual: &despesaAtual.nome!, preco: &despesaAtual.valor)
-            
+            .onDelete(perform: vm.deletarDespesa)
             Section(header: Text("")
             ) {
                 HStack {
                     Text("Valor total")
                     Spacer()
-                    Text("R$ 464,25")
+                    Text("R$ \(vm.calcularTotalDespesa(despesasSelecionadas: vm.despesas))")
                         .foregroundColor(.gray)
                 }
             }
@@ -91,7 +75,7 @@ struct TelaDespesas: View {
         .navigationTitle("Despesas")
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
-    
+}
 //    func salvarCD(){
 //        do {
 //            try viewContext.save()
@@ -116,7 +100,7 @@ struct TelaDespesas: View {
 //        print(despesa)
 //    }
     
-}
+//}
 
 //struct tela_despesas_Previews: PreviewProvider {
 //    static var previews: some View {

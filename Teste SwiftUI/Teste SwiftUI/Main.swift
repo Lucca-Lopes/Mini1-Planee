@@ -54,6 +54,13 @@ class PlaneeViewModel: ObservableObject {
     @Published var gastos: [Gasto] = []
     @Published var valorDaHora: [ValorHoraDeTrabalho] = []
     
+    init() {
+        fetchOrcamento()
+        fetchDespesa()
+        fetchGasto()
+        fetchVdH()
+    }
+    
     func addOrcamento() {
         let novoOrcamento = Orcamento(context: manager.context)
         novoOrcamento.nome = ""
@@ -189,7 +196,6 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    
     func salvar(){
         manager.salvar()
         fetchOrcamento()
@@ -197,4 +203,13 @@ class PlaneeViewModel: ObservableObject {
         fetchGasto()
         fetchVdH()
     }
+    
+    func calcularTotalDespesa(despesasSelecionadas: [Despesa]) -> Double{
+        var soma = 0.0
+        for despesa in despesas {
+            soma += despesa.valor
+        }
+        return soma
+    }
+    
 }
