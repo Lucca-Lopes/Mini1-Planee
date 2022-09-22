@@ -12,9 +12,7 @@ struct ItemDespesa: View {
     @ObservedObject var vm: PlaneeViewModel
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
-//    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-    
+        
     var entidade: Despesa
     
     @State var nome: String

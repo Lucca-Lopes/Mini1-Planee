@@ -19,6 +19,9 @@
 		2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */; };
 		2B7310D028D904DB009CEAB2 /* ItemDespesa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7310CF28D904DB009CEAB2 /* ItemDespesa.swift */; };
 		2B89E79528D115490057205C /* TelaOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B89E79428D115490057205C /* TelaOrcamento.swift */; };
+		2B8FA99A28DCD780005AA1B3 /* PlaneeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99928DCD780005AA1B3 /* PlaneeViewModel.swift */; };
+		2B8FA99C28DCD7E3005AA1B3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99B28DCD7E3005AA1B3 /* CoreDataManager.swift */; };
+		2B8FA99E28DCD83D005AA1B3 /* SheetGasto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99D28DCD83D005AA1B3 /* SheetGasto.swift */; };
 		2B91625F28C14B7300FDEBD9 /* TelaCriarOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
 		2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */; };
@@ -38,6 +41,9 @@
 		2B666FED28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Teste_SwiftUI.xcdatamodel; sourceTree = "<group>"; };
 		2B7310CF28D904DB009CEAB2 /* ItemDespesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDespesa.swift; sourceTree = "<group>"; };
 		2B89E79428D115490057205C /* TelaOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaOrcamento.swift; sourceTree = "<group>"; };
+		2B8FA99928DCD780005AA1B3 /* PlaneeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneeViewModel.swift; sourceTree = "<group>"; };
+		2B8FA99B28DCD7E3005AA1B3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2B8FA99D28DCD83D005AA1B3 /* SheetGasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetGasto.swift; sourceTree = "<group>"; };
 		2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaCriarOrcamento.swift; sourceTree = "<group>"; };
 		2BCB0C3C28C2982A006793CC /* Utilitarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitarios.swift; sourceTree = "<group>"; };
 		2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaDespesas.swift; sourceTree = "<group>"; };
@@ -74,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				2B666FE128B00CC1003892A6 /* Main.swift */,
+				2B8FA99B28DCD7E3005AA1B3 /* CoreDataManager.swift */,
+				2B8FA99928DCD780005AA1B3 /* PlaneeViewModel.swift */,
 				057A456228C12089004756EE /* TelaInicial.swift */,
 				2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */,
 				2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */,
@@ -81,13 +89,14 @@
 				00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */,
 				2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */,
 				2B5617FA28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift */,
+				2B7310CF28D904DB009CEAB2 /* ItemDespesa.swift */,
 				0500C47728C8081F008A9042 /* TelaGastos.swift */,
+				2B8FA99D28DCD83D005AA1B3 /* SheetGasto.swift */,
 				2BCB0C3C28C2982A006793CC /* Utilitarios.swift */,
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
 				2B666FE728B00CC3003892A6 /* Preview Content */,
-				2B7310CF28D904DB009CEAB2 /* ItemDespesa.swift */,
 			);
 			path = "Teste SwiftUI";
 			sourceTree = "<group>";
@@ -172,7 +181,9 @@
 			files = (
 				2B5617FB28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift in Sources */,
 				2B666FEB28B00CC3003892A6 /* Persistence.swift in Sources */,
+				2B8FA99E28DCD83D005AA1B3 /* SheetGasto.swift in Sources */,
 				057A456328C12089004756EE /* TelaInicial.swift in Sources */,
+				2B8FA99C28DCD7E3005AA1B3 /* CoreDataManager.swift in Sources */,
 				2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */,
 				2B666FE428B00CC1003892A6 /* TelaMeusOrcamentos.swift in Sources */,
 				2B7310D028D904DB009CEAB2 /* ItemDespesa.swift in Sources */,
@@ -183,6 +194,7 @@
 				2B91625F28C14B7300FDEBD9 /* TelaCriarOrcamento.swift in Sources */,
 				00826C0028CBCD4D004B935B /* TelaValorHdT.swift in Sources */,
 				2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */,
+				2B8FA99A28DCD780005AA1B3 /* PlaneeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

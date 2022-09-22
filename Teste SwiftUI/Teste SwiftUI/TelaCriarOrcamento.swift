@@ -11,7 +11,7 @@ struct TelaCriarOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @State var entidade: Orcamento
+//    @State var entidade: Orcamento
     @State var nomeOrcamento: String = ""
     @State var nomeCliente: String = ""
     @State var hora: String = ""
@@ -33,7 +33,8 @@ struct TelaCriarOrcamento: View {
                label: {
                    Text("Gastos")
                    Spacer()
-                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
+//                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
+                   Text("R$ 1250,00")
                }
                 NavigationLink {
                      TelaDespesas(vm: vm)
@@ -41,7 +42,8 @@ struct TelaCriarOrcamento: View {
                 label: {
                     Text("Despesas")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
+                    Text("R$ 980,00")
+//                    Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
 //                        .foregroundColor(.gray)
                 }
             }
@@ -114,7 +116,7 @@ struct TelaCriarOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    vm.atualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: <#T##Double#>, totalDespesas: <#T##Double#>, custoPorHora: <#T##Double#>, tempoDeTrabalho: hora, custoTotal: <#T##Double#>, lucro: lucro, valorTotal: <#T##Double#>)
+                    vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: 0.0, totalDespesas: 0.0, custoPorHora: vm.valorDaHora[0].valorFinal, tempoDeTrabalho: hora, custoTotal: 0.0, lucro: lucro, valorTotal: 0.0)
                 }label:{
                     Text("Adicionar")
                 }
