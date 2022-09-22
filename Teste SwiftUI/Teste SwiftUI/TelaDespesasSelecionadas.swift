@@ -11,10 +11,6 @@ struct TelaDespesasSelecionadas: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-//    @State var nome = ""
-//    @State var valor = 0.0
-//    @State var valorTotal = 0.0
-    
 //    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
     @State var editando = false
@@ -28,7 +24,7 @@ struct TelaDespesasSelecionadas: View {
                     ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
                 label: {
-                    
+                    // inserir toggle
                     Text(despesaAtual.nome ?? "")
                         .lineLimit(1)
                     Spacer()
@@ -37,8 +33,7 @@ struct TelaDespesasSelecionadas: View {
                 }
             }
             .onDelete(perform: vm.deletarDespesa)
-            Section(header: Text("")
-            ) {
+            Section() {
                 HStack {
                     Text("Valor total")
                     Spacer()
