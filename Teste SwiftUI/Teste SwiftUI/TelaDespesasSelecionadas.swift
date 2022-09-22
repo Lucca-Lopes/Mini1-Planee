@@ -11,33 +11,31 @@ struct TelaDespesasSelecionadas: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-//    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
-    
+    @State var entidade: Orcamento
+    @State var despesasDisponiveis: [Despesa]
+    @State var despesasSelecionadas: [Despesa] = []
+    @State var toggles: [Bool]
     @State var editando = false
     
     let utilitarios = Utilitarios()
     
     var body: some View {
         List {
-            ForEach (vm.despesas) { despesaAtual in
+            ForEach (despesasDisponiveis) { despesaAtual in
                 NavigationLink {
                     ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
                 label: {
                     // inserir toggle
-                    Text(despesaAtual.nome ?? "")
-                        .lineLimit(1)
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", despesaAtual.valor))
-                        .foregroundColor(.gray)
+                    ItemDespesaSelecionada(selecionado: DetectarBooleano(despesas: despesasDisponiveis, toggles: toggles, despesaAtual: despesaAtual), despesasSelecionadas: despesasSelecionadas, entidade: despesaAtual)
                 }
             }
-            .onDelete(perform: vm.deletarDespesa)
+//            .onDelete(perform: vm.deletarDespesa)
             Section() {
                 HStack {
                     Text("Valor total")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa(despesasSelecionadas: vm.despesas)))
+                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa(despesasSelecionadas: despesasSelecionadas)))
                         .foregroundColor(.gray)
                 }
             }
@@ -45,14 +43,19 @@ struct TelaDespesasSelecionadas: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    if editando {
-                        vm.salvar()
-                    }
-                    self.editando.toggle()
+                    entidade.despesas = despesasSelecionadas
+                    vm.salvar()
+                    
+                    
+//                    if editando {
+//                        vm.salvar()
+//                    }
+//                    self.editando.toggle()
                     
                     
                 }) {
-                    Text(editando ? "Ok" : "Editar")
+                    Text("Salvar")
+//                    Text(editando ? "Ok" : "Editar")
                 }
             }
             ToolbarItem {
@@ -64,6 +67,16 @@ struct TelaDespesasSelecionadas: View {
         .navigationTitle("Despesas")
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
+    
+    func DetectarBooleano(despesas: [Despesa], toggles: [Bool], despesaAtual: Despesa) -> Bool{
+        for i in 0...despesas.count {
+            if despesas[i] == despesaAtual {
+                return toggles[i]
+            }
+        }
+        return toggles[0]
+    }
+    
 }
 
 //struct TelaDespesasSelecionadas_Previews: PreviewProvider {

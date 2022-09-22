@@ -189,5 +189,28 @@ class PlaneeViewModel: ObservableObject {
         return soma
     }
     
+    func criarVariaveisToggleDespesa() -> [Bool] {
+        @State var selecionado = false
+        var conjuntoToggle: [Bool] = []
+        for _ in 1...despesas.count {
+            conjuntoToggle.append(selecionado)
+        }
+        return conjuntoToggle
+    }
+    
+    func AdicionarDespesaAoOrcamento(despesasSelecionadas: inout [Despesa], selecionado: Bool, despesa: Despesa){
+        if selecionado {
+            despesasSelecionadas.append(despesa)
+        }
+        else {
+            for i in 0...despesasSelecionadas.count {
+                if despesasSelecionadas[i] == despesa {
+                    despesasSelecionadas.remove(at: i)
+                    return
+                }
+            }
+        }
+    }
+    
 }
 

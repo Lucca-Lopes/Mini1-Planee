@@ -11,7 +11,7 @@ struct TelaCriarOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-//    @State var entidade: Orcamento
+    @State var entidade: Orcamento
     @State var nomeOrcamento: String = ""
     @State var nomeCliente: String = ""
     @State var hora: String = ""
@@ -37,7 +37,7 @@ struct TelaCriarOrcamento: View {
                    Text("R$ 1250,00")
                }
                 NavigationLink {
-                     TelaDespesas(vm: vm)
+                     TelaDespesasSelecionadas(vm: vm)
                 }
                 label: {
                     Text("Despesas")

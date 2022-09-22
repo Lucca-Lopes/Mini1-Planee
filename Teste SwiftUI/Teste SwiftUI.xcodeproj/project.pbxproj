@@ -22,6 +22,7 @@
 		2B8FA99A28DCD780005AA1B3 /* PlaneeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99928DCD780005AA1B3 /* PlaneeViewModel.swift */; };
 		2B8FA99C28DCD7E3005AA1B3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99B28DCD7E3005AA1B3 /* CoreDataManager.swift */; };
 		2B8FA99E28DCD83D005AA1B3 /* SheetGasto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99D28DCD83D005AA1B3 /* SheetGasto.swift */; };
+		2B8FA9A028DCF73F005AA1B3 /* ItemDespesaSelecionada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8FA99F28DCF73F005AA1B3 /* ItemDespesaSelecionada.swift */; };
 		2B91625F28C14B7300FDEBD9 /* TelaCriarOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
 		2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */; };
@@ -44,6 +45,7 @@
 		2B8FA99928DCD780005AA1B3 /* PlaneeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneeViewModel.swift; sourceTree = "<group>"; };
 		2B8FA99B28DCD7E3005AA1B3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		2B8FA99D28DCD83D005AA1B3 /* SheetGasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetGasto.swift; sourceTree = "<group>"; };
+		2B8FA99F28DCF73F005AA1B3 /* ItemDespesaSelecionada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDespesaSelecionada.swift; sourceTree = "<group>"; };
 		2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaCriarOrcamento.swift; sourceTree = "<group>"; };
 		2BCB0C3C28C2982A006793CC /* Utilitarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitarios.swift; sourceTree = "<group>"; };
 		2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaDespesas.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */,
 				2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */,
 				2B5617FA28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift */,
+				2B8FA99F28DCF73F005AA1B3 /* ItemDespesaSelecionada.swift */,
 				2B7310CF28D904DB009CEAB2 /* ItemDespesa.swift */,
 				0500C47728C8081F008A9042 /* TelaGastos.swift */,
 				2B8FA99D28DCD83D005AA1B3 /* SheetGasto.swift */,
@@ -192,6 +195,7 @@
 				0500C47828C8081F008A9042 /* TelaGastos.swift in Sources */,
 				2B89E79528D115490057205C /* TelaOrcamento.swift in Sources */,
 				2B91625F28C14B7300FDEBD9 /* TelaCriarOrcamento.swift in Sources */,
+				2B8FA9A028DCF73F005AA1B3 /* ItemDespesaSelecionada.swift in Sources */,
 				00826C0028CBCD4D004B935B /* TelaValorHdT.swift in Sources */,
 				2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */,
 				2B8FA99A28DCD780005AA1B3 /* PlaneeViewModel.swift in Sources */,
