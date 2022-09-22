@@ -93,7 +93,7 @@ struct TelaCriarOrcamento: View {
 //                        .foregroundColor(.gray)
                 }
             }
-            
+            //oi
             Section() {
                 HStack {
                     Text("Lucro")
