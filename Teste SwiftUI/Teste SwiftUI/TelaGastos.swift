@@ -16,35 +16,38 @@ struct TelaGastos: View {
     
     let utilitarios = Utilitarios()
     
-    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
-        
         List{
-            Section(header: Text("Computador")
-            ) {
-                HStack {
-                    Text("Valor total")
-                    Spacer()
-                    Text("R$ 980,00")
+            ForEach (vm.gastos) { gastoAtual in
+                Section(header:
+                            NavigationLink {
+                    SheetView(vm: vm, entidade: gastoAtual)
                 }
-//                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 10.250,00", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "43 meses", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 238,37", destino: "tela_criar_orcamento")
+                        label: {
+                    Text(gastoAtual.nome ?? "")
+                        .lineLimit(1)
+                    
+                }
+                ) {
+                    HStack {
+                        Text("Valor total")
+                        Spacer()
+                        Text("R$ " + String(format: "%.2f", gastoAtual.valor))
+                    }
+                    HStack {
+                        Text("Vida útil")
+                        Spacer()
+                        Text("\(gastoAtual.vidaUtil) meses")
+                    }
+                    HStack {
+                        Text("Custo mensal")
+                        Spacer()
+                        Text("R$ " + String(format: "%.2f", gastoAtual.custo))
+                    }
+                }
             }
-            
-            Section(header: Text("Calculadora")
-            ) {
-//                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 150,00", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Vida útil", textoSecundario: "80 meses", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Custo mensal", textoSecundario: "R$ 1,86", destino: "tela_criar_orcamento")
-                
-            }
-            Section(header: Text("")
-            ) {
-//                utilitarios.criaNavigationLink(textoPrincipal: "Valor total", textoSecundario: "R$ 240,73", destino: "tela_criar_orcamento")
-                
-            }
+            .onDelete(perform: vm.deletarGasto)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -56,12 +59,13 @@ struct TelaGastos: View {
             }
             ToolbarItem {
                 Button(action: {
+                    vm.addGasto()
                     mostrarSheet = true
                 }, label: {
                     Label("Add Item", systemImage: "plus")
                 })
                 .sheet(isPresented: $mostrarSheet){
-                    SheetView(vm: vm)
+                    SheetView(vm: vm, entidade: vm.gastos.last!)
                 }
             }
         }
@@ -81,11 +85,12 @@ struct SheetView: View {
     @ObservedObject var vm: PlaneeViewModel
     
     @State var editando = false
-//    @State var mostrarTelaGastos = TelaGastos(vm: $vm)
-    @State var item: String = ""
+    @State var nome: String = ""
+    @State var valor: Double = 0.0
+    @State var vidaUtil: Int = 0
     
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
+    @State var entidade: Gasto
+    
     let transition = AnyTransition.asymmetric(insertion: .slide, removal: .scale).combined(with: .opacity)
     
     
@@ -100,29 +105,44 @@ struct SheetView: View {
                     Spacer()
                     TextField(
                         "Nome",
-                        text: $item
+                        text: $nome
                     )
                     .fixedSize()
                 }
                 HStack{
                     Text("Valor total")
                     Spacer()
-                    TextField("Valor", text: $item)
-                        .foregroundColor(.gray)
-                        .fixedSize()
+                    TextField(
+                        "R$ 0,00",
+                        value: $valor,
+                        formatter: NumberFormatter()
+                    )
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
                 }
                 HStack{
                     Text("Vida útil")
                     Spacer()
-                    TextField("Tempo", text: $item)
-                        .foregroundColor(.gray)
-                        .fixedSize()
+                    TextField(
+                        "R$ 0,00",
+                        value: $vidaUtil,
+                        formatter: NumberFormatter()
+                    )
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
                 }
             }
             .listStyle(.grouped)
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        vm.atualizarGasto(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
                         self.mode.wrappedValue.dismiss()
                     }, label: {
                         Text("OK")

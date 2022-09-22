@@ -47,6 +47,10 @@ class CoreDataManager {
 }
 
 class PlaneeViewModel: ObservableObject {
+    
+    let screenWidth = UIScreen.main.bounds.size.width
+    let screenHeight = UIScreen.main.bounds.size.height
+    
     let manager = CoreDataManager.instance
     
     @Published var orcamentos: [Orcamento] = []
@@ -59,6 +63,9 @@ class PlaneeViewModel: ObservableObject {
         fetchDespesa()
         fetchGasto()
         fetchVdH()
+        if valorDaHora.count < 1 {
+            addVdH()
+        }
     }
     
     func addOrcamento() {
@@ -96,7 +103,7 @@ class PlaneeViewModel: ObservableObject {
         novoVdT.pretensaoSalarial = 0.0
         novoVdT.dias = 0
         novoVdT.horas = 0
-        novoVdT.valorFinal = (novoVdT.pretensaoSalarial / Double(novoVdT.dias)) / Double(novoVdT.horas)
+        novoVdT.valorFinal = 0.0
         salvar()
     }
     
@@ -208,6 +215,14 @@ class PlaneeViewModel: ObservableObject {
         var soma = 0.0
         for despesa in despesas {
             soma += despesa.valor
+        }
+        return soma
+    }
+    
+    func calcularTotalGastos(gastosSelecionados: NSSet?) -> Double {
+        var soma = 0.0
+        for gasto in gastos {
+            soma += gasto.custo
         }
         return soma
     }

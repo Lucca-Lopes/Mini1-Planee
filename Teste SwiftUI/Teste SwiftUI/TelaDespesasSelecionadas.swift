@@ -1,19 +1,19 @@
 //
-//  tela-despesas.swift
+//  TelaDespesasSelecionadas.swift
 //  Teste SwiftUI
 //
-//  Created by Lucca Lopes on 08/09/22.
+//  Created by Lucca Lopes on 21/09/22.
 //
 
 import SwiftUI
 
-struct TelaDespesas: View {
+struct TelaDespesasSelecionadas: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @State var nome = ""
-    @State var valor = 0.0
-    @State var valorTotal = 0.0
+//    @State var nome = ""
+//    @State var valor = 0.0
+//    @State var valorTotal = 0.0
     
 //    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
@@ -28,6 +28,7 @@ struct TelaDespesas: View {
                     ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
                 label: {
+                    
                     Text(despesaAtual.nome ?? "")
                         .lineLimit(1)
                     Spacer()
@@ -70,8 +71,8 @@ struct TelaDespesas: View {
     }
 }
 
-//struct tela_despesas_Previews: PreviewProvider {
+//struct TelaDespesasSelecionadas_Previews: PreviewProvider {
 //    static var previews: some View {
-//        TelaDespesas()
+//        TelaDespesasSelecionadas()
 //    }
 //}

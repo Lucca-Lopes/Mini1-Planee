@@ -10,6 +10,7 @@
 		00826C0028CBCD4D004B935B /* TelaValorHdT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */; };
 		0500C47828C8081F008A9042 /* TelaGastos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500C47728C8081F008A9042 /* TelaGastos.swift */; };
 		057A456328C12089004756EE /* TelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057A456228C12089004756EE /* TelaInicial.swift */; };
+		2B5617FB28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5617FA28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift */; };
 		2B666FE228B00CC1003892A6 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE128B00CC1003892A6 /* Main.swift */; };
 		2B666FE428B00CC1003892A6 /* TelaMeusOrcamentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */; };
 		2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE528B00CC3003892A6 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaValorHdT.swift; sourceTree = "<group>"; };
 		0500C47728C8081F008A9042 /* TelaGastos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaGastos.swift; sourceTree = "<group>"; };
 		057A456228C12089004756EE /* TelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaInicial.swift; sourceTree = "<group>"; };
+		2B5617FA28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaDespesasSelecionadas.swift; sourceTree = "<group>"; };
 		2B666FDE28B00CC1003892A6 /* Teste SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teste SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B666FE128B00CC1003892A6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaMeusOrcamentos.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				2B89E79428D115490057205C /* TelaOrcamento.swift */,
 				00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */,
 				2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */,
+				2B5617FA28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift */,
 				0500C47728C8081F008A9042 /* TelaGastos.swift */,
 				2BCB0C3C28C2982A006793CC /* Utilitarios.swift */,
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5617FB28DC00B7008A5A37 /* TelaDespesasSelecionadas.swift in Sources */,
 				2B666FEB28B00CC3003892A6 /* Persistence.swift in Sources */,
 				057A456328C12089004756EE /* TelaInicial.swift in Sources */,
 				2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */,

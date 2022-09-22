@@ -50,7 +50,7 @@ struct TelaOrcamento: View {
             Section(header: Text("Mão de obra")
             ) {
                 NavigationLink {
-                     TelaValorHdT(vm: vm)
+                     TelaValorHdT(vm: vm, valor: vm.valorDaHora[0].pretensaoSalarial, dias: Int(vm.valorDaHora[0].dias), horasDiarias: Int(vm.valorDaHora[0].horas))
                 }
                 label: {
                     Text("Despesas")

@@ -29,7 +29,7 @@ struct TelaInicial: View {
                     .padding()
                     .frame(width: screenWidth * 0.99, height: screenHeight * 0.05, alignment: .leading)
                 
-                Text("R$ 20,13")
+                Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
                     .bold()
                     .font(.system(size: 20))
                     .frame(width: screenWidth * 0.9, height: screenHeight * 0.0, alignment: .leading)
@@ -69,7 +69,7 @@ struct TelaInicial: View {
                     
                     Section{
                         NavigationLink {
-                            TelaValorHdT(vm: vm)
+                            TelaValorHdT(vm: vm, valor: vm.valorDaHora[0].pretensaoSalarial, dias: Int(vm.valorDaHora[0].dias), horasDiarias: Int(vm.valorDaHora[0].horas))
                         }
                         label: {
                             Text("Calcular valor da hora")

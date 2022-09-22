@@ -6,24 +6,24 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct TelaCriarOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
-    
+    @State var entidade: Orcamento
+    @State var nomeOrcamento: String = ""
+    @State var nomeCliente: String = ""
     @State var hora: String = ""
-    @State var minuto: Int = 0
-    @State var titulo: String = ""
+    @State var lucro: Int = 0
+    
     
     let utilitarios = Utilitarios()
     
     var body: some View {
         List{
-            TextField("Titulo", text: $titulo)
+            TextField("Titulo", text: $nomeOrcamento)
+            TextField("Nome do cliente", text: $nomeCliente)
             
             Section(header: Text("Custos")
             ) {
@@ -33,52 +33,47 @@ struct TelaCriarOrcamento: View {
                label: {
                    Text("Gastos")
                    Spacer()
-                   Text("R$ 1.250,00")
-                       .foregroundColor(.gray)
+                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
                }
                 NavigationLink {
-                     TelaGastos(vm: vm)
+                     TelaDespesas(vm: vm)
                 }
                 label: {
                     Text("Despesas")
                     Spacer()
-                    Text("R$ 980,00")
-                        .foregroundColor(.gray)
+                    Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
+//                        .foregroundColor(.gray)
                 }
-//                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
             }
             
             Section(header: Text("Mão de obra")
             ) {
                 NavigationLink {
-                     TelaValorHdT(vm: vm)
+                     TelaValorHdT(vm: vm, valor: vm.valorDaHora[0].pretensaoSalarial, dias: Int(vm.valorDaHora[0].dias), horasDiarias: Int(vm.valorDaHora[0].horas))
                 }
                 label: {
-                    Text("Despesas")
+                    Text("Valor hora de trabalho")
                     Spacer()
-                    Text("R$ 980,00")
+                    Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("Despesas")
+                    Text("Custos por hora")
                     Spacer()
-                    Text("R$ 980,00")
+                    Text("R$ 16,00")
                 }
-//                utilitarios.criaNavigationLink(textoPrincipal: "Valor da hora de trabalho", textoSecundario: "R$ 20,00", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Custos por hora", textoSecundario: "R$ 16,00", destino: "tela_criar_orcamento")
                 HStack {
                     Text("Tempo de trabalho")
                     Spacer()
                     TextField(
-                        ":",
+                        "00:00",
                         value: $hora,
                         formatter: NumberFormatter()
                     )
                     .multilineTextAlignment(.center)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: screenWidth * 0.2, height: screenHeight * 0.03, alignment: .trailing)
+                    .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
                 }
                 HStack {
                     Text("Custo total")
@@ -86,24 +81,32 @@ struct TelaCriarOrcamento: View {
                     Spacer()
                     Text("R$ 200,00")
                         .bold()
-                        .foregroundColor(.gray)
+//                        .foregroundColor(.gray)
                 }
             }
             
-            Section(header: Text("")
-            ) {
+            Section() {
                 HStack {
                     Text("Lucro")
                     Spacer()
                     TextField(
                         "0%",
-                        value: $hora,
+                        value: $lucro,
                         formatter: NumberFormatter()
                     )
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: screenWidth * 0.2, height: screenHeight * 0.03, alignment: .trailing)
+                    .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
+                }
+            }
+            Section() {
+                HStack {
+                    Text("Valor total")
+                        .bold()
+                    Spacer()
+                    Text("R$ 2000,00")
+                        .bold()
                 }
             }
         }
@@ -111,8 +114,7 @@ struct TelaCriarOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    print("Adicionou")
-                    
+                    vm.atualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: <#T##Double#>, totalDespesas: <#T##Double#>, custoPorHora: <#T##Double#>, tempoDeTrabalho: hora, custoTotal: <#T##Double#>, lucro: lucro, valorTotal: <#T##Double#>)
                 }label:{
                     Text("Adicionar")
                 }
