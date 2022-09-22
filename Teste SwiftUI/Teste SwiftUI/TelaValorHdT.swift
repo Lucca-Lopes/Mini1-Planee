@@ -17,6 +17,15 @@ struct TelaValorHdT: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    let formatacao: NumberFormatter = {
+        let formatacao = NumberFormatter()
+        formatacao.numberStyle = .decimal
+        formatacao.minimumFractionDigits = 2
+        formatacao.maximumFractionDigits = 2
+        formatacao.decimalSeparator = ","
+        return formatacao
+    }()
+    
     var body: some View {
         VStack {
             Text("")
@@ -28,7 +37,7 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Pretensão salarial")
                     Spacer()
-                    TextField("R$ 0,00", value: $valor, formatter: NumberFormatter())
+                    TextField("R$ 0,00", value: $valor, formatter: formatacao)
                         .multilineTextAlignment(.trailing)
                 }
                 HStack{
@@ -49,7 +58,7 @@ struct TelaValorHdT: View {
                     HStack{
                         Text("Valor da hora de trabalho")
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                     }
                 }
             }

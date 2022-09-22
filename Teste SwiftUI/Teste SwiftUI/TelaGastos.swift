@@ -33,7 +33,7 @@ struct TelaGastos: View {
                     HStack {
                         Text("Valor total")
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", gastoAtual.valor))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), gastoAtual.valor))
                     }
                     HStack {
                         Text("Vida útil")
@@ -43,7 +43,7 @@ struct TelaGastos: View {
                     HStack {
                         Text("Custo mensal")
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", gastoAtual.custo))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), gastoAtual.custo))
                     }
                 }
             }

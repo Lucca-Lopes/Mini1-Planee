@@ -23,6 +23,14 @@ struct SheetView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    let formatacao: NumberFormatter = {
+        let formatacao = NumberFormatter()
+        formatacao.numberStyle = .decimal
+        formatacao.minimumFractionDigits = 2
+        formatacao.maximumFractionDigits = 2
+        formatacao.decimalSeparator = ","
+        return formatacao
+    }()
     
     var body: some View{
         NavigationView{
@@ -42,7 +50,7 @@ struct SheetView: View {
                     TextField(
                         "R$ 0,00",
                         value: $valor,
-                        formatter: NumberFormatter()
+                        formatter: formatacao
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)

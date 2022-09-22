@@ -20,6 +20,13 @@ struct TelaCriarOrcamento: View {
     
     let utilitarios = Utilitarios()
     
+    let formatacao: NumberFormatter = {
+        let formatacao = NumberFormatter()
+        formatacao.numberStyle = .percent
+        formatacao.percentSymbol = "%"
+        return formatacao
+    }()
+    
     var body: some View {
         List{
             TextField("Titulo", text: $nomeOrcamento)
@@ -56,7 +63,7 @@ struct TelaCriarOrcamento: View {
                 label: {
                     Text("Valor hora de trabalho")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                         .foregroundColor(.gray)
                 }
                 HStack {

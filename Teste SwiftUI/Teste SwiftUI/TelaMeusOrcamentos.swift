@@ -34,7 +34,7 @@ struct TelaMeusOrcamentos: View {
                     Text(orcamento.nome ?? "Novo Orçamento")
                         .lineLimit(1)
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), orcamento.valorTotal))
                         .foregroundColor(.gray)
                 }
                 }

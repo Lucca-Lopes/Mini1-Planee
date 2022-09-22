@@ -29,7 +29,7 @@ struct TelaInicial: View {
                     .padding()
                     .frame(width: screenWidth * 0.99, height: screenHeight * 0.05, alignment: .leading)
                 
-                Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
+                Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                     .bold()
                     .font(.system(size: 20))
                     .frame(width: screenWidth * 0.9, height: screenHeight * 0.0, alignment: .leading)

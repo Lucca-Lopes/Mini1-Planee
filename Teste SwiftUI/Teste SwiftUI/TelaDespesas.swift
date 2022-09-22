@@ -41,7 +41,7 @@ struct TelaDespesas: View {
                 HStack {
                     Text("Valor total")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa(despesasSelecionadas: vm.despesas)))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa(despesasSelecionadas: vm.despesas)))
                         .foregroundColor(.gray)
                 }
             }
