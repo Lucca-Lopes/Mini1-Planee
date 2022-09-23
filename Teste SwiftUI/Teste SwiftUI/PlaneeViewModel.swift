@@ -30,24 +30,26 @@ class PlaneeViewModel: ObservableObject {
         }
     }
     
-    func addOrcamento(nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, custoPorHora: Double, tempoDeTrabalho: String, custoTotal: Double, lucro: Int, valorTotal: Double) {
+    func addOrcamento() -> Orcamento {
         let novoOrcamento = Orcamento(context: manager.context)
-        novoOrcamento.nome = nome
-        novoOrcamento.nomeDoCliente = nomeCliente
-        novoOrcamento.custoTotalGastos = totalGastos
-        novoOrcamento.custoTotalDespesas = totalDespesas
-        novoOrcamento.custoHora = custoPorHora
-        novoOrcamento.tempoDeTrabalho = tempoDeTrabalho
-        novoOrcamento.custoTotal = custoTotal
-        novoOrcamento.lucro = Int64(lucro)
-        novoOrcamento.valorTotal = valorTotal
+        novoOrcamento.nome = ""
+        novoOrcamento.nomeDoCliente = ""
+        novoOrcamento.custoTotalGastos = 0.0
+        novoOrcamento.custoTotalDespesas = 0.0
+        novoOrcamento.custoHora = 0.0
+        novoOrcamento.tempoDeTrabalho = ""
+        novoOrcamento.custoTotal = 0.0
+        novoOrcamento.lucro = 0
+        novoOrcamento.valorTotal = 0
         salvar()
+        return novoOrcamento
     }
     
     func addDespesa() {
         let novaDespesa = Despesa(context: manager.context)
         novaDespesa.nome = ""
         novaDespesa.valor = 0.0
+        novaDespesa.selecionada = false
         salvar()
     }
     
@@ -69,7 +71,7 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    func atualizarOrcamento(entidade: Orcamento, nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, custoPorHora: Double, tempoDeTrabalho: String, custoTotal: Double, lucro: Int, valorTotal: Double){
+    func atualizarOrcamento(entidade: Orcamento, nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, custoPorHora: Double, tempoDeTrabalho: String, custoTotal: Double, lucro: Int){
         entidade.nome = nome
         entidade.nomeDoCliente = nomeCliente
         entidade.custoTotalGastos = totalGastos
@@ -78,7 +80,7 @@ class PlaneeViewModel: ObservableObject {
         entidade.tempoDeTrabalho = tempoDeTrabalho
         entidade.custoTotal = custoTotal
         entidade.lucro = Int64(lucro)
-        entidade.valorTotal = valorTotal
+        entidade.valorTotal = (custoTotal + (valorDaHora[0].valorFinal * 10)) * Double(((lucro + 100) / 100))
         salvar()
     }
     
@@ -173,7 +175,7 @@ class PlaneeViewModel: ObservableObject {
         fetchVdH()
     }
     
-    func calcularTotalDespesa(despesasSelecionadas: [Despesa]) -> Double{
+    func calcularTotalDespesa() -> Double{
         var soma = 0.0
         for despesa in despesas {
             soma += despesa.valor
@@ -181,7 +183,7 @@ class PlaneeViewModel: ObservableObject {
         return soma
     }
     
-    func calcularTotalGastos(gastosSelecionados: NSSet?) -> Double {
+    func calcularTotalGastos() -> Double {
         var soma = 0.0
         for gasto in gastos {
             soma += gasto.custo
@@ -189,28 +191,40 @@ class PlaneeViewModel: ObservableObject {
         return soma
     }
     
-    func criarVariaveisToggleDespesa() -> [Bool] {
-        @State var selecionado = false
-        var conjuntoToggle: [Bool] = []
-        for _ in 1...despesas.count {
-            conjuntoToggle.append(selecionado)
-        }
-        return conjuntoToggle
-    }
     
-    func AdicionarDespesaAoOrcamento(despesasSelecionadas: inout [Despesa], selecionado: Bool, despesa: Despesa){
-        if selecionado {
-            despesasSelecionadas.append(despesa)
-        }
-        else {
-            for i in 0...despesasSelecionadas.count {
-                if despesasSelecionadas[i] == despesa {
-                    despesasSelecionadas.remove(at: i)
-                    return
-                }
-            }
-        }
-    }
+    
+//    func criarVariaveisToggleDespesa(despesas: [Despesa]) -> [Bool] {
+//        @State var selecionado = false
+//        var conjuntoToggle: [Bool] = []
+//        for _ in 1...despesas.count {
+//            conjuntoToggle.append(selecionado)
+//        }
+//        return conjuntoToggle
+//    }
+    
+    
+//    func AdicionarDespesaAoOrcamento(despesas: [Despesa], orcamento: Orcamento){
+//        var despesasSelecionadas: [Despesa] = []
+//        for despesa in despesas {
+//            if despesa.selecionada {
+//                let novaDespesa = Despesa(context: manager.context)
+//                novaDespesa.nome = despesa.nome
+//                novaDespesa.valor = despesa.valor
+//                novaDespesa.selecionada = despesa.selecionada
+//                despesasSelecionadas.append(novaDespesa)
+//            }
+//        }
+//        orcamento.despesas = despesasSelecionadas
+//    }
+    
+//    func verificaDespesas(despesasNSSet: NSSet? = nil, despesasArray: [Despesa] = []) -> [Despesa] {
+//        if let despesas = despesasNSSet as? [Despesa] {
+//            return despesas
+//        }
+//        else {
+//            return despesasArray
+//        }
+//    }
     
 }
 

@@ -17,7 +17,6 @@ struct TelaCriarOrcamento: View {
     @State var hora: String = ""
     @State var lucro: Int = 0
     
-    
     let utilitarios = Utilitarios()
     
     var body: some View {
@@ -34,15 +33,15 @@ struct TelaCriarOrcamento: View {
                    Text("Gastos")
                    Spacer()
 //                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
-                   Text("R$ 1250,00")
+                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos()))
                }
                 NavigationLink {
-                     TelaDespesasSelecionadas(vm: vm)
+                    TelaDespesas(vm: vm)
                 }
                 label: {
                     Text("Despesas")
                     Spacer()
-                    Text("R$ 980,00")
+                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
 //                    Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos(gastosSelecionados: entidade.gastos)))
 //                        .foregroundColor(.gray)
                 }
@@ -57,12 +56,12 @@ struct TelaCriarOrcamento: View {
                     Text("Valor hora de trabalho")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
-                        .foregroundColor(.gray)
+//                        .foregroundColor(.gray)
                 }
                 HStack {
                     Text("Custos por hora")
                     Spacer()
-                    Text("R$ 16,00")
+                    Text("R$ " + String(format: "%.2f", entidade.custoTotal))
                 }
                 HStack {
                     Text("Tempo de trabalho")
@@ -81,7 +80,7 @@ struct TelaCriarOrcamento: View {
                     Text("Custo total")
                         .bold()
                     Spacer()
-                    Text("R$ 200,00")
+                    Text("R$ " + String(format: "%.2f", entidade.custoTotal))
                         .bold()
 //                        .foregroundColor(.gray)
                 }
@@ -107,7 +106,7 @@ struct TelaCriarOrcamento: View {
                     Text("Valor total")
                         .bold()
                     Spacer()
-                    Text("R$ 2000,00")
+                    Text("R$ " + String(format: "%.2f", entidade.valorTotal))
                         .bold()
                 }
             }
@@ -116,7 +115,7 @@ struct TelaCriarOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: 0.0, totalDespesas: 0.0, custoPorHora: vm.valorDaHora[0].valorFinal, tempoDeTrabalho: hora, custoTotal: 0.0, lucro: lucro, valorTotal: 0.0)
+                    vm.atualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: 0.0, totalDespesas: 0.0, custoPorHora: vm.valorDaHora[0].valorFinal, tempoDeTrabalho: hora, custoTotal: 0.0, lucro: lucro)
                 }label:{
                     Text("Adicionar")
                 }

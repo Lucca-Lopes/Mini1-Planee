@@ -31,8 +31,8 @@ struct TelaOrcamento: View {
                label: {
                    Text("Gastos")
                    Spacer()
-                   Text("R$ 1.250,00")
-                       .foregroundColor(.gray)
+                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos()))
+//                       .foregroundColor(.gray)
                }
                 NavigationLink {
                      TelaGastos(vm: vm)
@@ -40,7 +40,7 @@ struct TelaOrcamento: View {
                 label: {
                     Text("Despesas")
                     Spacer()
-                    Text("R$ 980,00")
+                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
                         .foregroundColor(.gray)
                 }
 //                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
@@ -53,15 +53,15 @@ struct TelaOrcamento: View {
                      TelaValorHdT(vm: vm, valor: vm.valorDaHora[0].pretensaoSalarial, dias: Int(vm.valorDaHora[0].dias), horasDiarias: Int(vm.valorDaHora[0].horas))
                 }
                 label: {
-                    Text("Despesas")
+                    Text("Valor hora de trabalho")
                     Spacer()
-                    Text("R$ 980,00")
+                    Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("Despesas")
+                    Text("Custos por hora")
                     Spacer()
-                    Text("R$ 980,00")
+                    Text("R$ " + String(format: "%.2f", vm.orcamentos.last!.custoTotal))
                 }
             }
             Section(header: Text("")
@@ -69,7 +69,7 @@ struct TelaOrcamento: View {
                 HStack {
                     Text("Lucro")
                     Spacer()
-                    Text("25%")
+                    Text("\(vm.orcamentos.last!.lucro)%")
                 }
             }
             
@@ -78,12 +78,12 @@ struct TelaOrcamento: View {
                 HStack {
                     Text("Valor total")
                     Spacer()
-                    Text("R$ 2000,00")
+                    Text("R$ " + String(format: "%.2f", vm.orcamentos.last!.valorTotal))
                         .bold()
                 }
             }
         }
-        .navigationTitle("Orçamento 1")
+        .navigationTitle(vm.orcamentos.last!.nome ?? "")
         .navigationBarTitleDisplayMode(.large)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing)

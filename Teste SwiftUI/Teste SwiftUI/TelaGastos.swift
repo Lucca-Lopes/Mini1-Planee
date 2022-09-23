@@ -46,6 +46,7 @@ struct TelaGastos: View {
                         Text("R$ " + String(format: "%.2f", gastoAtual.custo))
                     }
                 }
+            
             }
             .onDelete(perform: vm.deletarGasto)
         }

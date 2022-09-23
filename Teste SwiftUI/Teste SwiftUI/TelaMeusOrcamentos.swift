@@ -53,7 +53,7 @@ struct TelaMeusOrcamentos: View {
             }
             ToolbarItem {
                 NavigationLink {
-                    TelaCriarOrcamento(vm: vm)
+                    TelaCriarOrcamento(vm: vm, entidade: vm.addOrcamento())
                 }
                 label: {
                     Label("Add Item", systemImage: "plus")

@@ -42,7 +42,7 @@ struct TelaInicial: View {
                     Section{
 //                        utilitarios.criaNLHome(titulo: "Criar orçamento", vm: &vm)
                         NavigationLink {
-                            TelaCriarOrcamento(vm: vm)
+                            TelaCriarOrcamento(vm: vm, entidade: vm.addOrcamento())
                         }
                         label: {
                             Text("Criar orçamento")
