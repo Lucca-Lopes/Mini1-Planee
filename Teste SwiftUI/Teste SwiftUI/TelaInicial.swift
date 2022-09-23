@@ -10,12 +10,7 @@ import SwiftUI
 struct TelaInicial: View {
     
     @StateObject var vm = PlaneeViewModel()
-    
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
+            
     let utilitarios = Utilitarios()
     
     @State private var rowHeight: CGFloat = 40
@@ -27,22 +22,22 @@ struct TelaInicial: View {
                 Text("Valor da hora de trabalho:")
                     .bold()
                     .padding()
-                    .frame(width: screenWidth * 0.99, height: screenHeight * 0.05, alignment: .leading)
+                    .frame(width: vm.screenWidth * 0.99, height: vm.screenHeight * 0.05, alignment: .leading)
                 
                 Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
                     .bold()
                     .font(.system(size: 20))
-                    .frame(width: screenWidth * 0.9, height: screenHeight * 0.0, alignment: .leading)
-                
+                    .frame(width: vm.screenWidth * 0.9, height: vm.screenHeight * 0.0, alignment: .leading)
+
                 Text("")
-                    .frame(height: screenHeight * 0.05)
-                
+                    .frame(height: vm.screenHeight * 0.05)
+
                 Form{
-                    
+
                     Section{
 //                        utilitarios.criaNLHome(titulo: "Criar orçamento", vm: &vm)
                         NavigationLink {
-                            TelaCriarOrcamento(vm: vm, entidade: vm.addOrcamento())
+//                            TelaCriarOrcamento(vm: vm)
                         }
                         label: {
                             Text("Criar orçamento")
@@ -52,7 +47,7 @@ struct TelaInicial: View {
                                 .frame(height: 55)
                         }
                     }
-                    
+
                     Section{
                         NavigationLink {
                             TelaMeusOrcamentos(vm: vm)
@@ -66,7 +61,7 @@ struct TelaInicial: View {
                         }
 //                        utilitarios.criaNLHome(titulo: "Meus orçamentos", vm: &vm)
                     }
-                    
+
                     Section{
                         NavigationLink {
                             TelaValorHdT(vm: vm, valor: vm.valorDaHora[0].pretensaoSalarial, dias: Int(vm.valorDaHora[0].dias), horasDiarias: Int(vm.valorDaHora[0].horas))
@@ -80,7 +75,7 @@ struct TelaInicial: View {
                         }
 //                        utilitarios.criaNLHome(titulo: "Calcular valor da hora", vm: &vm)
                     }
-                    
+
                     Section{
                         NavigationLink {
                             TelaDespesas(vm: vm)
@@ -94,7 +89,7 @@ struct TelaInicial: View {
                         }
 //                        utilitarios.criaNLHome(titulo: "Despesas", vm: &vm)
                     }
-                    
+
                     Section{
                         NavigationLink {
                             TelaGastos(vm: vm)

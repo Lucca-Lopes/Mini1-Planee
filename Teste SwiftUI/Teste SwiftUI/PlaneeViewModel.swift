@@ -25,6 +25,9 @@ class PlaneeViewModel: ObservableObject {
         fetchDespesa()
         fetchGasto()
         fetchVdH()
+//        clearDatabase()
+//        salvar()
+//        limparCoreData()
         if valorDaHora.count < 1 {
             addVdH()
         }
@@ -34,10 +37,10 @@ class PlaneeViewModel: ObservableObject {
         let novoOrcamento = Orcamento(context: manager.context)
         novoOrcamento.nome = ""
         novoOrcamento.nomeDoCliente = ""
-        novoOrcamento.custoTotalGastos = 0.0
-        novoOrcamento.custoTotalDespesas = 0.0
+        novoOrcamento.custoTotalGastos = calcularTotalGastos()
+        novoOrcamento.custoTotalDespesas = calcularTotalDespesa()
         novoOrcamento.custoHora = 0.0
-        novoOrcamento.tempoDeTrabalho = ""
+        novoOrcamento.horasDeTrabalho = 0
         novoOrcamento.custoTotal = 0.0
         novoOrcamento.lucro = 0
         novoOrcamento.valorTotal = 0
@@ -71,13 +74,13 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    func atualizarOrcamento(entidade: Orcamento, nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, custoPorHora: Double, tempoDeTrabalho: String, custoTotal: Double, lucro: Int){
+    func atualizarOrcamento(entidade: Orcamento, nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, custoPorHora: Double, tempoDeTrabalho: Int, custoTotal: Double, lucro: Int){
         entidade.nome = nome
         entidade.nomeDoCliente = nomeCliente
         entidade.custoTotalGastos = totalGastos
         entidade.custoTotalDespesas = totalDespesas
         entidade.custoHora = custoPorHora
-        entidade.tempoDeTrabalho = tempoDeTrabalho
+        entidade.horasDeTrabalho = Int64(tempoDeTrabalho)
         entidade.custoTotal = custoTotal
         entidade.lucro = Int64(lucro)
         entidade.valorTotal = (custoTotal + (valorDaHora[0].valorFinal * 10)) * Double(((lucro + 100) / 100))
@@ -189,6 +192,27 @@ class PlaneeViewModel: ObservableObject {
             soma += gasto.custo
         }
         return soma
+    }
+    
+    func limparCoreData(){
+        orcamentos = []
+        despesas = []
+        gastos = []
+        valorDaHora = []
+        salvar()
+    }
+    
+    public func clearDatabase() {
+        guard let url = manager.container.persistentStoreDescriptions.first?.url else { return }
+        
+        let persistentStoreCoordinator = manager.container.persistentStoreCoordinator
+
+         do {
+             try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
+             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+         } catch {
+             print("Attempted to clear persistent store: " + error.localizedDescription)
+         }
     }
     
     

@@ -4,14 +4,12 @@
         <attribute name="nome" attributeType="String" defaultValueString="Luz"/>
         <attribute name="selecionada" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="valor" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="orcamentos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrcamentoDespesa" inverseName="despesas" inverseEntity="OrcamentoDespesa"/>
     </entity>
     <entity name="Gasto" representedClassName=".Gasto" syncable="YES" codeGenerationType="class">
         <attribute name="custo" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="nome" optional="YES" attributeType="String"/>
         <attribute name="valor" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="vidaUtil" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="orcamentos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrcamentoGasto" inverseName="gasto" inverseEntity="OrcamentoGasto"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="ordem" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -22,23 +20,15 @@
         <attribute name="custoTotal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="custoTotalDespesas" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="custoTotalGastos" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="horasDeTrabalho" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lucro" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nome" optional="YES" attributeType="String"/>
         <attribute name="nomeDoCliente" optional="YES" attributeType="String"/>
-        <attribute name="tempoDeTrabalho" optional="YES" attributeType="String"/>
         <attribute name="valorTotal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="despesas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrcamentoDespesa" inverseName="orcamentos" inverseEntity="OrcamentoDespesa"/>
-        <relationship name="gastos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrcamentoGasto" inverseName="orcamento" inverseEntity="OrcamentoGasto"/>
         <relationship name="valorDaHora" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ValorHoraDeTrabalho" inverseName="orcamentos" inverseEntity="ValorHoraDeTrabalho"/>
     </entity>
-    <entity name="OrcamentoDespesa" representedClassName="OrcamentoDespesa" syncable="YES" codeGenerationType="class">
-        <relationship name="despesas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Despesa" inverseName="orcamentos" inverseEntity="Despesa"/>
-        <relationship name="orcamentos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Orcamento" inverseName="despesas" inverseEntity="Orcamento"/>
-    </entity>
-    <entity name="OrcamentoGasto" representedClassName="OrcamentoGasto" syncable="YES" codeGenerationType="class">
-        <relationship name="gasto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gasto" inverseName="orcamentos" inverseEntity="Gasto"/>
-        <relationship name="orcamento" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Orcamento" inverseName="gastos" inverseEntity="Orcamento"/>
-    </entity>
+    <entity name="OrcamentoDespesa" representedClassName="OrcamentoDespesa" syncable="YES" codeGenerationType="class"/>
+    <entity name="OrcamentoGasto" representedClassName="OrcamentoGasto" syncable="YES" codeGenerationType="class"/>
     <entity name="ValorHoraDeTrabalho" representedClassName=".ValorHoraDeTrabalho" syncable="YES" codeGenerationType="class">
         <attribute name="dias" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="horas" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -47,12 +37,12 @@
         <relationship name="orcamentos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Orcamento" inverseName="valorDaHora" inverseEntity="Orcamento"/>
     </entity>
     <elements>
-        <element name="Despesa" positionX="293.5825805664063" positionY="160.5802001953125" width="128" height="89"/>
-        <element name="Gasto" positionX="124.3890991210938" positionY="-63.66339111328125" width="128" height="118"/>
+        <element name="Despesa" positionX="293.5825805664063" positionY="160.5802001953125" width="128" height="74"/>
+        <element name="Gasto" positionX="124.3890991210938" positionY="-63.66339111328125" width="128" height="89"/>
         <element name="Item" positionX="352.4591674804687" positionY="-25.29058837890625" width="128" height="59"/>
-        <element name="Orcamento" positionX="-406.4323730468751" positionY="-177.45361328125" width="128" height="223"/>
-        <element name="OrcamentoDespesa" positionX="-198" positionY="-18" width="128" height="59"/>
-        <element name="OrcamentoGasto" positionX="-189" positionY="-9" width="128" height="59"/>
+        <element name="Orcamento" positionX="-406.4323730468751" positionY="-177.45361328125" width="128" height="179"/>
+        <element name="OrcamentoDespesa" positionX="-198" positionY="-18" width="128" height="29"/>
+        <element name="OrcamentoGasto" positionX="-189" positionY="-9" width="128" height="29"/>
         <element name="ValorHoraDeTrabalho" positionX="-217.5248413085938" positionY="172.5298461914062" width="128" height="104"/>
     </elements>
 </model>

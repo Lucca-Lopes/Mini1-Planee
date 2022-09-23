@@ -10,7 +10,7 @@ import CoreData
 
 @main
 struct Main: App {
-    let persistenceController = PersistenceController.shared
+//    let persistenceController = PersistenceController.shared
     
 //    @StateObject var vm = PlaneeViewModel()
 
