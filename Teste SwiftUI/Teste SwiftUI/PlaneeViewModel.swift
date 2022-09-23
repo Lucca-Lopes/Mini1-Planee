@@ -20,6 +20,9 @@ class PlaneeViewModel: ObservableObject {
     @Published var gastos: [Gasto] = []
     @Published var valorDaHora: [ValorHoraDeTrabalho] = []
     
+    @Published var PDFUrl: URL?
+    @Published var mostraSheetCp: Bool = false
+    
     init() {
         fetchOrcamento()
         fetchDespesa()
@@ -58,11 +61,11 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    func addGasto() {
+    func addGasto(nome: String, valor: Double, vidaUtil: Int) {
         let novoGasto = Gasto(context: manager.context)
-        novoGasto.nome = ""
-        novoGasto.valor = 0.0
-        novoGasto.vidaUtil = 0
+        novoGasto.nome = nome
+        novoGasto.valor = valor
+        novoGasto.vidaUtil = Int64(vidaUtil)
         novoGasto.custo = novoGasto.valor / Double(novoGasto.vidaUtil)
         salvar()
     }

@@ -22,12 +22,18 @@ struct TelaGastos: View {
             ForEach (vm.gastos) { gastoAtual in
                 Section(header:
                             NavigationLink {
-                    SheetView(vm: vm, entidade: gastoAtual)
+                    EditarGasto(vm: vm, entidade: gastoAtual)
                 }
                         label: {
-                    Text(gastoAtual.nome ?? "")
-                        .foregroundColor(.black)
-                        .lineLimit(1)
+                    HStack {
+                        Text(gastoAtual.nome ?? "")
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                        Label("", systemImage: "chevron.right")
+                            .labelStyle(.iconOnly)
+                            .foregroundColor(.black)
+                    }
+                    
                     
                 }
                 ) {
@@ -61,13 +67,12 @@ struct TelaGastos: View {
             }
             ToolbarItem {
                 Button(action: {
-                    vm.addGasto()
                     mostrarSheet = true
                 }, label: {
                     Label("Add Item", systemImage: "plus")
                 })
                 .sheet(isPresented: $mostrarSheet){
-                    SheetView(vm: vm, entidade: vm.gastos.last!)
+                    CriarGasto(vm: vm)
                 }
             }
         }

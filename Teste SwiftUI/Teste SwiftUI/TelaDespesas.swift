@@ -14,10 +14,7 @@ struct TelaDespesas: View {
     @State var nome = ""
     @State var valor = 0.0
     @State var valorTotal = 0.0
-    @State var mostrarCriarDespesa = false
-//    @State var mostrarEditarDespesa = true
-    
-//    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
+    @State var mostrarCriarDespesa = false    
     
     @State var editando = false
     
@@ -64,7 +61,7 @@ struct TelaDespesas: View {
                 Button {
                     mostrarCriarDespesa = true
                 } label: {
-                    Label("Add Item", systemImage: "plus")
+                    Label("", systemImage: "plus")
                 }
                 .sheet(isPresented: $mostrarCriarDespesa){
                     CriarDespesa(vm: vm, nome: "", valor: 0.0)
