@@ -28,14 +28,13 @@ struct TelaMeusOrcamentos: View {
                 }
                 else {
                     NavigationLink {
-                        TelaOrcamento(vm: vm)
+                        TelaOrcamento(vm: vm, entidade: orcamento)
                     }
                 label: {
                     Text(orcamento.nome ?? "Novo Orçamento")
                         .lineLimit(1)
                     Spacer()
                     Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
-                        .foregroundColor(.gray)
                 }
                 }
             }

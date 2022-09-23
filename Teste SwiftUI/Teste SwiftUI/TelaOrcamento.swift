@@ -11,18 +11,18 @@ import CoreData
 struct TelaOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
-    
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
-    
-    @State var hora: String = ""
-    @State var minuto: Int = 0
-    @State var titulo: String = ""
+        
+    var entidade: Orcamento
     
     let utilitarios = Utilitarios()
     
     var body: some View {
         List{
+            HStack {
+                Text("Nome do cliente")
+                Spacer()
+                Text(entidade.nomeDoCliente!)
+            }
             Section(header: Text("Custos")
             ) {
                 NavigationLink {
@@ -41,7 +41,6 @@ struct TelaOrcamento: View {
                     Text("Despesas")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
-                        .foregroundColor(.gray)
                 }
 //                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
 //                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
@@ -56,7 +55,6 @@ struct TelaOrcamento: View {
                     Text("Valor hora de trabalho")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
-                        .foregroundColor(.gray)
                 }
                 HStack {
                     Text("Custos por hora")
@@ -64,23 +62,18 @@ struct TelaOrcamento: View {
                     Text("R$ " + String(format: "%.2f", vm.orcamentos.last!.custoTotal))
                 }
             }
-            Section(header: Text("")
-            ) {
+            Section() {
                 HStack {
                     Text("Lucro")
                     Spacer()
                     Text("\(vm.orcamentos.last!.lucro)%")
                 }
             }
-            
-            Section(header: Text("")
-            ) {
-                HStack {
-                    Text("Valor total")
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.orcamentos.last!.valorTotal))
-                        .bold()
-                }
+            HStack {
+                Text("Valor total")
+                Spacer()
+                Text("R$ " + String(format: "%.2f", vm.orcamentos.last!.valorTotal))
+                    .bold()
             }
         }
         .navigationTitle(vm.orcamentos.last!.nome ?? "")
@@ -96,11 +89,16 @@ struct TelaOrcamento: View {
             }
             ToolbarItem(placement: .navigationBarTrailing)
             {
-                Button{
-                    print("Adicionou")
-                }label:{
+                NavigationLink {
+                    TelaCriarOrcamento(vm: vm)
+                } label: {
                     Text("Editar")
                 }
+//                Button{
+//                    TelaCriarOrcamento(vm: vm)
+//                }label:{
+//                    Text("Editar")
+//                }
             }
         }
         

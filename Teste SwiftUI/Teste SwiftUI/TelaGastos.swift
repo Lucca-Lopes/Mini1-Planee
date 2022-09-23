@@ -26,6 +26,7 @@ struct TelaGastos: View {
                 }
                         label: {
                     Text(gastoAtual.nome ?? "")
+                        .foregroundColor(.black)
                         .lineLimit(1)
                     
                 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct TelaInicial: View {
     
     @StateObject var vm = PlaneeViewModel()
+    
+//    @State var orcamento: Orcamento
             
     let utilitarios = Utilitarios()
     
@@ -37,7 +39,7 @@ struct TelaInicial: View {
                     Section{
 //                        utilitarios.criaNLHome(titulo: "Criar orçamento", vm: &vm)
                         NavigationLink {
-//                            TelaCriarOrcamento(vm: vm)
+                            TelaCriarOrcamento(vm: vm)
                         }
                         label: {
                             Text("Criar orçamento")

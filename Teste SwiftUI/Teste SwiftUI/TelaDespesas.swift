@@ -14,6 +14,8 @@ struct TelaDespesas: View {
     @State var nome = ""
     @State var valor = 0.0
     @State var valorTotal = 0.0
+    @State var mostrarCriarDespesa = false
+//    @State var mostrarEditarDespesa = true
     
 //    let opcoes: [String] = ["Luz", "Água", "Gás", "Internet", "Telefone", "Softwares", "Personalizado"]
     
@@ -25,15 +27,17 @@ struct TelaDespesas: View {
         List {
             ForEach (vm.despesas) { despesaAtual in
                 NavigationLink {
-                    ItemDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
+                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
                 label: {
                     Text(despesaAtual.nome ?? "")
                         .lineLimit(1)
                     Spacer()
                     Text("R$ " + String(format: "%.2f", despesaAtual.valor))
-                        .foregroundColor(.gray)
                 }
+//                .sheet(isPresented: $mostrarCriarDespesa){
+//                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
+//                }
             }
             .onDelete(perform: vm.deletarDespesa)
             Section(header: Text("")
@@ -42,7 +46,6 @@ struct TelaDespesas: View {
                     Text("Valor total")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
-                        .foregroundColor(.gray)
                 }
             }
         }
@@ -53,16 +56,19 @@ struct TelaDespesas: View {
                         vm.salvar()
                     }
                     self.editando.toggle()
-                    
-                    
                 }) {
                     Text(editando ? "Ok" : "Editar")
                 }
             }
             ToolbarItem {
-                Button(action: vm.addDespesa) {
+                Button {
+                    mostrarCriarDespesa = true
+                } label: {
                     Label("Add Item", systemImage: "plus")
                 }
+                .sheet(isPresented: $mostrarCriarDespesa){
+                    CriarDespesa(vm: vm, nome: "", valor: 0.0)
+            }
             }
         }
         .navigationTitle("Despesas")

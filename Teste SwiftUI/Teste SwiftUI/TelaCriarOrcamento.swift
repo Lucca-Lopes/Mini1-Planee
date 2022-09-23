@@ -11,23 +11,25 @@ struct TelaCriarOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @State var entidade: Orcamento
+//    @State var entidade: Orcamento
     @State var nomeOrcamento: String = ""
     @State var nomeCliente: String = ""
     @State var hora: Int = 0
     @State var lucro: Int = 0
+    @State var totalGastos: Double = 0.0
+    @State var totalDespesas: Double = 0.0
+//    @State var custoTotal: Double
     
     let utilitarios = Utilitarios()
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     init(vm: PlaneeViewModel){
         self.vm = vm
-        self.entidade = vm.addOrcamento()
+        self.totalGastos = vm.calcularTotalGastos()
+        self.totalDespesas = vm.calcularTotalDespesa()
     }
-    
-    init(vm: PlaneeViewModel, entidade: Orcamento) {
-        self.vm = vm
-        self.entidade = entidade
-    }
+
     
     var body: some View {
         List{
@@ -63,12 +65,11 @@ struct TelaCriarOrcamento: View {
                     Text("Valor hora de trabalho")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", vm.valorDaHora.last!.valorFinal))
-//                        .foregroundColor(.gray)
                 }
                 HStack {
                     Text("Custos por hora")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", entidade.custoTotal))
+                    Text("R$ 0,00")
                 }
                 HStack {
                     Text("Tempo de trabalho")
@@ -78,7 +79,7 @@ struct TelaCriarOrcamento: View {
                         value: $hora,
                         formatter: NumberFormatter()
                     )
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
@@ -87,9 +88,8 @@ struct TelaCriarOrcamento: View {
                     Text("Custo total")
                         .bold()
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", entidade.custoTotal))
+                    Text("R$ " + String(format: "%.2f", (totalGastos + totalDespesas)))
                         .bold()
-//                        .foregroundColor(.gray)
                 }
             }
             
@@ -98,7 +98,7 @@ struct TelaCriarOrcamento: View {
                     Text("Lucro")
                     Spacer()
                     TextField(
-                        "0%",
+                        "0",
                         value: $lucro,
                         formatter: NumberFormatter()
                     )
@@ -106,6 +106,8 @@ struct TelaCriarOrcamento: View {
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
+                    Text("%")
+                        .foregroundColor(.gray)
                 }
             }
             Section() {
@@ -113,7 +115,7 @@ struct TelaCriarOrcamento: View {
                     Text("Valor total")
                         .bold()
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", entidade.valorTotal))
+                    Text("R$ 0,00")
                         .bold()
                 }
             }
@@ -122,7 +124,11 @@ struct TelaCriarOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    vm.atualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.calcularTotalGastos(), totalDespesas: vm.calcularTotalDespesa(), custoPorHora: vm.valorDaHora.last!.valorFinal, tempoDeTrabalho: hora, custoTotal: 0.0, lucro: lucro)
+                    if nomeOrcamento != "" && nomeCliente != "" && hora != 0 {
+                        vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: totalGastos, totalDespesas: totalDespesas, valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
+                        self.mode.wrappedValue.dismiss()
+                    }
+                    
                 }label:{
                     Text("Adicionar")
                 }

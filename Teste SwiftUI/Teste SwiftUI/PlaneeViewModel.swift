@@ -33,25 +33,27 @@ class PlaneeViewModel: ObservableObject {
         }
     }
     
-    func addOrcamento() -> Orcamento {
+    func addOrcamento(nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, valorDaHora: ValorHoraDeTrabalho, tempoDeTrabalho: Int, lucro: Int) {
+        let custoPorHora = (((totalGastos + totalDespesas) / Double(valorDaHora.dias)) / Double(valorDaHora.horas))
+        let custoTotal = totalGastos + totalDespesas
+        let lucroFinal = (Double(lucro) + 100) / 100
         let novoOrcamento = Orcamento(context: manager.context)
-        novoOrcamento.nome = ""
-        novoOrcamento.nomeDoCliente = ""
-        novoOrcamento.custoTotalGastos = calcularTotalGastos()
-        novoOrcamento.custoTotalDespesas = calcularTotalDespesa()
-        novoOrcamento.custoHora = 0.0
-        novoOrcamento.horasDeTrabalho = 0
-        novoOrcamento.custoTotal = 0.0
-        novoOrcamento.lucro = 0
-        novoOrcamento.valorTotal = 0
+        novoOrcamento.nome = nome
+        novoOrcamento.nomeDoCliente = nomeCliente
+        novoOrcamento.custoTotalGastos = totalGastos
+        novoOrcamento.custoTotalDespesas = totalDespesas
+        novoOrcamento.custoHora = custoPorHora
+        novoOrcamento.horasDeTrabalho = Int64(tempoDeTrabalho)
+        novoOrcamento.custoTotal = custoTotal
+        novoOrcamento.lucro = Int64(lucro)
+        novoOrcamento.valorTotal = ((Double(tempoDeTrabalho) * valorDaHora.valorFinal) + (custoPorHora * Double(tempoDeTrabalho))) * lucroFinal
         salvar()
-        return novoOrcamento
     }
     
-    func addDespesa() {
+    func addDespesa(nome: String, valor: Double) {
         let novaDespesa = Despesa(context: manager.context)
-        novaDespesa.nome = ""
-        novaDespesa.valor = 0.0
+        novaDespesa.nome = nome
+        novaDespesa.valor = valor
         novaDespesa.selecionada = false
         salvar()
     }
