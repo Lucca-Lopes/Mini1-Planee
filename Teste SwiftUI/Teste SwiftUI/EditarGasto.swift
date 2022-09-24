@@ -22,7 +22,7 @@ struct EditarGasto: View {
     
     
     var body: some View{
-        List{
+        Form{
             HStack {
                 Text("Título")
                 Spacer()
@@ -66,8 +66,10 @@ struct EditarGasto: View {
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    vm.atualizarGasto(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
-                    self.mode.wrappedValue.dismiss()
+                    if nome != "" && valor != 0.0 && vidaUtil != 0 {
+                        vm.atualizarGasto(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
+                        self.mode.wrappedValue.dismiss()
+                    }
                 }, label: {
                     Text("OK")
                 })

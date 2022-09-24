@@ -16,6 +16,8 @@ struct EditarDespesa: View {
     @State var nome: String
     @State var valor: Double
     
+    @FocusState var focarNome: Bool
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -24,6 +26,7 @@ struct EditarDespesa: View {
                     Text("Nome")
                     Spacer()
                     TextField("Nome", text: $nome)
+                        .focused($focarNome)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.trailing)
                         .textFieldStyle(.roundedBorder)

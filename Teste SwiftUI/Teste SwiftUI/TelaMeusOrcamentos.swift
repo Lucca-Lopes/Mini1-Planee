@@ -32,9 +32,10 @@ struct TelaMeusOrcamentos: View {
                 label: {
                     Text(orcamento.nome ?? "Novo Orçamento")
                         .lineLimit(1)
-                        .frame(width: vm.screenWidth * 0.5, height: vm.screenHeight * 0.025, alignment: .leading)
+                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.025, alignment: .leading)
 //                    Spacer()
                     Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
+                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.025, alignment: .trailing)
                 }
                 }
             }

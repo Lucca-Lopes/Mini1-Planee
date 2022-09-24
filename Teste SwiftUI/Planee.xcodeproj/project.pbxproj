@@ -13,7 +13,6 @@
 		2B666FE228B00CC1003892A6 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE128B00CC1003892A6 /* Main.swift */; };
 		2B666FE428B00CC1003892A6 /* TelaMeusOrcamentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */; };
 		2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE528B00CC3003892A6 /* Assets.xcassets */; };
-		2B666FE928B00CC3003892A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE828B00CC3003892A6 /* Preview Assets.xcassets */; };
 		2B666FEB28B00CC3003892A6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FEA28B00CC3003892A6 /* Persistence.swift */; };
 		2B666FEE28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */; };
 		2B7310D028D904DB009CEAB2 /* CriarDespesa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7310CF28D904DB009CEAB2 /* CriarDespesa.swift */; };
@@ -26,6 +25,7 @@
 		2BB8E08328DE4BBB00C93D1B /* EditarGasto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08228DE4BBB00C93D1B /* EditarGasto.swift */; };
 		2BB8E08528DE50CF00C93D1B /* TelaExportarPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */; };
 		2BB8E08728DE523200C93D1B /* Extensoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08628DE523200C93D1B /* Extensoes.swift */; };
+		2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B9329DE28DFB68800FB732A /* Planee-Info.plist */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
 		2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,6 @@
 		2B666FE128B00CC1003892A6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaMeusOrcamentos.swift; sourceTree = "<group>"; };
 		2B666FE528B00CC3003892A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2B666FE828B00CC3003892A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2B666FEA28B00CC3003892A6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2B666FED28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Teste_SwiftUI.xcdatamodel; sourceTree = "<group>"; };
 		2B7310CF28D904DB009CEAB2 /* CriarDespesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarDespesa.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		2B8FA99B28DCD7E3005AA1B3 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		2B8FA99D28DCD83D005AA1B3 /* CriarGasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarGasto.swift; sourceTree = "<group>"; };
 		2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaCriarOrcamento.swift; sourceTree = "<group>"; };
+		2B9329DE28DFB68800FB732A /* Planee-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Planee-Info.plist"; sourceTree = "<group>"; };
 		2BB8E08028DE407E00C93D1B /* EditarDespesa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarDespesa.swift; sourceTree = "<group>"; };
 		2BB8E08228DE4BBB00C93D1B /* EditarGasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarGasto.swift; sourceTree = "<group>"; };
 		2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaExportarPDF.swift; sourceTree = "<group>"; };
@@ -69,6 +69,7 @@
 		2B666FD528B00CC1003892A6 = {
 			isa = PBXGroup;
 			children = (
+				2B9329DE28DFB68800FB732A /* Planee-Info.plist */,
 				2B666FE028B00CC1003892A6 /* Teste SwiftUI */,
 				2B666FDF28B00CC1003892A6 /* Products */,
 			);
@@ -105,17 +106,8 @@
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
-				2B666FE728B00CC3003892A6 /* Preview Content */,
 			);
 			path = "Teste SwiftUI";
-			sourceTree = "<group>";
-		};
-		2B666FE728B00CC3003892A6 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				2B666FE828B00CC3003892A6 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,8 +168,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B666FE928B00CC3003892A6 /* Preview Assets.xcassets in Resources */,
 				2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */,
+				2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,9 +333,9 @@
 				DEVELOPMENT_TEAM = RRUDNBUBWM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Planee-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -372,9 +364,9 @@
 				DEVELOPMENT_TEAM = RRUDNBUBWM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Planee-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

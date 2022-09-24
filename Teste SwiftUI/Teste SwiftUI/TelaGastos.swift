@@ -16,27 +16,24 @@ struct TelaGastos: View {
     
     let utilitarios = Utilitarios()
     
-    
     var body: some View {
         List{
             ForEach (vm.gastos) { gastoAtual in
                 Section(header:
-                            NavigationLink {
-                    EditarGasto(vm: vm, entidade: gastoAtual)
-                }
-                        label: {
+                    NavigationLink {
+                        EditarGasto(vm: vm, entidade: gastoAtual)
+                    }
+                label: {
                     HStack {
-                        Text(gastoAtual.nome ?? "")
+                        
+                        Text(gastoAtual.nome ?? "Novo gasto")
                             .foregroundColor(.black)
                             .lineLimit(1)
                         Label("", systemImage: "chevron.right")
                             .labelStyle(.iconOnly)
                             .foregroundColor(.black)
                     }
-                    
-                    
-                }
-                ) {
+                }) {
                     HStack {
                         Text("Valor total")
                         Spacer()
@@ -53,7 +50,6 @@ struct TelaGastos: View {
                         Text("R$ " + String(format: "%.2f", gastoAtual.custo))
                     }
                 }
-            
             }
             .onDelete(perform: vm.deletarGasto)
         }
@@ -80,6 +76,45 @@ struct TelaGastos: View {
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
 }
+
+//struct RowGastoEditando: View {
+//
+//    @ObservedObject var vm: PlaneeViewModel
+//    @State var gastoAtual: Gasto
+//    var body: some View {
+//        List{
+//            Section(header:
+//                Button {
+//                    vm.deletarGasto(indexSet: [0])
+//                } label: {
+//                    Text("X")
+//                    Text(gastoAtual.nome ?? "Novo gasto")
+//                        .foregroundColor(.black)
+//                        .lineLimit(1)
+//                }
+//            ){
+//                HStack {
+//                    Text("Valor total")
+//                    Spacer()
+//                    Text("R$ " + String(format: "%.2f", gastoAtual.valor))
+//                }
+//                HStack {
+//                    Text("Vida útil")
+//                    Spacer()
+//                    Text("\(gastoAtual.vidaUtil) meses")
+//                }
+//                HStack {
+//                    Text("Custo mensal")
+//                    Spacer()
+//                    Text("R$ " + String(format: "%.2f", gastoAtual.custo))
+//                }
+//            }
+//        }
+//    }
+//
+//}
+
+
 
 //struct Tela_Gastos_Previews: PreviewProvider {
 //    static var previews: some View {
