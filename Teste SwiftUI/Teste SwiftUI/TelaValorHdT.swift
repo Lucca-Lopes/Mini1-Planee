@@ -30,18 +30,21 @@ struct TelaValorHdT: View {
                     Spacer()
                     TextField("R$ 0,00", value: $valor, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
                 }
                 HStack{
                     Text("Dias de trabalho")
                     Spacer()
                     TextField("0 dias", value: $dias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
                 }
                 HStack{
                     Text("Horas diárias")
                     Spacer()
                     TextField("0 horas", value: $horasDiarias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
                 }
                 
                 Section(header: Text(""))

@@ -34,7 +34,7 @@
 		00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaValorHdT.swift; sourceTree = "<group>"; };
 		0500C47728C8081F008A9042 /* TelaGastos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaGastos.swift; sourceTree = "<group>"; };
 		057A456228C12089004756EE /* TelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaInicial.swift; sourceTree = "<group>"; };
-		2B666FDE28B00CC1003892A6 /* Teste SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Teste SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B666FDE28B00CC1003892A6 /* Planee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B666FE128B00CC1003892A6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaMeusOrcamentos.swift; sourceTree = "<group>"; };
 		2B666FE528B00CC3003892A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		2B666FDF28B00CC1003892A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B666FDE28B00CC1003892A6 /* Teste SwiftUI.app */,
+				2B666FDE28B00CC1003892A6 /* Planee.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,9 +121,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B666FDD28B00CC1003892A6 /* Teste SwiftUI */ = {
+		2B666FDD28B00CC1003892A6 /* Planee */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B666FF128B00CC3003892A6 /* Build configuration list for PBXNativeTarget "Teste SwiftUI" */;
+			buildConfigurationList = 2B666FF128B00CC3003892A6 /* Build configuration list for PBXNativeTarget "Planee" */;
 			buildPhases = (
 				2B666FDA28B00CC1003892A6 /* Sources */,
 				2B666FDB28B00CC1003892A6 /* Frameworks */,
@@ -133,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = "Teste SwiftUI";
+			name = Planee;
 			productName = "Teste SwiftUI";
-			productReference = 2B666FDE28B00CC1003892A6 /* Teste SwiftUI.app */;
+			productReference = 2B666FDE28B00CC1003892A6 /* Planee.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,7 +153,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2B666FD928B00CC1003892A6 /* Build configuration list for PBXProject "Teste SwiftUI" */;
+			buildConfigurationList = 2B666FD928B00CC1003892A6 /* Build configuration list for PBXProject "Planee" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,7 +166,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B666FDD28B00CC1003892A6 /* Teste SwiftUI */,
+				2B666FDD28B00CC1003892A6 /* Planee */,
 			);
 		};
 /* End PBXProject section */
@@ -264,7 +264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -319,7 +319,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -332,8 +332,9 @@
 		2B666FF228B00CC3003892A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Teste SwiftUI/Preview Content\"";
@@ -343,6 +344,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -351,7 +353,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LuccaLopes.Teste-SwiftUI";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Planee;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -361,8 +363,9 @@
 		2B666FF328B00CC3003892A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Teste SwiftUI/Preview Content\"";
@@ -372,6 +375,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -380,7 +384,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LuccaLopes.Teste-SwiftUI";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Planee;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -390,7 +394,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B666FD928B00CC1003892A6 /* Build configuration list for PBXProject "Teste SwiftUI" */ = {
+		2B666FD928B00CC1003892A6 /* Build configuration list for PBXProject "Planee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B666FEF28B00CC3003892A6 /* Debug */,
@@ -399,7 +403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B666FF128B00CC3003892A6 /* Build configuration list for PBXNativeTarget "Teste SwiftUI" */ = {
+		2B666FF128B00CC3003892A6 /* Build configuration list for PBXNativeTarget "Planee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B666FF228B00CC3003892A6 /* Debug */,

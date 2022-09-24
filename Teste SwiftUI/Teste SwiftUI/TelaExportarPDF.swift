@@ -46,12 +46,6 @@ struct TelaExportarPDF: View {
                             Text("Enviar")
                         }
                     }
-//                    if let gastos = vm.gastos {
-//                        if gastos.isEmpty {
-//
-//                        }
-//                    }
-                    
                 }
                 .sheet(isPresented: $mostrarSheetCP) {
                     vm.PDFUrl = nil

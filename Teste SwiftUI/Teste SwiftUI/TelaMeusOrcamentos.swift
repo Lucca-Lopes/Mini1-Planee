@@ -20,10 +20,9 @@ struct TelaMeusOrcamentos: View {
                 if editando {
                     HStack {
                         Text(orcamento.nome ?? "Novo Orçamento")
-                            .lineLimit(1)
+//                            .lineLimit(1)
                         Spacer()
                         Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
-                            .foregroundColor(.gray)
                     }
                 }
                 else {
@@ -33,7 +32,8 @@ struct TelaMeusOrcamentos: View {
                 label: {
                     Text(orcamento.nome ?? "Novo Orçamento")
                         .lineLimit(1)
-                    Spacer()
+                        .frame(width: vm.screenWidth * 0.5, height: vm.screenHeight * 0.025, alignment: .leading)
+//                    Spacer()
                     Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
                 }
                 }
