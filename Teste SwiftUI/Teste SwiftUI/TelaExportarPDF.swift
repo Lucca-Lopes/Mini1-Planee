@@ -9,11 +9,13 @@ import SwiftUI
 
 struct TelaExportarPDF: View {
     
-    var vm: PlaneeViewModel
+    @ObservedObject var vm: PlaneeViewModel
     
     @State var gastos = false
     @State var despesas = false
     @State var valorDaHora = false
+    
+    @State var mostrarSheetCP = false
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -34,7 +36,7 @@ struct TelaExportarPDF: View {
                             } completion: { status, url in
                                 if let url = url, status {
                                     vm.PDFUrl = url
-                                    vm.mostraSheetCp.toggle()
+                                    mostrarSheetCP.toggle()
                                 }
                                 else {
                                     print("Falha ao produzir o PDF")
@@ -51,11 +53,11 @@ struct TelaExportarPDF: View {
 //                    }
                     
                 }
-                .sheet(isPresented: vm.$mostraSheetCp) {
+                .sheet(isPresented: $mostrarSheetCP) {
                     vm.PDFUrl = nil
                 } content: {
                     if let pdfUrl = vm.PDFUrl {
-                        SheetCompartilhada(urls: [pdfUrl])
+                        SheetCompartilhar(urls: [pdfUrl])
                     }
                 }
             }
@@ -63,16 +65,16 @@ struct TelaExportarPDF: View {
     }
 }
 
-struct SheetCompartilhada: UIViewControllerRepresentable {
+struct SheetCompartilhar: UIViewControllerRepresentable {
     
     var urls: [Any]
     
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context: Context) -> UIActivityViewController {
         let controlador = UIActivityViewController(activityItems: urls, applicationActivities: nil)
         return controlador
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
         
     }
     

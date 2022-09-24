@@ -16,6 +16,8 @@ struct TelaOrcamento: View {
     
     let utilitarios = Utilitarios()
     
+    @State var mostrarSheetCP = false
+    
     var body: some View {
         List{
             HStack {
@@ -32,7 +34,6 @@ struct TelaOrcamento: View {
                    Text("Gastos")
                    Spacer()
                    Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos()))
-//                       .foregroundColor(.gray)
                }
                 NavigationLink {
                      TelaGastos(vm: vm)
@@ -42,8 +43,6 @@ struct TelaOrcamento: View {
                     Spacer()
                     Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
                 }
-//                utilitarios.criaNavigationLink(textoPrincipal: "Gastos", textoSecundario: "R$ 1.250,00", destino: "tela_criar_orcamento")
-//                utilitarios.criaNavigationLink(textoPrincipal: "Despesas", textoSecundario: "R$ 980,00", destino: "tela_criar_orcamento")
             }
             
             Section(header: Text("Mão de obra")
@@ -76,13 +75,31 @@ struct TelaOrcamento: View {
                     .bold()
             }
         }
+        .sheet(isPresented: self.$mostrarSheetCP) {
+            vm.PDFUrl = nil
+        } content: {
+            if let pdfUrl = vm.PDFUrl {
+                SheetCompartilhar(urls: [pdfUrl])
+            }
+        }
         .navigationTitle(vm.orcamentos.last!.nome ?? "")
         .navigationBarTitleDisplayMode(.large)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    print("Adicionou")
+                    exportarPDF {
+                        self
+                            .environmentObject(vm)
+                    } completion: { status, url in
+                        if let url = url,status {
+                            vm.PDFUrl = url
+                            mostrarSheetCP.toggle()
+                        }
+                        else {
+                            print("Erro ao criar pdf")
+                        }
+                    }
                 }label:{
                     Image(systemName: "square.and.arrow.up")
                 }
@@ -94,16 +111,7 @@ struct TelaOrcamento: View {
                 } label: {
                     Text("Editar")
                 }
-//                Button{
-//                    TelaCriarOrcamento(vm: vm)
-//                }label:{
-//                    Text("Editar")
-//                }
             }
         }
-        
-        //            .fixedSize()
-        //            .frame(width: screenWidth, height: screenHeight, alignment: .center)
-        //        }
     }
 }

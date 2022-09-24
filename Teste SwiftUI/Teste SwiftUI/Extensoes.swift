@@ -21,7 +21,9 @@ extension View{
             controladorDeHospedagem.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             controladorDeHospedagem.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             controladorDeHospedagem.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            controladorDeHospedagem.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            controladorDeHospedagem.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            controladorDeHospedagem.widthAnchor.constraint(equalToConstant: limitesTela().width )
         ]
         scrollView.addSubview(controladorDeHospedagem)
         scrollView.addConstraints(contraints)
@@ -31,16 +33,11 @@ extension View{
     }
     
     func exportarPDF<Content: View>(@ViewBuilder content: @escaping ()->Content,completion: @escaping(Bool,URL?)->()){
-        
-
-        
     
         let documentoDiretorio = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
 
         let resultadoFileUrl = documentoDiretorio.appendingPathComponent("NOMEDOSEUPDF\(UUID().uuidString).pdf")
 
-
-//        ele criou um let size para convertera scrollview dele
         let pdfView = converterParaView {
             TelaInicial()
         }
@@ -65,12 +62,13 @@ extension View{
             completion(false,nil)
             print(error.localizedDescription)
         }
-        
+                
         //remove o added view
         pegarControlaorRaiz().view.subviews.forEach { view in
             if view.tag == 1009{
                 print("Remover")
                 view.removeFromSuperview()
+
             }
         }
     }

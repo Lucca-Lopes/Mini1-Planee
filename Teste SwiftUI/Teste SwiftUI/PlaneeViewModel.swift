@@ -21,7 +21,7 @@ class PlaneeViewModel: ObservableObject {
     @Published var valorDaHora: [ValorHoraDeTrabalho] = []
     
     @Published var PDFUrl: URL?
-    @Published var mostraSheetCp: Bool = false
+//    @Published var mostraSheetCp: Bool = false
     
     init() {
         fetchOrcamento()
