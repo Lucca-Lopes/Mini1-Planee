@@ -20,12 +20,12 @@ struct TelaCriarOrcamento: View {
     
     let utilitarios = Utilitarios()
     
-    let formatacao: NumberFormatter = {
-        let formatacao = NumberFormatter()
-        formatacao.numberStyle = .percent
-        formatacao.percentSymbol = "%"
-        return formatacao
-    }()
+//    let formatacao: NumberFormatter = {
+//        let formatacao = NumberFormatter()
+//        formatacao.numberStyle = .percent
+//        formatacao.percentSymbol = "%"
+//        return formatacao
+//    }()
     
     var body: some View {
         List{
@@ -64,7 +64,7 @@ struct TelaCriarOrcamento: View {
                     Text("Valor hora de trabalho")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
-                        .foregroundColor(.gray)
+//                        .foregroundColor(.gray)
                 }
                 HStack {
                     Text("Custos por hora")
@@ -107,6 +107,9 @@ struct TelaCriarOrcamento: View {
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
+                    .foregroundColor(.gray)
+                    Text("%")
+                        .foregroundColor(.gray)
                 }
             }
             Section() {
@@ -131,9 +134,6 @@ struct TelaCriarOrcamento: View {
         }
         .navigationBarTitle("Novo orçamento")
         .navigationBarTitleDisplayMode(.inline)
-        //            .fixedSize()
-        //            .frame(width: screenWidth, height: screenHeight, alignment: .center)
-        //        }
     }
 }
 

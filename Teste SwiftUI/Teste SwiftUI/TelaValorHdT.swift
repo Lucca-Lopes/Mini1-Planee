@@ -19,7 +19,7 @@ struct TelaValorHdT: View {
     
     let formatacao: NumberFormatter = {
         let formatacao = NumberFormatter()
-        formatacao.numberStyle = .decimal
+        formatacao.numberStyle = .currency
         formatacao.minimumFractionDigits = 2
         formatacao.maximumFractionDigits = 2
         formatacao.decimalSeparator = ","
@@ -39,18 +39,25 @@ struct TelaValorHdT: View {
                     Spacer()
                     TextField("R$ 0,00", value: $valor, formatter: formatacao)
                         .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
                 }
                 HStack{
                     Text("Dias de trabalho")
                     Spacer()
                     TextField("0 dias", value: $dias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
+                    Text("Dias")
+                        .foregroundColor(.gray)
                 }
                 HStack{
                     Text("Horas diárias")
                     Spacer()
                     TextField("0 horas", value: $horasDiarias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .foregroundColor(.gray)
+                    Text("Horas")
+                        .foregroundColor(.gray)
                 }
                 
                 Section(header: Text(""))
