@@ -11,9 +11,18 @@ struct TelaValorHdT: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @State var valor: Double
-    @State var dias: Int
-    @State var horasDiarias: Int
+    @State var valor: Double = 0.0
+    @State var dias: Int = 0
+    @State var horasDiarias: Int = 0
+    
+    let formatacao: NumberFormatter = {
+        let formatacao = NumberFormatter()
+        formatacao.numberStyle = .decimal
+        formatacao.minimumFractionDigits = 2
+        formatacao.maximumFractionDigits = 2
+        formatacao.decimalSeparator = ","
+        return formatacao
+    }()
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -28,8 +37,9 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Pretensão salarial")
                     Spacer()
-                    TextField("R$ 0,00", value: $valor, formatter: NumberFormatter())
+                    TextField("R$ 0,00", value: $valor, formatter: formatacao)
                         .multilineTextAlignment(.trailing)
+                        .keyboardType(.decimalPad)
                         .foregroundColor(.gray)
                 }
                 HStack{
@@ -37,6 +47,7 @@ struct TelaValorHdT: View {
                     Spacer()
                     TextField("0 dias", value: $dias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
                         .foregroundColor(.gray)
                 }
                 HStack{
@@ -44,6 +55,7 @@ struct TelaValorHdT: View {
                     Spacer()
                     TextField("0 horas", value: $horasDiarias, formatter: NumberFormatter())
                         .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
                         .foregroundColor(.gray)
                 }
                 
@@ -64,8 +76,10 @@ struct TelaValorHdT: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    vm.atualizarVdH(entidade: vm.valorDaHora[0], pretensaoSalarial: valor, dias: dias, horas: horasDiarias)
-                    self.mode.wrappedValue.dismiss()
+                    if valor != 0 && dias != 0 && horasDiarias != 0 {
+                        vm.atualizarVdH(entidade: vm.valorDaHora[0], pretensaoSalarial: valor, dias: dias, horas: horasDiarias)
+                        self.mode.wrappedValue.dismiss()
+                    }
                 }label:{
                     Text("Salvar")
                 }

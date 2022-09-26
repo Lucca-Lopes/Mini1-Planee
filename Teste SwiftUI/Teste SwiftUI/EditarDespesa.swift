@@ -43,7 +43,7 @@ struct EditarDespesa: View {
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
                 }

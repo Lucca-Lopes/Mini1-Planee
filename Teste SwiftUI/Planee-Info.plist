@@ -5,7 +5,7 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>ImagemDeAbertura</string>
+		<string>iconeMini</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>

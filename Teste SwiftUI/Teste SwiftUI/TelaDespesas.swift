@@ -28,9 +28,9 @@ struct TelaDespesas: View {
                 }
                 label: {
                     Text(despesaAtual.nome ?? "")
-                        .lineLimit(1)
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", despesaAtual.valor))
+                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
+                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                 }
 //                .sheet(isPresented: $mostrarCriarDespesa){
 //                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
@@ -42,7 +42,7 @@ struct TelaDespesas: View {
                 HStack {
                     Text("Valor total")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
                 }
             }
         }

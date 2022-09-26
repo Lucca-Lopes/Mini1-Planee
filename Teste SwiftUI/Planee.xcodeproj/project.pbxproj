@@ -10,6 +10,7 @@
 		00826C0028CBCD4D004B935B /* TelaValorHdT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */; };
 		0500C47828C8081F008A9042 /* TelaGastos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500C47728C8081F008A9042 /* TelaGastos.swift */; };
 		057A456328C12089004756EE /* TelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057A456228C12089004756EE /* TelaInicial.swift */; };
+		2B2B4A2928E2243E00743387 /* iconeMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B4A2828E2243E00743387 /* iconeMini.png */; };
 		2B666FE228B00CC1003892A6 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE128B00CC1003892A6 /* Main.swift */; };
 		2B666FE428B00CC1003892A6 /* TelaMeusOrcamentos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */; };
 		2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B666FE528B00CC3003892A6 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaValorHdT.swift; sourceTree = "<group>"; };
 		0500C47728C8081F008A9042 /* TelaGastos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaGastos.swift; sourceTree = "<group>"; };
 		057A456228C12089004756EE /* TelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaInicial.swift; sourceTree = "<group>"; };
+		2B2B4A2828E2243E00743387 /* iconeMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconeMini.png; sourceTree = "<group>"; };
 		2B666FDE28B00CC1003892A6 /* Planee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B666FE128B00CC1003892A6 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaMeusOrcamentos.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				2B666FE528B00CC3003892A6 /* Assets.xcassets */,
 				2B666FEA28B00CC3003892A6 /* Persistence.swift */,
 				2B666FEC28B00CC3003892A6 /* Teste_SwiftUI.xcdatamodeld */,
+				2B2B4A2828E2243E00743387 /* iconeMini.png */,
 			);
 			path = "Teste SwiftUI";
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2B4A2928E2243E00743387 /* iconeMini.png in Resources */,
 				2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */,
 				2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */,
 			);
@@ -339,6 +343,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,6 +375,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -12,7 +12,6 @@ struct TelaMeusOrcamentos: View {
     @ObservedObject var vm: PlaneeViewModel
     
     @State var editando = false
-    @State var selection = Set<String>()
     
     var body: some View {
         List {
@@ -20,7 +19,6 @@ struct TelaMeusOrcamentos: View {
                 if editando {
                     HStack {
                         Text(orcamento.nome ?? "Novo Orçamento")
-//                            .lineLimit(1)
                         Spacer()
                         Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
                     }
@@ -33,13 +31,11 @@ struct TelaMeusOrcamentos: View {
                     Text(orcamento.nome ?? "Novo Orçamento")
                         .lineLimit(1)
                         .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.025, alignment: .leading)
-//                    Spacer()
-                    Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), orcamento.valorTotal))
                         .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.025, alignment: .trailing)
                 }
                 }
             }
-//            .onMove(perform: moverItem)
             .onDelete(perform: vm.deletarOrcamento)
         }
         .toolbar {
@@ -64,6 +60,7 @@ struct TelaMeusOrcamentos: View {
         .navigationBarTitleDisplayMode(.large)
         .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
+}
     
 //    private func addItem() {
 //        withAnimation {
@@ -129,14 +126,14 @@ struct TelaMeusOrcamentos: View {
 //            }
 //        }
 //    }
-}
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+//}
+//
+//private let itemFormatter: DateFormatter = {
+//    let formatter = DateFormatter()
+//    formatter.dateStyle = .short
+//    formatter.timeStyle = .medium
+//    return formatter
+//}()
 //
 //#if DEBUG
 //struct ContentView_Previews: PreviewProvider {

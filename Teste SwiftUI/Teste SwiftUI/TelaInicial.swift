@@ -26,7 +26,7 @@ struct TelaInicial: View {
                     .padding()
                     .frame(width: vm.screenWidth * 0.99, height: vm.screenHeight * 0.05, alignment: .leading)
                 
-                Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
+                Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                     .bold()
                     .font(.system(size: 20))
                     .frame(width: vm.screenWidth * 0.9, height: vm.screenHeight * 0.0, alignment: .leading)
@@ -37,13 +37,11 @@ struct TelaInicial: View {
                 Form{
 
                     Section{
-//                        utilitarios.criaNLHome(titulo: "Criar orçamento", vm: &vm)
                         NavigationLink {
                             TelaCriarOrcamento(vm: vm)
                         }
                         label: {
                             Text("Criar orçamento")
-                                .foregroundColor(.black)
                                 .bold()
                                 .font(.system(size: 22))
                                 .frame(height: 55)
@@ -56,7 +54,6 @@ struct TelaInicial: View {
                         }
                         label: {
                             Text("Meus orçamentos")
-                                .foregroundColor(.black)
                                 .bold()
                                 .font(.system(size: 22))
                                 .frame(height: 55)
@@ -70,7 +67,6 @@ struct TelaInicial: View {
                         }
                         label: {
                             Text("Calcular valor da hora")
-                                .foregroundColor(.black)
                                 .bold()
                                 .font(.system(size: 22))
                                 .frame(height: 55)
@@ -84,7 +80,6 @@ struct TelaInicial: View {
                         }
                         label: {
                             Text("Despesas")
-                                .foregroundColor(.black)
                                 .bold()
                                 .font(.system(size: 22))
                                 .frame(height: 55)
@@ -98,7 +93,6 @@ struct TelaInicial: View {
                         }
                         label: {
                             Text("Gastos")
-                                .foregroundColor(.black)
                                 .bold()
                                 .font(.system(size: 22))
                                 .frame(height: 55)

@@ -16,20 +16,11 @@ struct TelaCriarOrcamento: View {
     @State var nomeCliente: String = ""
     @State var hora: Int = 0
     @State var lucro: Int = 0
-    @State var totalGastos: Double = 0.0
-    @State var totalDespesas: Double = 0.0
 //    @State var custoTotal: Double
     
     let utilitarios = Utilitarios()
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
-    init(vm: PlaneeViewModel){
-        self.vm = vm
-        self.totalGastos = vm.calcularTotalGastos()
-        self.totalDespesas = vm.calcularTotalDespesa()
-    }
-
     
     var body: some View {
         List{
@@ -43,16 +34,20 @@ struct TelaCriarOrcamento: View {
                }
                label: {
                    Text("Gastos")
+                       .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
                    Spacer()
-                   Text("R$ " + String(format: "%.2f", vm.calcularTotalGastos()))
+                   Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
+                       .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                }
                 NavigationLink {
                     TelaDespesas(vm: vm)
                 }
                 label: {
                     Text("Despesas")
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.calcularTotalDespesa()))
+                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+//                    Spacer()
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                 }
             }
             
@@ -60,11 +55,14 @@ struct TelaCriarOrcamento: View {
             ) {
                 NavigationLink {
                     TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
+                        
                 }
                 label: {
                     Text("Valor hora de trabalho")
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", vm.valorDaHora.last!.valorFinal))
+                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.1, alignment: .leading)
+//                    Spacer()
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
+                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.1, alignment: .trailing)
                 }
                 HStack {
                     Text("Custos por hora")
@@ -75,7 +73,7 @@ struct TelaCriarOrcamento: View {
                     Text("Tempo de trabalho")
                     Spacer()
                     TextField(
-                        "00:00",
+                        "0",
                         value: $hora,
                         formatter: NumberFormatter()
                     )
@@ -83,12 +81,14 @@ struct TelaCriarOrcamento: View {
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
                     .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
+                    Text("h")
+                        .foregroundColor(.gray)
                 }
                 HStack {
                     Text("Custo total")
                         .bold()
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", (totalGastos + totalDespesas)))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.calcularTotalGastos() + vm.calcularTotalDespesa())))
                         .bold()
                 }
             }
@@ -124,8 +124,9 @@ struct TelaCriarOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
+                    print(hora)
                     if nomeOrcamento != "" && nomeCliente != "" && hora != 0 {
-                        vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: totalGastos, totalDespesas: totalDespesas, valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
+                        vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.calcularTotalGastos(), totalDespesas: vm.calcularTotalDespesa(), valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
                         self.mode.wrappedValue.dismiss()
                     }
                     
