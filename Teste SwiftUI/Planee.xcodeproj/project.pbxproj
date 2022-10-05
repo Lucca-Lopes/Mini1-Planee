@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00826C0028CBCD4D004B935B /* TelaValorHdT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */; };
+		00CEDCC028EDE80600CD1E8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00CEDCC228EDE80600CD1E8C /* Localizable.strings */; };
 		0500C47828C8081F008A9042 /* TelaGastos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0500C47728C8081F008A9042 /* TelaGastos.swift */; };
 		057A456328C12089004756EE /* TelaInicial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057A456228C12089004756EE /* TelaInicial.swift */; };
 		2B2B4A2928E2243E00743387 /* iconeMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B4A2828E2243E00743387 /* iconeMini.png */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaValorHdT.swift; sourceTree = "<group>"; };
+		00CEDCC328EDE83000CD1E8C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0500C47728C8081F008A9042 /* TelaGastos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaGastos.swift; sourceTree = "<group>"; };
 		057A456228C12089004756EE /* TelaInicial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaInicial.swift; sourceTree = "<group>"; };
 		2B2B4A2828E2243E00743387 /* iconeMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconeMini.png; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		2B666FD528B00CC1003892A6 = {
 			isa = PBXGroup;
 			children = (
+				00CEDCC228EDE80600CD1E8C /* Localizable.strings */,
 				2B9329DE28DFB68800FB732A /* Planee-Info.plist */,
 				2B666FE028B00CC1003892A6 /* Teste SwiftUI */,
 				2B666FDF28B00CC1003892A6 /* Products */,
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B2B4A2928E2243E00743387 /* iconeMini.png in Resources */,
+				00CEDCC028EDE80600CD1E8C /* Localizable.strings in Resources */,
 				2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */,
 				2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */,
 			);
@@ -208,6 +212,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		00CEDCC228EDE80600CD1E8C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00CEDCC328EDE83000CD1E8C /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2B666FEF28B00CC3003892A6 /* Debug */ = {
