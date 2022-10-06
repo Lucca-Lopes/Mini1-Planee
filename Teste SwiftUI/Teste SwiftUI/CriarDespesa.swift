@@ -16,6 +16,12 @@ struct CriarDespesa: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    private let numFormatacao: NumberFormatter = {
+        let numero = NumberFormatter()
+        numero.zeroSymbol = ""
+        return numero
+    }()
+    
     var body: some View {
         NavigationView {
             Form {
@@ -35,7 +41,7 @@ struct CriarDespesa: View {
                     TextField(
                         "R$ 0,00",
                         value: $valor,
-                        formatter: NumberFormatter()
+                        formatter: numFormatacao
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)

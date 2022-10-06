@@ -48,20 +48,13 @@ struct TelaDespesas: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    if editando {
-                        vm.salvar()
-                    }
-                    self.editando.toggle()
-                }) {
-                    Text(editando ? "Ok" : "Editar")
-                }
+                EditButton()
             }
             ToolbarItem {
                 Button {
                     mostrarCriarDespesa = true
                 } label: {
-                    Label("", systemImage: "plus")
+                    Label("Adicionar Despesa", systemImage: "plus")
                 }
                 .sheet(isPresented: $mostrarCriarDespesa){
                     CriarDespesa(vm: vm, nome: "", valor: 0.0)
@@ -69,7 +62,6 @@ struct TelaDespesas: View {
             }
         }
         .navigationTitle("Despesas")
-        .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
 }
 

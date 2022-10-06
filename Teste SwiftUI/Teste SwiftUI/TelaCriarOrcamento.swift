@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+//extension View{
+//    func dismissKeyboard(){
+//        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//    }
+//}
+
 struct TelaCriarOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
@@ -22,10 +28,24 @@ struct TelaCriarOrcamento: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    private let numFormatacao: NumberFormatter = {
+        let numero = NumberFormatter()
+        numero.zeroSymbol = ""
+        return numero
+    }()
+    
+//    private enum Field: Int {
+//        case titulo, nomeCliente, tempoTrabalho, lucro
+//    }
+//
+//    @FocusState private var focusedField: Field?
+    
     var body: some View {
         List{
             TextField("Titulo", text: $nomeOrcamento)
+//                .focused($focusedField, equals: .titulo)
             TextField("Nome do cliente", text: $nomeCliente)
+//                .focused($focusedField, equals: .nomeCliente)
             
             Section(header: Text("Custos")
             ) {
@@ -75,8 +95,9 @@ struct TelaCriarOrcamento: View {
                     TextField(
                         "0",
                         value: $hora,
-                        formatter: NumberFormatter()
+                        formatter: numFormatacao
                     )
+//                    .focused($focusedField, equals: .tempoTrabalho)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
@@ -100,8 +121,9 @@ struct TelaCriarOrcamento: View {
                     TextField(
                         "0",
                         value: $lucro,
-                        formatter: NumberFormatter()
+                        formatter: numFormatacao
                     )
+//                    .focused($focusedField, equals: .lucro)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
@@ -119,8 +141,18 @@ struct TelaCriarOrcamento: View {
                         .bold()
                 }
             }
+            
+            
         }
         .toolbar{
+//            ToolbarItem(placement: .keyboard) {
+//                Button(action: {
+//                    focusedField = nil
+//                }, label: {
+//                    Image(systemName: "keyboard.chevron.compact.down")
+//                })
+//            }
+            
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
@@ -137,12 +169,11 @@ struct TelaCriarOrcamento: View {
         }
         .navigationBarTitle("Novo orçamento")
         .navigationBarTitleDisplayMode(.inline)
-        //            .fixedSize()
-        //            .frame(width: screenWidth, height: screenHeight, alignment: .center)
-        //        }
+//        .onTapGesture{
+//            self.dismissKeyboard()
+//        }
     }
 }
-
 //struct tela_criar_orcamento_Previews: PreviewProvider {
 //    static var previews: some View {
 //        TelaCriarOrcamento()

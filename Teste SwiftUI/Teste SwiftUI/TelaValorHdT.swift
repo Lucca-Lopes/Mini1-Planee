@@ -21,7 +21,14 @@ struct TelaValorHdT: View {
         formatacao.minimumFractionDigits = 2
         formatacao.maximumFractionDigits = 2
         formatacao.decimalSeparator = ","
+        formatacao.zeroSymbol = ""
         return formatacao
+    }()
+    
+    private let numFormatacao: NumberFormatter = {
+        let numero = NumberFormatter()
+        numero.zeroSymbol = ""
+        return numero
     }()
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -45,7 +52,7 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Dias de trabalho")
                     Spacer()
-                    TextField("0 dias", value: $dias, formatter: NumberFormatter())
+                    TextField("0 dias", value: $dias, formatter: numFormatacao)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .foregroundColor(.gray)
@@ -53,7 +60,7 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Horas diárias")
                     Spacer()
-                    TextField("0 horas", value: $horasDiarias, formatter: NumberFormatter())
+                    TextField("0 horas", value: $horasDiarias, formatter: numFormatacao)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .foregroundColor(.gray)
@@ -64,7 +71,7 @@ struct TelaValorHdT: View {
                     HStack{
                         Text("Valor da hora de trabalho")
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", vm.valorDaHora[0].valorFinal))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                     }
                 }
             }

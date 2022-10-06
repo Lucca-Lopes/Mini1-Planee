@@ -23,7 +23,14 @@ struct CriarGasto: View {
         formatacao.minimumFractionDigits = 2
         formatacao.maximumFractionDigits = 2
         formatacao.decimalSeparator = ","
+        formatacao.zeroSymbol = ""
         return formatacao
+    }()
+    
+    private let numFormatacao: NumberFormatter = {
+        let numero = NumberFormatter()
+        numero.zeroSymbol = ""
+        return numero
     }()
     
     var body: some View{
@@ -60,7 +67,7 @@ struct CriarGasto: View {
                     TextField(
                         "Meses",
                         value: $vidaUtil,
-                        formatter: NumberFormatter()
+                        formatter: numFormatacao
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)

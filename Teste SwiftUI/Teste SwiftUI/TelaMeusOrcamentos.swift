@@ -40,25 +40,19 @@ struct TelaMeusOrcamentos: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    self.editando.toggle()
-                    
-                }) {
-                    Text(editando ? "Ok" : "Editar")
-                }
+                EditButton()
             }
             ToolbarItem {
                 NavigationLink {
                     TelaCriarOrcamento(vm: vm)
                 }
                 label: {
-                    Label("Add Item", systemImage: "plus")
+                    Label("Adicionar Orçamento", systemImage: "plus")
                 }
             }
         }
         .navigationTitle("Meus Orçamentos")
         .navigationBarTitleDisplayMode(.large)
-        .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
 }
     

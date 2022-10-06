@@ -53,17 +53,13 @@ struct TelaGastos: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    self.editando.toggle()
-                }) {
-                    Text(editando ? "Ok" : "Editar")
-                }
+                EditButton()
             }
             ToolbarItem {
                 Button(action: {
                     mostrarSheet = true
                 }, label: {
-                    Label("Add Item", systemImage: "plus")
+                    Label("Adicionar Gasto", systemImage: "plus")
                 })
                 .sheet(isPresented: $mostrarSheet){
                     CriarGasto(vm: vm)
@@ -71,7 +67,6 @@ struct TelaGastos: View {
             }
         }
         .navigationTitle("Gastos")
-        .environment(\.editMode, .constant(self.editando ? EditMode.active : EditMode.inactive))
     }
 }
 
