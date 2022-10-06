@@ -9,15 +9,10 @@ import SwiftUI
 import CoreData
 
 @main
-struct Main: App {
-//    let persistenceController = PersistenceController.shared
-    
-//    @StateObject var vm = PlaneeViewModel()
-
+struct Main: App {    
     var body: some Scene {
         WindowGroup {
             TelaInicial()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
