@@ -37,7 +37,7 @@ struct TelaOrcamento: View {
                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                }
                 NavigationLink {
-                     TelaGastos(vm: vm)
+                     TelaDespesas(vm: vm)
                 }
                 label: {
                     Text("Despesas")
@@ -91,6 +91,10 @@ struct TelaOrcamento: View {
                     .bold()
             }
         }
+        .navigationTitle(entidade.nome!)
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
 //        .sheet(isPresented: self.$mostrarSheetCP) {
 //            vm.PDFUrl = nil
 //        } content: {
@@ -98,8 +102,7 @@ struct TelaOrcamento: View {
 //                SheetCompartilhar(urls: [pdfUrl])
 //            }
 //        }
-        .navigationTitle(entidade.nome!)
-        .navigationBarTitleDisplayMode(.large)
+        
 //        .toolbar{
 //            ToolbarItem(placement: .navigationBarTrailing)
 //            {
@@ -129,5 +132,4 @@ struct TelaOrcamento: View {
 //                }
 //            }
 //        }
-    }
-}
+   
