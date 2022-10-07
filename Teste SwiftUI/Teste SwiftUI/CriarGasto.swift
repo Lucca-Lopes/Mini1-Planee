@@ -17,22 +17,6 @@ struct CriarGasto: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    let formatacao: NumberFormatter = {
-        let formatacao = NumberFormatter()
-        formatacao.numberStyle = .decimal
-        formatacao.minimumFractionDigits = 2
-        formatacao.maximumFractionDigits = 2
-        formatacao.decimalSeparator = ","
-        formatacao.zeroSymbol = ""
-        return formatacao
-    }()
-    
-    private let numFormatacao: NumberFormatter = {
-        let numero = NumberFormatter()
-        numero.zeroSymbol = ""
-        return numero
-    }()
-    
     var body: some View{
         NavigationView{
             List{
@@ -53,7 +37,7 @@ struct CriarGasto: View {
                     TextField(
                         "R$ 0,00",
                         value: $valor,
-                        formatter: formatacao
+                        formatter: vm.formatacao
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
@@ -67,7 +51,7 @@ struct CriarGasto: View {
                     TextField(
                         "Meses",
                         value: $vidaUtil,
-                        formatter: numFormatacao
+                        formatter: vm.numFormatacao
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)

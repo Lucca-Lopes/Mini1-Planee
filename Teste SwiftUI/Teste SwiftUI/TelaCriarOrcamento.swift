@@ -28,12 +28,6 @@ struct TelaCriarOrcamento: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    private let numFormatacao: NumberFormatter = {
-        let numero = NumberFormatter()
-        numero.zeroSymbol = ""
-        return numero
-    }()
-    
 //    private enum Field: Int {
 //        case titulo, nomeCliente, tempoTrabalho, lucro
 //    }
@@ -95,7 +89,7 @@ struct TelaCriarOrcamento: View {
                     TextField(
                         "0",
                         value: $hora,
-                        formatter: numFormatacao
+                        formatter: vm.numFormatacao
                     )
 //                    .focused($focusedField, equals: .tempoTrabalho)
                     .multilineTextAlignment(.trailing)
@@ -121,7 +115,7 @@ struct TelaCriarOrcamento: View {
                     TextField(
                         "0",
                         value: $lucro,
-                        formatter: numFormatacao
+                        formatter: vm.numFormatacao
                     )
 //                    .focused($focusedField, equals: .lucro)
                     .multilineTextAlignment(.trailing)

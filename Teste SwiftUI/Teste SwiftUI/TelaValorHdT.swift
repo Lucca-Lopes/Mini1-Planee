@@ -15,22 +15,6 @@ struct TelaValorHdT: View {
     @State var dias: Int = 0
     @State var horasDiarias: Int = 0
     
-    let formatacao: NumberFormatter = {
-        let formatacao = NumberFormatter()
-        formatacao.numberStyle = .decimal
-        formatacao.minimumFractionDigits = 2
-        formatacao.maximumFractionDigits = 2
-        formatacao.decimalSeparator = ","
-        formatacao.zeroSymbol = ""
-        return formatacao
-    }()
-    
-    private let numFormatacao: NumberFormatter = {
-        let numero = NumberFormatter()
-        numero.zeroSymbol = ""
-        return numero
-    }()
-    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
@@ -44,7 +28,7 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Pretensão salarial")
                     Spacer()
-                    TextField("R$ 0,00", value: $valor, formatter: formatacao)
+                    TextField("R$ 0,00", value: $valor, formatter: vm.formatacao)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.decimalPad)
                         .foregroundColor(.gray)
@@ -52,7 +36,7 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Dias de trabalho")
                     Spacer()
-                    TextField("0 dias", value: $dias, formatter: numFormatacao)
+                    TextField("0 dias", value: $dias, formatter: vm.numFormatacao)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .foregroundColor(.gray)
@@ -60,7 +44,7 @@ struct TelaValorHdT: View {
                 HStack{
                     Text("Horas diárias")
                     Spacer()
-                    TextField("0 horas", value: $horasDiarias, formatter: numFormatacao)
+                    TextField("0 horas", value: $horasDiarias, formatter: vm.numFormatacao)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .foregroundColor(.gray)

@@ -23,6 +23,22 @@ class PlaneeViewModel: ObservableObject {
     @Published var PDFUrl: URL?
 //    @Published var mostraSheetCp: Bool = false
     
+    let formatacao: NumberFormatter = {
+        let formatacao = NumberFormatter()
+        formatacao.numberStyle = .decimal
+        formatacao.minimumFractionDigits = 2
+        formatacao.maximumFractionDigits = 2
+        formatacao.decimalSeparator = ","
+        formatacao.zeroSymbol = ""
+        return formatacao
+    }()
+    
+    let numFormatacao: NumberFormatter = {
+        let numero = NumberFormatter()
+        numero.zeroSymbol = ""
+        return numero
+    }()
+    
     init() {
         fetchOrcamento()
         fetchDespesa()
