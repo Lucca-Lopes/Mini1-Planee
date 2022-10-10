@@ -28,6 +28,7 @@
 		2BB8E08528DE50CF00C93D1B /* TelaExportarPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */; };
 		2BB8E08728DE523200C93D1B /* Extensoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08628DE523200C93D1B /* Extensoes.swift */; };
 		2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B9329DE28DFB68800FB732A /* Planee-Info.plist */; };
+		2BBC940828F48F8D00B29404 /* TelaEditarOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC940728F48F8D00B29404 /* TelaEditarOrcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
 		2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		2BB8E08228DE4BBB00C93D1B /* EditarGasto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarGasto.swift; sourceTree = "<group>"; };
 		2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaExportarPDF.swift; sourceTree = "<group>"; };
 		2BB8E08628DE523200C93D1B /* Extensoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensoes.swift; sourceTree = "<group>"; };
+		2BBC940728F48F8D00B29404 /* TelaEditarOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaEditarOrcamento.swift; sourceTree = "<group>"; };
 		2BCB0C3C28C2982A006793CC /* Utilitarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitarios.swift; sourceTree = "<group>"; };
 		2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaDespesas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 				057A456228C12089004756EE /* TelaInicial.swift */,
 				2B91625E28C14B7300FDEBD9 /* TelaCriarOrcamento.swift */,
 				2B666FE328B00CC1003892A6 /* TelaMeusOrcamentos.swift */,
+				2BBC940728F48F8D00B29404 /* TelaEditarOrcamento.swift */,
 				2B89E79428D115490057205C /* TelaOrcamento.swift */,
 				2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */,
 				00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */,
@@ -208,6 +211,7 @@
 				2BB8E08728DE523200C93D1B /* Extensoes.swift in Sources */,
 				2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */,
 				2B8FA99A28DCD780005AA1B3 /* PlaneeViewModel.swift in Sources */,
+				2BBC940828F48F8D00B29404 /* TelaEditarOrcamento.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

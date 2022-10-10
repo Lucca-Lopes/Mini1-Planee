@@ -95,16 +95,12 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    func atualizarOrcamento(entidade: Orcamento, nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, custoPorHora: Double, tempoDeTrabalho: Int, custoTotal: Double, lucro: Int){
+    func atualizarOrcamento(entidade: Orcamento, nome: String, nomeCliente: String, tempoDeTrabalho: Int, lucro: Int){
         entidade.nome = nome
         entidade.nomeDoCliente = nomeCliente
-        entidade.custoTotalGastos = totalGastos
-        entidade.custoTotalDespesas = totalDespesas
-        entidade.custoHora = custoPorHora
         entidade.horasDeTrabalho = Int64(tempoDeTrabalho)
-        entidade.custoTotal = custoTotal
         entidade.lucro = Int64(lucro)
-        entidade.valorTotal = (custoTotal + (valorDaHora[0].valorFinal * 10)) * Double(((lucro + 100) / 100))
+        entidade.valorTotal = (entidade.custoTotal + (valorDaHora[0].valorFinal * 10)) * Double(((lucro + 100) / 100))
         salvar()
     }
     

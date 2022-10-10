@@ -91,19 +91,7 @@ struct TelaOrcamento: View {
                     .bold()
             }
         }
-        .navigationTitle(entidade.nome!)
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
-//        .sheet(isPresented: self.$mostrarSheetCP) {
-//            vm.PDFUrl = nil
-//        } content: {
-//            if let pdfUrl = vm.PDFUrl {
-//                SheetCompartilhar(urls: [pdfUrl])
-//            }
-//        }
-        
-//        .toolbar{
+        .toolbar{
 //            ToolbarItem(placement: .navigationBarTrailing)
 //            {
 //                Button{
@@ -123,13 +111,26 @@ struct TelaOrcamento: View {
 //                    Image(systemName: "square.and.arrow.up")
 //                }
 //            }
-//            ToolbarItem(placement: .navigationBarTrailing)
-//            {
-//                NavigationLink {
-//                    TelaCriarOrcamento(vm: vm)
-//                } label: {
-//                    Text("Editar")
-//                }
+            ToolbarItem(placement: .navigationBarTrailing)
+            {
+                NavigationLink {
+                    TelaEditarOrcamento(vm: vm, entidade: entidade, nomeOrcamento: entidade.nome!, nomeCliente: entidade.nomeDoCliente!)
+                } label: {
+                    Text("Editar")
+                }
+            }
+        }
+        .navigationTitle(entidade.nome!)
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+//        .sheet(isPresented: self.$mostrarSheetCP) {
+//            vm.PDFUrl = nil
+//        } content: {
+//            if let pdfUrl = vm.PDFUrl {
+//                SheetCompartilhar(urls: [pdfUrl])
 //            }
 //        }
+        
+        
    
