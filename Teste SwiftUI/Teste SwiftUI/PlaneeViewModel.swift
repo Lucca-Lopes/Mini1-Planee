@@ -23,6 +23,10 @@ class PlaneeViewModel: ObservableObject {
     @Published var PDFUrl: URL?
 //    @Published var mostraSheetCp: Bool = false
     
+    func dismissKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     let formatacao: NumberFormatter = {
         let formatacao = NumberFormatter()
         formatacao.numberStyle = .decimal

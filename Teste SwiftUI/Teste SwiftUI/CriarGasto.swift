@@ -76,6 +76,7 @@ struct CriarGasto: View {
             }
             .navigationBarTitle("Adicionar gasto")
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture(perform: vm.dismissKeyboard)
             //                .frame(width: screenWidth, height: screenHeight * 0.9, alignment: .center)
         }
     }

@@ -60,5 +60,6 @@ struct EditarDespesa: View {
             }
             .navigationBarTitle("Editar despesa")
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture(perform: vm.dismissKeyboard)
     }
 }

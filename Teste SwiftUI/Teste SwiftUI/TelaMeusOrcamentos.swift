@@ -53,6 +53,7 @@ struct TelaMeusOrcamentos: View {
         }
         .navigationTitle("Meus Orçamentos")
         .navigationBarTitleDisplayMode(.large)
+//        .frame(width: 10, height: 10)
     }
 }
     

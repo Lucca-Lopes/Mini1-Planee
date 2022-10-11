@@ -62,6 +62,7 @@ struct TelaDespesas: View {
             }
         }
         .navigationTitle("Despesas")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

@@ -56,6 +56,7 @@ struct CriarDespesa: View {
             }
             .navigationBarTitle("Adicionar despesa")
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture(perform: vm.dismissKeyboard)
         }
     }
 }

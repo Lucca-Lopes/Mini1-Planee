@@ -40,7 +40,7 @@ struct EditarGasto: View {
                 TextField(
                     "R$ 0,00",
                     value: $valor,
-                    formatter: NumberFormatter()
+                    formatter: vm.formatacao
                 )
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
@@ -54,7 +54,7 @@ struct EditarGasto: View {
                 TextField(
                     "R$ 0,00",
                     value: $vidaUtil,
-                    formatter: NumberFormatter()
+                    formatter: vm.numFormatacao
                 )
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
@@ -77,5 +77,6 @@ struct EditarGasto: View {
         }
         .navigationBarTitle("Editar gasto")
         .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture(perform: vm.dismissKeyboard)
     }
 }
