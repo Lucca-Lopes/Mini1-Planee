@@ -240,7 +240,26 @@ class PlaneeViewModel: ObservableObject {
          }
     }
     
+    public func ValidaOrcamento(nomeOrcamento: String, nomeCliente: String, qtdHora: Int) -> Bool {
+        if nomeOrcamento != "" && nomeCliente != "" && qtdHora > 0{
+            return true
+        }
+        return false
+    }
     
+    public func ValidaDespesa(nome: String, valor: Double) -> Bool {
+        if nome != "" && valor > 0{
+            return true
+        }
+        return false
+    }
+    
+    public func ValidaGasto(nome: String,valor: Double, vidaUtil: Int) -> Bool {
+        if nome != "" && valor > 0 && vidaUtil > 0{
+            return true
+        }
+        return false
+    }
     
 //    func criarVariaveisToggleDespesa(despesas: [Despesa]) -> [Bool] {
 //        @State var selecionado = false

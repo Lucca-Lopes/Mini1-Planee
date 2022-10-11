@@ -65,14 +65,16 @@ struct EditarGasto: View {
         }
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    if nome != "" && valor != 0.0 && vidaUtil != 0 {
+                Button{
+                    if vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil){
                         vm.atualizarGasto(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
                         self.mode.wrappedValue.dismiss()
                     }
-                }, label: {
+                }label:{
                     Text("OK")
-                })
+                        .accentColor(vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil) ? Color.blue : Color.gray)
+                }
+                .disabled(!vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil))
             }
         }
         .navigationBarTitle("Editar gasto")

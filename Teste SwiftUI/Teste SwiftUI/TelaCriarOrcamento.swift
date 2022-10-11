@@ -137,15 +137,17 @@ struct TelaCriarOrcamento: View {
                 ToolbarItem(placement: .navigationBarTrailing)
                 {
                     Button{
-                        print(hora)
-                        if nomeOrcamento != "" && nomeCliente != "" && hora != 0 {
+                        if vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) {
                             vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.calcularTotalGastos(), totalDespesas: vm.calcularTotalDespesa(), valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
                             self.mode.wrappedValue.dismiss()
                         }
                         
                     }label:{
                         Text("Adicionar")
+                            .accentColor(vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) ? Color.blue : Color.gray)
                     }
+                    .disabled(!vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora))
+                    
                 }
             }
             .navigationBarTitle("Novo orçamento")
