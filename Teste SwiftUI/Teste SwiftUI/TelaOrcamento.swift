@@ -27,36 +27,42 @@ struct TelaOrcamento: View {
             }
             Section(header: Text("Custos")
             ) {
-                NavigationLink {
-                    TelaGastos(vm: vm)
-               }
-               label: {
+//                NavigationLink {
+//                    TelaGastos(vm: vm)
+//               }
+//               label: {
+                HStack {
                    Text("Gastos")
-                       .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+//                       .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+                    Spacer()
                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
-                       .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
+//                       .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                }
-                NavigationLink {
-                     TelaDespesas(vm: vm)
-                }
-                label: {
+//                NavigationLink {
+//                     TelaDespesas(vm: vm)
+//                }
+//                label: {
+                HStack {
                     Text("Despesas")
-                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+//                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+                    Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
-                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
+//                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                 }
             }
             
             Section(header: Text("Mão de obra")
             ) {
-                NavigationLink {
-                     TelaValorHdT(vm: vm)
-                }
-                label: {
+//                NavigationLink {
+//                     TelaValorHdT(vm: vm)
+//                }
+//                label: {
+                HStack {
                     Text("Valor hora de trabalho")
-                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.08, alignment: .leading)
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
-                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.08, alignment: .trailing)
+//                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.08, alignment: .leading)
+                    Spacer()
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorDaHora!.valorFinal))
+//                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.08, alignment: .trailing)
                 }
                 HStack {
                     Text("Custos por hora")
@@ -114,7 +120,7 @@ struct TelaOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 NavigationLink {
-                    TelaEditarOrcamento(vm: vm, entidade: entidade, nomeOrcamento: entidade.nome!, nomeCliente: entidade.nomeDoCliente!)
+                    TelaEditarOrcamento(vm: vm, entidade: entidade, nomeOrcamento: entidade.nome!, nomeCliente: entidade.nomeDoCliente!, hora: Int(entidade.horasDeTrabalho), lucro: Int(entidade.lucro))
                 } label: {
                     Text("Editar")
                 }

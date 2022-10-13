@@ -28,21 +28,23 @@ struct TelaDespesas: View {
                 }
                 label: {
                     Text(despesaAtual.nome ?? "")
-                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
-                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
 //                .sheet(isPresented: $mostrarCriarDespesa){
 //                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
 //                }
             }
             .onDelete(perform: vm.deletarDespesa)
-            Section(header: Text("")
-            ) {
-                HStack {
-                    Text("Valor total")
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+            if vm.despesas.count > 0 {
+                Section(header: Text("")
+                ) {
+                    HStack {
+                        Text("Valor total")
+                        Spacer()
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+                    }
                 }
             }
         }

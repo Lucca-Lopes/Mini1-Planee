@@ -65,6 +65,7 @@ class PlaneeViewModel: ObservableObject {
         novoOrcamento.horasDeTrabalho = Int64(tempoDeTrabalho)
         novoOrcamento.custoTotal = custoTotal
         novoOrcamento.lucro = Int64(lucro)
+        novoOrcamento.valorDaHora = valorDaHora
         novoOrcamento.valorTotal = ((Double(tempoDeTrabalho) * valorDaHora.valorFinal) + (custoPorHora * Double(tempoDeTrabalho))) * lucroFinal
         salvar()
     }

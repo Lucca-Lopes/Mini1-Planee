@@ -14,60 +14,63 @@ struct TelaEditarOrcamento: View {
     var entidade: Orcamento
     @State var nomeOrcamento: String
     @State var nomeCliente: String
-    @State var hora: Int = 0
-    @State var lucro: Int = 0
+    @State var hora: Int
+    @State var lucro: Int
 //    @State var custoTotal: Double
         
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     var body: some View {
         List{
-            TextField(entidade.nome!, text: $nomeOrcamento)
-                .foregroundColor(.gray)
-            TextField(entidade.nomeDoCliente!, text: $nomeCliente)
-                .foregroundColor(.gray)
+            TextField("Nome do orçamento", text: $nomeOrcamento)
+//                .foregroundColor(.gray)
+            TextField("Nome do cliente", text: $nomeCliente)
+//                .foregroundColor(.gray)
             
             Section(header: Text("Custos")
             ) {
-                NavigationLink {
-                    TelaGastos(vm: vm)
-               }
-               label: {
+//                NavigationLink {
+//                    TelaGastos(vm: vm)
+//               }
+//               label: {
+                HStack {
                    Text("Gastos")
                    Spacer()
-                   Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
+                   Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
                }
-                NavigationLink {
-                    TelaDespesas(vm: vm)
-                }
-                label: {
+//                NavigationLink {
+//                    TelaDespesas(vm: vm)
+//                }
+//                label: {
+                HStack {
                     Text("Despesas")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
                 }
             }
             
             Section(header: Text("Mão de obra")
             ) {
-                NavigationLink {
-                    TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
-                        
-                }
-                label: {
+//                NavigationLink {
+//                    TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
+//
+//                }
+//                label: {
+                HStack {
                     Text("Valor hora de trabalho")
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorDaHora!.valorFinal))
                 }
                 HStack {
                     Text("Custos por hora")
                     Spacer()
-                    Text("R$ 0,00")
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoHora))
                 }
                 HStack {
                     Text("Tempo de trabalho")
                     Spacer()
                     TextField(
-                        "\(entidade.horasDeTrabalho)",
+                        "0",
                         value: $hora,
                         formatter: vm.numFormatacao
                     )
@@ -84,7 +87,7 @@ struct TelaEditarOrcamento: View {
                     Text("Custo total")
                         .bold()
                     Spacer()
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.calcularTotalGastos() + vm.calcularTotalDespesa())))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotal))
                         .bold()
                 }
             }
@@ -94,7 +97,7 @@ struct TelaEditarOrcamento: View {
                     Text("Lucro")
                     Spacer()
                     TextField(
-                        "\(entidade.lucro)",
+                        "0",
                         value: $lucro,
                         formatter: vm.numFormatacao
                     )
