@@ -354,10 +354,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Teste SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = V32Q5HA7F8;
+				DEVELOPMENT_TEAM = RRUDNBUBWM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Planee-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Planee;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -368,7 +369,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LuccaLopes.Teste-SwiftUI";
 				PRODUCT_NAME = Planee;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -386,10 +387,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Teste SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = V32Q5HA7F8;
+				DEVELOPMENT_TEAM = RRUDNBUBWM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Planee-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Planee;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -400,7 +402,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LuccaLopes.Teste-SwiftUI";
 				PRODUCT_NAME = Planee;
 				SWIFT_EMIT_LOC_STRINGS = YES;
