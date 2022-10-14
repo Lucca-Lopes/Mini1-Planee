@@ -27,42 +27,24 @@ struct TelaOrcamento: View {
             }
             Section(header: Text("Custos")
             ) {
-//                NavigationLink {
-//                    TelaGastos(vm: vm)
-//               }
-//               label: {
                 HStack {
                    Text("Gastos")
-//                       .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
                     Spacer()
                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
-//                       .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                }
-//                NavigationLink {
-//                     TelaDespesas(vm: vm)
-//                }
-//                label: {
                 HStack {
                     Text("Despesas")
-//                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
-//                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
                 }
             }
             
             Section(header: Text("Mão de obra")
             ) {
-//                NavigationLink {
-//                     TelaValorHdT(vm: vm)
-//                }
-//                label: {
                 HStack {
                     Text("Valor hora de trabalho")
-//                        .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.08, alignment: .leading)
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorDaHora!.valorFinal))
-//                        .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.08, alignment: .trailing)
                 }
                 HStack {
                     Text("Custos por hora")
@@ -98,25 +80,6 @@ struct TelaOrcamento: View {
             }
         }
         .toolbar{
-//            ToolbarItem(placement: .navigationBarTrailing)
-//            {
-//                Button{
-//                    exportarPDF {
-//                        self
-//                            .environmentObject(vm)
-//                    } completion: { status, url in
-//                        if let url = url,status {
-//                            vm.PDFUrl = url
-//                            mostrarSheetCP.toggle()
-//                        }
-//                        else {
-//                            print("Erro ao criar pdf")
-//                        }
-//                    }
-//                }label:{
-//                    Image(systemName: "square.and.arrow.up")
-//                }
-//            }
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 NavigationLink {
@@ -130,13 +93,3 @@ struct TelaOrcamento: View {
         .navigationBarTitleDisplayMode(.large)
     }
 }
-//        .sheet(isPresented: self.$mostrarSheetCP) {
-//            vm.PDFUrl = nil
-//        } content: {
-//            if let pdfUrl = vm.PDFUrl {
-//                SheetCompartilhar(urls: [pdfUrl])
-//            }
-//        }
-        
-        
-   

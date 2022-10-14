@@ -11,12 +11,10 @@ struct TelaCriarOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-//    @State var entidade: Orcamento
     @State var nomeOrcamento: String = ""
     @State var nomeCliente: String = ""
     @State var hora: Int = 0
     @State var lucro: Int = 0
-//    @State var custoTotal: Double
     
     let utilitarios = Utilitarios()
     
@@ -43,20 +41,19 @@ struct TelaCriarOrcamento: View {
                    }
                    label: {
                        Text("Gastos")
-                           .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
+                           .frame(maxWidth: .infinity, alignment: .leading)
                        Spacer()
                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
-                           .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
+                           .frame(maxWidth: .infinity, alignment: .trailing)
                    }
                     NavigationLink {
                         TelaDespesas(vm: vm)
                     }
                     label: {
                         Text("Despesas")
-                            .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.03, alignment: .leading)
-    //                    Spacer()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
-                            .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.03, alignment: .trailing)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
                 
@@ -68,10 +65,9 @@ struct TelaCriarOrcamento: View {
                     }
                     label: {
                         Text("Valor hora de trabalho")
-                            .frame(width: vm.screenWidth * 0.3, height: vm.screenHeight * 0.1, alignment: .leading)
-    //                    Spacer()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
-                            .frame(width: vm.screenWidth * 0.45, height: vm.screenHeight * 0.1, alignment: .trailing)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     
                     HStack {
@@ -91,7 +87,7 @@ struct TelaCriarOrcamento: View {
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .textFieldStyle(.roundedBorder)
-                        .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
+                        .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("h")
                             .foregroundColor(.gray)
                     }
@@ -117,7 +113,7 @@ struct TelaCriarOrcamento: View {
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .textFieldStyle(.roundedBorder)
-                        .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
+                        .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("%")
                             .foregroundColor(.gray)
                     }
@@ -163,9 +159,3 @@ struct TelaCriarOrcamento: View {
         }
     }
 }
-//struct tela_criar_orcamento_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaCriarOrcamento()
-//        
-//    }
-//}

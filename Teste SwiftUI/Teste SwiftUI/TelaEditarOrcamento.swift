@@ -16,32 +16,21 @@ struct TelaEditarOrcamento: View {
     @State var nomeCliente: String
     @State var hora: Int
     @State var lucro: Int
-//    @State var custoTotal: Double
         
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     var body: some View {
         List{
             TextField("Nome do orçamento", text: $nomeOrcamento)
-//                .foregroundColor(.gray)
             TextField("Nome do cliente", text: $nomeCliente)
-//                .foregroundColor(.gray)
             
             Section(header: Text("Custos")
             ) {
-//                NavigationLink {
-//                    TelaGastos(vm: vm)
-//               }
-//               label: {
                 HStack {
                    Text("Gastos")
                    Spacer()
                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
                }
-//                NavigationLink {
-//                    TelaDespesas(vm: vm)
-//                }
-//                label: {
                 HStack {
                     Text("Despesas")
                     Spacer()
@@ -51,11 +40,6 @@ struct TelaEditarOrcamento: View {
             
             Section(header: Text("Mão de obra")
             ) {
-//                NavigationLink {
-//                    TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
-//
-//                }
-//                label: {
                 HStack {
                     Text("Valor hora de trabalho")
                     Spacer()
@@ -78,8 +62,6 @@ struct TelaEditarOrcamento: View {
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.25)
-                    
-//                    .frame(width: vm.screenWidth * 0.2, height: vm.screenHeight * 0.03, alignment: .trailing)
                     Text("h")
                         .foregroundColor(.gray)
                 }
@@ -125,13 +107,17 @@ struct TelaEditarOrcamento: View {
             ToolbarItem(placement: .navigationBarTrailing)
             {
                 Button{
-                    if nomeOrcamento != "" && nomeCliente != "" && hora != 0 {
+                    if vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) {
                         vm.atualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, tempoDeTrabalho: hora, lucro: lucro)
                         self.mode.wrappedValue.dismiss()
                     }
+                    
                 }label:{
                     Text("Salvar")
+                        .accentColor(vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) ? Color.blue : Color.gray)
                 }
+                .disabled(!vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora))
+                
             }
         }
         .navigationBarTitle("Editar orçamento")
@@ -139,12 +125,3 @@ struct TelaEditarOrcamento: View {
         .onTapGesture(perform: vm.dismissKeyboard)
     }
 }
-
-
-
-
-//struct TelaEditarOrcamento_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaEditarOrcamento()
-//    }
-//}

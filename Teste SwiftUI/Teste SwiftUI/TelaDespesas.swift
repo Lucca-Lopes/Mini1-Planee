@@ -32,9 +32,6 @@ struct TelaDespesas: View {
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-//                .sheet(isPresented: $mostrarCriarDespesa){
-//                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
-//                }
             }
             .onDelete(perform: vm.deletarDespesa)
             if vm.despesas.count > 0 {
@@ -67,9 +64,3 @@ struct TelaDespesas: View {
         .navigationBarTitleDisplayMode(.large)
     }
 }
-
-//struct tela_despesas_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaDespesas()
-//    }
-//}

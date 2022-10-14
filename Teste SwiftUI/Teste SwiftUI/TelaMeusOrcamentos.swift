@@ -31,8 +31,6 @@ struct TelaMeusOrcamentos: View {
                     Text(orcamento.nome ?? "Novo Orçamento")
                         .lineLimit(1)
                         .frame(width: .infinity, alignment: .leading)
-//                    Spacer()
-//                        .padding(.trailing)
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), orcamento.valorTotal))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
@@ -55,87 +53,5 @@ struct TelaMeusOrcamentos: View {
         }
         .navigationTitle("Meus Orçamentos")
         .navigationBarTitleDisplayMode(.large)
-//        .frame(width: 10, height: 10)
     }
 }
-    
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-//            newItem.ordem = (items.last?.ordem ?? 0) + 1
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
-    
-//    private func moverItem(at sets: IndexSet, destination: Int){
-//        let itemMovido = sets.first!
-//
-//        if itemMovido < destination {
-//            var indexInicial = itemMovido + 1
-//            let indexFinal = destination - 1
-//            var ordemInicial = items[itemMovido].ordem
-//            while indexInicial <= indexFinal {
-//                items[indexInicial].ordem = ordemInicial
-//                ordemInicial += 1
-//                indexInicial += 1
-//            }
-//            items[itemMovido].ordem = ordemInicial
-//        }
-//        else if itemMovido > destination {
-//            var indexInicial = destination
-//            let indexFinal = itemMovido - 1
-//            var ordemInicial = items[indexInicial].ordem + 1
-//            let novaOrdem = items[indexInicial].ordem
-//            while indexInicial <= indexFinal {
-//                items[indexInicial].ordem = ordemInicial
-//                ordemInicial += 1
-//                indexInicial += 1
-//            }
-//            items[itemMovido].ordem = novaOrdem
-//        }
-//        do {
-//            try viewContext.save()
-//        }
-//        catch {
-//            print(error.localizedDescription)
-//        }
-//    }
-    
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
-//}
-//
-//private let itemFormatter: DateFormatter = {
-//    let formatter = DateFormatter()
-//    formatter.dateStyle = .short
-//    formatter.timeStyle = .medium
-//    return formatter
-//}()
-//
-//#if DEBUG
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaMeusOrcamentos()
-//    }
-//}
-//#endif

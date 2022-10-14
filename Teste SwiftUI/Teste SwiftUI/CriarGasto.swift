@@ -29,7 +29,8 @@ struct CriarGasto: View {
                     )
                     .multilineTextAlignment(.trailing)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
+                    .frame(maxWidth: vm.screenWidth * 0.4)
+                    
                 }
                 HStack{
                     Text("Valor total")
@@ -39,11 +40,11 @@ struct CriarGasto: View {
                         value: $valor,
                         formatter: vm.formatacao
                     )
-                    .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
+                    .frame(maxWidth: vm.screenWidth * 0.4)
+                    
                 }
                 HStack{
                     Text("Vida útil")
@@ -53,11 +54,11 @@ struct CriarGasto: View {
                         value: $vidaUtil,
                         formatter: vm.numFormatacao
                     )
-                    .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
+                    .frame(maxWidth: vm.screenWidth * 0.4)
+                    
                 }
             }
             .listStyle(.grouped)
@@ -78,7 +79,6 @@ struct CriarGasto: View {
             .navigationBarTitle("Adicionar gasto")
             .navigationBarTitleDisplayMode(.inline)
             .onTapGesture(perform: vm.dismissKeyboard)
-            //                .frame(width: screenWidth, height: screenHeight * 0.9, alignment: .center)
         }
     }
 }

@@ -21,11 +21,10 @@ struct TelaGastos: View {
             ForEach (vm.gastos) { gastoAtual in
                 Section(header:
                     NavigationLink {
-                        EditarGasto(vm: vm, entidade: gastoAtual)
+                    EditarGasto(vm: vm, entidade: gastoAtual, nome: gastoAtual.nome!, valor: gastoAtual.valor, vidaUtil: Int(gastoAtual.vidaUtil))
                     }
                 label: {
                     HStack {
-                        
                         Text(gastoAtual.nome ?? "Novo gasto")
                             .lineLimit(1)
                         Label("", systemImage: "chevron.right")
@@ -70,49 +69,3 @@ struct TelaGastos: View {
         .navigationBarTitleDisplayMode(.large)
     }
 }
-
-//struct RowGastoEditando: View {
-//
-//    @ObservedObject var vm: PlaneeViewModel
-//    @State var gastoAtual: Gasto
-//    var body: some View {
-//        List{
-//            Section(header:
-//                Button {
-//                    vm.deletarGasto(indexSet: [0])
-//                } label: {
-//                    Text("X")
-//                    Text(gastoAtual.nome ?? "Novo gasto")
-//                        .foregroundColor(.black)
-//                        .lineLimit(1)
-//                }
-//            ){
-//                HStack {
-//                    Text("Valor total")
-//                    Spacer()
-//                    Text("R$ " + String(format: "%.2f", gastoAtual.valor))
-//                }
-//                HStack {
-//                    Text("Vida útil")
-//                    Spacer()
-//                    Text("\(gastoAtual.vidaUtil) meses")
-//                }
-//                HStack {
-//                    Text("Custo mensal")
-//                    Spacer()
-//                    Text("R$ " + String(format: "%.2f", gastoAtual.custo))
-//                }
-//            }
-//        }
-//    }
-//
-//}
-
-
-
-//struct Tela_Gastos_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaGastos(vm: vm)
-//    }
-//}
-

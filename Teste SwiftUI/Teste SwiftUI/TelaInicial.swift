@@ -10,9 +10,7 @@ import SwiftUI
 struct TelaInicial: View {
     
     @StateObject var vm = PlaneeViewModel()
-    
-//    @State var orcamento: Orcamento
-            
+                
     let utilitarios = Utilitarios()
     
     @State private var rowHeight: CGFloat = 40
@@ -58,7 +56,6 @@ struct TelaInicial: View {
                                 .font(.system(size: 22))
                                 .frame(height: 55)
                         }
-//                        utilitarios.criaNLHome(titulo: "Meus orçamentos", vm: &vm)
                     }
 
                     Section{
@@ -71,7 +68,6 @@ struct TelaInicial: View {
                                 .font(.system(size: 22))
                                 .frame(height: 55)
                         }
-//                        utilitarios.criaNLHome(titulo: "Calcular valor da hora", vm: &vm)
                     }
 
                     Section{
@@ -84,7 +80,6 @@ struct TelaInicial: View {
                                 .font(.system(size: 22))
                                 .frame(height: 55)
                         }
-//                        utilitarios.criaNLHome(titulo: "Despesas", vm: &vm)
                     }
 
                     Section{
@@ -97,7 +92,6 @@ struct TelaInicial: View {
                                 .font(.system(size: 22))
                                 .frame(height: 55)
                         }
-//                        utilitarios.criaNLHome(titulo: "Gastos", vm: &vm)
                     }
                 }
                 .cornerRadius(40)

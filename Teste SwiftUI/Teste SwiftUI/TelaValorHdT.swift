@@ -29,25 +29,28 @@ struct TelaValorHdT: View {
                     Text("Pretensão salarial")
                     Spacer()
                     TextField("R$ 0,00", value: $valor, formatter: vm.formatacao)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(maxWidth: vm.screenWidth * 0.3)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.decimalPad)
-                        .foregroundColor(.gray)
                 }
                 HStack{
                     Text("Dias de trabalho")
                     Spacer()
                     TextField("0 dias", value: $dias, formatter: vm.numFormatacao)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(maxWidth: vm.screenWidth * 0.3)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
-                        .foregroundColor(.gray)
                 }
                 HStack{
                     Text("Horas diárias")
                     Spacer()
                     TextField("0 horas", value: $horasDiarias, formatter: vm.numFormatacao)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(maxWidth: vm.screenWidth * 0.3)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
-                        .foregroundColor(.gray)
                 }
                 
                 Section(header: Text(""))
@@ -79,9 +82,3 @@ struct TelaValorHdT: View {
         .onTapGesture(perform: vm.dismissKeyboard)
     }
 }
-
-//struct tela_valor_HdT_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TelaValorHdT()
-//    }
-//}

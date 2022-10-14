@@ -11,12 +11,12 @@ struct EditarGasto: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @State var editando = false
-    @State var nome: String = ""
-    @State var valor: Double = 0.0
-    @State var vidaUtil: Int = 0
-    
     @State var entidade: Gasto
+    
+    @State var editando = false
+    @State var nome: String
+    @State var valor: Double
+    @State var vidaUtil: Int
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -32,7 +32,7 @@ struct EditarGasto: View {
                 )
                 .multilineTextAlignment(.trailing)
                 .textFieldStyle(.roundedBorder)
-                .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
+                .frame(maxWidth: vm.screenWidth * 0.4)
             }
             HStack{
                 Text("Valor total")
@@ -42,11 +42,10 @@ struct EditarGasto: View {
                     value: $valor,
                     formatter: vm.formatacao
                 )
-                .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
-                .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
+                .frame(maxWidth: vm.screenWidth * 0.4)
             }
             HStack{
                 Text("Vida útil")
@@ -56,11 +55,10 @@ struct EditarGasto: View {
                     value: $vidaUtil,
                     formatter: vm.numFormatacao
                 )
-                .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
-                .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
+                .frame(maxWidth: vm.screenWidth * 0.4)
             }
         }
         .toolbar{

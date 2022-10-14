@@ -27,11 +27,9 @@ struct EditarDespesa: View {
                     Spacer()
                     TextField("Nome", text: $nome)
                         .focused($focarNome)
-                        .foregroundColor(.gray)
                         .multilineTextAlignment(.trailing)
                         .textFieldStyle(.roundedBorder)
-                        .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
-                    
+                        .frame(maxWidth: vm.screenWidth * 0.4)
                 }
                 HStack {
                     Text("Valor")
@@ -41,12 +39,10 @@ struct EditarDespesa: View {
                         value: $valor,
                         formatter: vm.numFormatacao
                     )
-                    .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(width: vm.screenWidth * 0.35, height: vm.screenHeight * 0.03, alignment: .leading)
-                }
+                    .frame(maxWidth: vm.screenWidth * 0.4)                }
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {

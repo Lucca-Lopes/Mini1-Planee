@@ -21,7 +21,6 @@ class PlaneeViewModel: ObservableObject {
     @Published var valorDaHora: [ValorHoraDeTrabalho] = []
     
     @Published var PDFUrl: URL?
-//    @Published var mostraSheetCp: Bool = false
     
     func dismissKeyboard(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -48,19 +47,24 @@ class PlaneeViewModel: ObservableObject {
         fetchDespesa()
         fetchGasto()
         fetchVdH()
-        clearDatabase()
-        salvar()
-//        limparCoreData()
+//        clearDatabase()
+//        salvar()
         if valorDaHora.count < 1 {
             addVdH()
         }
     }
     
     func addOrcamento(nome: String, nomeCliente: String, totalGastos: Double, totalDespesas: Double, valorDaHora: ValorHoraDeTrabalho, tempoDeTrabalho: Int, lucro: Int) {
-        let custoPorHora = (((totalGastos + totalDespesas) / Double(valorDaHora.dias)) / Double(valorDaHora.horas))
+        
         let custoTotal = totalGastos + totalDespesas
+        var custoPorHora = ((custoTotal / Double(valorDaHora.dias)) / Double(valorDaHora.horas))
         let lucroFinal = (Double(lucro) + 100) / 100
         let novoOrcamento = Orcamento(context: manager.context)
+        
+        if custoPorHora.isNaN  {
+            custoPorHora = 0
+        }
+        
         novoOrcamento.nome = nome
         novoOrcamento.nomeDoCliente = nomeCliente
         novoOrcamento.custoTotalGastos = totalGastos
@@ -216,14 +220,6 @@ class PlaneeViewModel: ObservableObject {
         return soma
     }
     
-    func limparCoreData(){
-        orcamentos = []
-        despesas = []
-        gastos = []
-        valorDaHora = []
-        salvar()
-    }
-    
     public func clearDatabase() {
         guard let url = manager.container.persistentStoreDescriptions.first?.url else { return }
         
@@ -257,39 +253,4 @@ class PlaneeViewModel: ObservableObject {
         }
         return false
     }
-    
-//    func criarVariaveisToggleDespesa(despesas: [Despesa]) -> [Bool] {
-//        @State var selecionado = false
-//        var conjuntoToggle: [Bool] = []
-//        for _ in 1...despesas.count {
-//            conjuntoToggle.append(selecionado)
-//        }
-//        return conjuntoToggle
-//    }
-    
-    
-//    func AdicionarDespesaAoOrcamento(despesas: [Despesa], orcamento: Orcamento){
-//        var despesasSelecionadas: [Despesa] = []
-//        for despesa in despesas {
-//            if despesa.selecionada {
-//                let novaDespesa = Despesa(context: manager.context)
-//                novaDespesa.nome = despesa.nome
-//                novaDespesa.valor = despesa.valor
-//                novaDespesa.selecionada = despesa.selecionada
-//                despesasSelecionadas.append(novaDespesa)
-//            }
-//        }
-//        orcamento.despesas = despesasSelecionadas
-//    }
-    
-//    func verificaDespesas(despesasNSSet: NSSet? = nil, despesasArray: [Despesa] = []) -> [Despesa] {
-//        if let despesas = despesasNSSet as? [Despesa] {
-//            return despesas
-//        }
-//        else {
-//            return despesasArray
-//        }
-//    }
-    
 }
-
