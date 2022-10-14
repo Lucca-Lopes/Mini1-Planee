@@ -61,7 +61,7 @@ class PlaneeViewModel: ObservableObject {
         let lucroFinal = (Double(lucro) + 100) / 100
         let novoOrcamento = Orcamento(context: manager.context)
         
-        if custoPorHora.isNaN  {
+        if custoPorHora.isNaN || custoPorHora.isInfinite {
             custoPorHora = 0
         }
         
@@ -75,6 +75,7 @@ class PlaneeViewModel: ObservableObject {
         novoOrcamento.lucro = Int64(lucro)
         novoOrcamento.valorDaHora = valorDaHora
         novoOrcamento.valorTotal = ((Double(tempoDeTrabalho) * valorDaHora.valorFinal) + (custoPorHora * Double(tempoDeTrabalho))) * lucroFinal
+        print(custoPorHora)
         salvar()
     }
     
