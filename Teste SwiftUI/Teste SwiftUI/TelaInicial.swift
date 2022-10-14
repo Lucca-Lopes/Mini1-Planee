@@ -63,7 +63,7 @@ struct TelaInicial: View {
                             TelaValorHdT(vm: vm, valor: vm.valorDaHora[0].pretensaoSalarial, dias: Int(vm.valorDaHora[0].dias), horasDiarias: Int(vm.valorDaHora[0].horas))
                         }
                         label: {
-                            Text("Calcular valor da hora")
+                            Text("Calcular hora de trabalho")
                                 .bold()
                                 .font(.system(size: 22))
                                 .frame(height: 55)

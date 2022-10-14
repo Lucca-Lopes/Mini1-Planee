@@ -18,54 +18,45 @@ struct TelaValorHdT: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
-        VStack {
-            Text("")
-                .frame(height: vm.screenHeight * 0.05)
-            Text("Valor da Hora de Trabalho")
-                .font(.system(size: 34, weight: .heavy))
-                .frame(width: vm.screenWidth * 0.9, height: vm.screenHeight * 0.1, alignment: .leading)
-            List{
+        List{
+            HStack{
+                Text("Pretensão salarial")
+                Spacer()
+                TextField("R$ 0,00", value: $valor, formatter: vm.formatacao)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: vm.screenWidth * 0.3)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
+            }
+            HStack{
+                Text("Dias de trabalho")
+                Spacer()
+                TextField("0 dias", value: $dias, formatter: vm.numFormatacao)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: vm.screenWidth * 0.3)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+            HStack{
+                Text("Horas diárias")
+                Spacer()
+                TextField("0 horas", value: $horasDiarias, formatter: vm.numFormatacao)
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: vm.screenWidth * 0.3)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+            
+            Section(header: Text(""))
+            {
                 HStack{
-                    Text("Pretensão salarial")
+                    Text("Valor da hora de trabalho")
                     Spacer()
-                    TextField("R$ 0,00", value: $valor, formatter: vm.formatacao)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(maxWidth: vm.screenWidth * 0.3)
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.decimalPad)
-                }
-                HStack{
-                    Text("Dias de trabalho")
-                    Spacer()
-                    TextField("0 dias", value: $dias, formatter: vm.numFormatacao)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(maxWidth: vm.screenWidth * 0.3)
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.numberPad)
-                }
-                HStack{
-                    Text("Horas diárias")
-                    Spacer()
-                    TextField("0 horas", value: $horasDiarias, formatter: vm.numFormatacao)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(maxWidth: vm.screenWidth * 0.3)
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.numberPad)
-                }
-                
-                Section(header: Text(""))
-                {
-                    HStack{
-                        Text("Valor da hora de trabalho")
-                        Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
-                    }
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                 }
             }
-            .listStyle(.insetGrouped)
-            .frame(width: vm.screenWidth, height: vm.screenHeight * 0.85, alignment: .center)
         }
-        .background(Color(red: 0, green: 0, blue: 0.4, opacity: 0.0515))
+        .listStyle(.insetGrouped)
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing)
             {
@@ -80,5 +71,7 @@ struct TelaValorHdT: View {
             }
         }
         .onTapGesture(perform: vm.dismissKeyboard)
+        .navigationTitle("Hora de trabalho")
+        .navigationBarTitleDisplayMode(.large)
     }
 }

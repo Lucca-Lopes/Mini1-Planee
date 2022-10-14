@@ -64,7 +64,7 @@ struct TelaCriarOrcamento: View {
                             
                     }
                     label: {
-                        Text("Valor hora de trabalho")
+                        Text("Hora de trabalho")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
                             .frame(maxWidth: .infinity, alignment: .trailing)

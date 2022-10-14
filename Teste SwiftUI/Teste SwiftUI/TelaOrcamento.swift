@@ -42,7 +42,7 @@ struct TelaOrcamento: View {
             Section(header: Text("Mão de obra")
             ) {
                 HStack {
-                    Text("Valor hora de trabalho")
+                    Text("Hora de trabalho")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorDaHora!.valorFinal))
                 }
