@@ -63,19 +63,21 @@ struct CriarGasto: View {
             .listStyle(.grouped)
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        if nome != "" && valor != 0.0 && vidaUtil != 0 {
+                    Button{
+                        if vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil){
                             vm.addGasto(nome: nome, valor: valor, vidaUtil: vidaUtil)
                             self.mode.wrappedValue.dismiss()
                         }
-                        
-                    }, label: {
+                    }label:{
                         Text("OK")
-                    })
+                            .accentColor(vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil) ? Color.blue : Color.gray)
+                    }
+                    .disabled(!vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil))
                 }
             }
             .navigationBarTitle("Adicionar gasto")
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture(perform: vm.dismissKeyboard)
             //                .frame(width: screenWidth, height: screenHeight * 0.9, alignment: .center)
         }
     }

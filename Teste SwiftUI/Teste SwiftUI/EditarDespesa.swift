@@ -39,7 +39,7 @@ struct EditarDespesa: View {
                     TextField(
                         "R$ 0,00",
                         value: $valor,
-                        formatter: NumberFormatter()
+                        formatter: vm.numFormatacao
                     )
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
@@ -50,15 +50,20 @@ struct EditarDespesa: View {
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        vm.atualizarDespesa(entidade: entidade, nome: nome, valor: valor)
-                        self.mode.wrappedValue.dismiss()
-                    }, label: {
+                    Button{
+                        if vm.ValidaDespesa(nome: nome, valor: valor){
+                            vm.atualizarDespesa(entidade: entidade, nome: nome, valor: valor)
+                            self.mode.wrappedValue.dismiss()
+                        }
+                    }label:{
                         Text("OK")
-                    })
+                            .accentColor(vm.ValidaDespesa(nome: nome, valor: valor) ? Color.blue : Color.gray)
+                    }
+                    .disabled(!vm.ValidaDespesa(nome: nome, valor: valor))
                 }
             }
             .navigationBarTitle("Editar despesa")
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture(perform: vm.dismissKeyboard)
     }
 }

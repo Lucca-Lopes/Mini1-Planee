@@ -46,16 +46,21 @@ struct CriarDespesa: View {
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        vm.addDespesa(nome: nome, valor: valor)
-                        self.mode.wrappedValue.dismiss()
-                    }, label: {
+                    Button{
+                        if vm.ValidaDespesa(nome: nome, valor: valor){
+                            vm.addDespesa(nome: nome, valor: valor)
+                            self.mode.wrappedValue.dismiss()
+                        }
+                    }label:{
                         Text("OK")
-                    })
+                            .accentColor(vm.ValidaDespesa(nome: nome, valor: valor) ? Color.blue : Color.gray)
+                    }
+                    .disabled(!vm.ValidaDespesa(nome: nome, valor: valor))
                 }
             }
             .navigationBarTitle("Adicionar despesa")
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture(perform: vm.dismissKeyboard)
         }
     }
 }

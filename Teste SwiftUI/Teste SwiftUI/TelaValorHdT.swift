@@ -76,6 +76,7 @@ struct TelaValorHdT: View {
                 }
             }
         }
+        .onTapGesture(perform: vm.dismissKeyboard)
     }
 }
 

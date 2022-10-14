@@ -40,7 +40,7 @@ struct EditarGasto: View {
                 TextField(
                     "R$ 0,00",
                     value: $valor,
-                    formatter: NumberFormatter()
+                    formatter: vm.formatacao
                 )
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
@@ -54,7 +54,7 @@ struct EditarGasto: View {
                 TextField(
                     "R$ 0,00",
                     value: $vidaUtil,
-                    formatter: NumberFormatter()
+                    formatter: vm.numFormatacao
                 )
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.trailing)
@@ -65,17 +65,20 @@ struct EditarGasto: View {
         }
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    if nome != "" && valor != 0.0 && vidaUtil != 0 {
+                Button{
+                    if vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil){
                         vm.atualizarGasto(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
                         self.mode.wrappedValue.dismiss()
                     }
-                }, label: {
+                }label:{
                     Text("OK")
-                })
+                        .accentColor(vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil) ? Color.blue : Color.gray)
+                }
+                .disabled(!vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil))
             }
         }
         .navigationBarTitle("Editar gasto")
         .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture(perform: vm.dismissKeyboard)
     }
 }

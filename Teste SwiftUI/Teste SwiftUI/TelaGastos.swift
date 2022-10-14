@@ -67,6 +67,7 @@ struct TelaGastos: View {
             }
         }
         .navigationTitle("Gastos")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
