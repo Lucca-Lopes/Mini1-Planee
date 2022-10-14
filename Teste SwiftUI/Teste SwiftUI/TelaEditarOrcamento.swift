@@ -136,9 +136,7 @@ struct TelaEditarOrcamento: View {
         }
         .navigationBarTitle("Editar orçamento")
         .navigationBarTitleDisplayMode(.inline)
-//        .onTapGesture{
-//            self.dismissKeyboard()
-//        }
+        .onTapGesture(perform: vm.dismissKeyboard)
     }
 }
 
