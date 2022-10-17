@@ -21,16 +21,14 @@ struct TelaInicial: View {
             VStack {
                 Text("Valor da hora de trabalho:")
                     .bold()
-                    .padding()
-                    .frame(width: vm.screenWidth * 0.99, height: vm.screenHeight * 0.05, alignment: .leading)
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
                     .bold()
                     .font(.system(size: 20))
-                    .frame(width: vm.screenWidth * 0.9, height: vm.screenHeight * 0.0, alignment: .leading)
-
-                Text("")
-                    .frame(height: vm.screenHeight * 0.05)
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 Form{
 
@@ -42,7 +40,7 @@ struct TelaInicial: View {
                             Text("Criar orçamento")
                                 .bold()
                                 .font(.system(size: 22))
-                                .frame(height: 55)
+                                .padding(.vertical)
                         }
                     }
 
@@ -54,7 +52,7 @@ struct TelaInicial: View {
                             Text("Meus orçamentos")
                                 .bold()
                                 .font(.system(size: 22))
-                                .frame(height: 55)
+                                .padding(.vertical)
                         }
                     }
 
@@ -66,7 +64,7 @@ struct TelaInicial: View {
                             Text("Calcular hora de trabalho")
                                 .bold()
                                 .font(.system(size: 22))
-                                .frame(height: 55)
+                                .padding(.vertical)
                         }
                     }
 
@@ -78,7 +76,7 @@ struct TelaInicial: View {
                             Text("Despesas")
                                 .bold()
                                 .font(.system(size: 22))
-                                .frame(height: 55)
+                                .padding(.vertical)
                         }
                     }
 
@@ -90,15 +88,17 @@ struct TelaInicial: View {
                             Text("Gastos")
                                 .bold()
                                 .font(.system(size: 22))
-                                .frame(height: 55)
+                                .padding(.vertical)
                         }
                     }
                 }
                 .cornerRadius(40)
                 .ignoresSafeArea()
+                
+                
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Planee")
-        }
+        }.navigationViewStyle(.stack)
     }
 }
