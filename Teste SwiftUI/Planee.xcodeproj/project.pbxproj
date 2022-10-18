@@ -28,7 +28,6 @@
 		2BB8E08328DE4BBB00C93D1B /* EditarGasto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08228DE4BBB00C93D1B /* EditarGasto.swift */; };
 		2BB8E08528DE50CF00C93D1B /* TelaExportarPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */; };
 		2BB8E08728DE523200C93D1B /* Extensoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08628DE523200C93D1B /* Extensoes.swift */; };
-		2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B9329DE28DFB68800FB732A /* Planee-Info.plist */; };
 		2BBC940828F48F8D00B29404 /* TelaEditarOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC940728F48F8D00B29404 /* TelaEditarOrcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
 		2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */; };
@@ -185,7 +184,6 @@
 				00CEDCC028EDE80600CD1E8C /* Localizable.strings in Resources */,
 				2B666FE628B00CC3003892A6 /* Assets.xcassets in Resources */,
 				00523F4B28FA326800D3292E /* LaunchScreen.storyboard in Resources */,
-				2BB9E7F428DFBD4B00B80916 /* Planee-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
