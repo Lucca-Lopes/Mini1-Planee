@@ -28,12 +28,12 @@ struct TelaOrcamento: View {
             Section(header: Text("Custos")
             ) {
                 HStack {
-                   Text("Gastos")
+                   Text("Custos fixos")
                     Spacer()
                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
                }
                 HStack {
-                    Text("Despesas")
+                    Text("Custos variáveis")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
                 }

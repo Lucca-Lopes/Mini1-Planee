@@ -67,13 +67,13 @@ struct TelaInicial: View {
                                 .padding(.vertical)
                         }
                     }
-
+                    
                     Section{
                         NavigationLink {
-                            TelaDespesas(vm: vm)
+                            TelaGastos(vm: vm)
                         }
                         label: {
-                            Text("Despesas")
+                            Text("Custos fixos")
                                 .bold()
                                 .font(.system(size: 22))
                                 .padding(.vertical)
@@ -82,10 +82,10 @@ struct TelaInicial: View {
 
                     Section{
                         NavigationLink {
-                            TelaGastos(vm: vm)
+                            TelaDespesas(vm: vm)
                         }
                         label: {
-                            Text("Gastos")
+                            Text("Custos variáveis")
                                 .bold()
                                 .font(.system(size: 22))
                                 .padding(.vertical)

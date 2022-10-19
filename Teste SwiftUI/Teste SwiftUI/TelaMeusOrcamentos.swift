@@ -36,7 +36,7 @@ struct TelaMeusOrcamentos: View {
                 }
                 }
             }
-            .onDelete(perform: vm.deletarOrcamento)
+            .onDelete(perform: vm.DeletarOrcamento)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -51,7 +51,7 @@ struct TelaMeusOrcamentos: View {
                 }
             }
         }
-        .navigationTitle("Meus Orçamentos")
+        .navigationTitle("Meus orçamentos")
         .navigationBarTitleDisplayMode(.large)
     }
 }

@@ -11,7 +11,7 @@ struct EditarDespesa: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    var entidade: Despesa
+    var entidade: CustoVariavel
             
     @State var nome: String
     @State var valor: Double
@@ -47,19 +47,19 @@ struct EditarDespesa: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
-                        if vm.ValidaDespesa(nome: nome, valor: valor){
-                            vm.atualizarDespesa(entidade: entidade, nome: nome, valor: valor)
+                        if vm.ValidaCustoVariavel(nome: nome, valor: valor){
+                            vm.AtualizarCustoVariavel(entidade: entidade, nome: nome, valor: valor)
                             self.mode.wrappedValue.dismiss()
                         }
                     }label:{
                         Text("OK")
-                            .accentColor(vm.ValidaDespesa(nome: nome, valor: valor) ? Color.blue : Color.gray)
+                            .accentColor(vm.ValidaCustoVariavel(nome: nome, valor: valor) ? Color.blue : Color.gray)
                     }
-                    .disabled(!vm.ValidaDespesa(nome: nome, valor: valor))
+                    .disabled(!vm.ValidaCustoVariavel(nome: nome, valor: valor))
                 }
             }
-            .navigationBarTitle("Editar despesa")
+            .navigationBarTitle("Editar custo variável")
             .navigationBarTitleDisplayMode(.inline)
-            .onTapGesture(perform: vm.dismissKeyboard)
+            .onTapGesture(perform: vm.DismissKeyboard)
     }
 }

@@ -40,19 +40,19 @@ struct TelaCriarOrcamento: View {
                         TelaGastos(vm: vm)
                    }
                    label: {
-                       Text("Gastos")
+                       Text("Custos fixos")
                            .frame(maxWidth: .infinity, alignment: .leading)
                        Spacer()
-                       Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
+                       Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosFixos()))
                            .frame(maxWidth: .infinity, alignment: .trailing)
                    }
                     NavigationLink {
                         TelaDespesas(vm: vm)
                     }
                     label: {
-                        Text("Despesas")
+                        Text("Custos variáveis")
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
@@ -95,7 +95,7 @@ struct TelaCriarOrcamento: View {
                         Text("Custo total")
                             .bold()
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.calcularTotalGastos() + vm.calcularTotalDespesa())))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosVariaveis())))
                             .bold()
                     }
                 }
@@ -134,7 +134,7 @@ struct TelaCriarOrcamento: View {
                 {
                     Button{
                         if vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) {
-                            vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.calcularTotalGastos(), totalDespesas: vm.calcularTotalDespesa(), valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
+                            vm.AddOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.CalcularTotalCustosFixos(), totalDespesas: vm.CalcularTotalCustosVariaveis(), valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
                             self.mode.wrappedValue.dismiss()
                         }
                         
@@ -154,7 +154,7 @@ struct TelaCriarOrcamento: View {
                     .fill(Color.white)
                     .opacity(0.001)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .onTapGesture(perform: vm.dismissKeyboard)
+                    .onTapGesture(perform: vm.DismissKeyboard)
             }
         }
     }

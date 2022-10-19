@@ -22,25 +22,24 @@ struct TelaDespesas: View {
     
     var body: some View {
         List {
-            ForEach (vm.despesas) { despesaAtual in
+            ForEach (vm.custosVariaveis) { custoVariavel in
                 NavigationLink {
-                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
+                    EditarDespesa(vm: vm, entidade: custoVariavel, nome: custoVariavel.nome ?? "", valor: custoVariavel.valor)
                 }
                 label: {
-                    Text(despesaAtual.nome ?? "")
+                    Text(custoVariavel.nome ?? "")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .onDelete(perform: vm.deletarDespesa)
-            if vm.despesas.count > 0 {
-                Section(header: Text("")
-                ) {
+            .onDelete(perform: vm.DeletarCustoVariavel)
+            if vm.custosVariaveis.count > 0 {
+                Section() {
                     HStack {
                         Text("Valor total")
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
                     }
                 }
             }
@@ -53,14 +52,14 @@ struct TelaDespesas: View {
                 Button {
                     mostrarCriarDespesa = true
                 } label: {
-                    Label("Adicionar Despesa", systemImage: "plus")
+                    Label("Adicionar Custo Variável", systemImage: "plus")
                 }
                 .sheet(isPresented: $mostrarCriarDespesa){
                     CriarDespesa(vm: vm, nome: "", valor: 0.0)
             }
             }
         }
-        .navigationTitle("Despesas")
+        .navigationTitle("Custos variáveis")
         .navigationBarTitleDisplayMode(.large)
     }
 }
