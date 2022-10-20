@@ -16,6 +16,8 @@ struct TelaCriarOrcamento: View {
     @State var hora: Int = 0
     @State var lucro: Int = 0
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let utilitarios = Utilitarios()
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -29,12 +31,18 @@ struct TelaCriarOrcamento: View {
     var body: some View {
         ZStack {
             List{
-                TextField("Titulo", text: $nomeOrcamento)
-                    .focused($focusedField, equals: .titulo)
-                TextField("Nome do cliente", text: $nomeCliente)
-                    .focused($focusedField, equals: .nomeCliente)
+                Section{
+                    TextField("Titulo", text: $nomeOrcamento)
+                        .focused($focusedField, equals: .titulo)
+                    TextField("Nome do cliente", text: $nomeCliente)
+                        .focused($focusedField, equals: .nomeCliente)
+                }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 Section(header: Text("Custos")
+                    .bold()
+                    .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
                 ) {
                     NavigationLink {
                         TelaGastos(vm: vm)
@@ -56,8 +64,12 @@ struct TelaCriarOrcamento: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 Section(header: Text("Mão de obra")
+                    .bold()
+                    .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
                 ) {
                     NavigationLink {
                         TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
@@ -99,6 +111,8 @@ struct TelaCriarOrcamento: View {
                             .bold()
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 Section() {
                     HStack {
@@ -118,6 +132,7 @@ struct TelaCriarOrcamento: View {
                             .foregroundColor(.gray)
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 
                 Section() {
                     HStack {
@@ -128,6 +143,7 @@ struct TelaCriarOrcamento: View {
                             .bold()
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing)
@@ -148,6 +164,7 @@ struct TelaCriarOrcamento: View {
             }
             .navigationBarTitle("Novo orçamento")
             .navigationBarTitleDisplayMode(.inline)
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             
             if focusedField != nil{
                 Rectangle()
