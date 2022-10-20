@@ -17,6 +17,7 @@ class PlaneeViewModel: ObservableObject {
     
     @Published var orcamentos: [Orcamento] = []
     @Published var custosVariaveis: [CustoVariavel] = []
+    @Published var custosVariaveisAtual: [CustoVariavel] = []
     @Published var custosFixos: [CustoFixo] = []
     @Published var valorDaHora: [ValorHoraDeTrabalho] = []
     
@@ -55,18 +56,15 @@ class PlaneeViewModel: ObservableObject {
     }
     
     func AddOrcamento(nome: String, nomeCliente: String, valorDaHora: ValorHoraDeTrabalho, tempoDeTrabalho: Int, lucro: Int) {
-        var custoPorHora = CalcularCustosHora(valorDaHora: valorDaHora)
+        let custoPorHora = CalcularCustosHora(valorDaHora: valorDaHora)
         let lucroFinal = (Double(lucro) + 100) / 100
         let novoOrcamento = Orcamento(context: manager.context)
-        
-        if custoPorHora.isNaN || custoPorHora.isInfinite {
-            custoPorHora = 0
-        }
         
         novoOrcamento.nome = nome
         novoOrcamento.nomeDoCliente = nomeCliente
         novoOrcamento.custoTotalGastos = CalcularTotalCustosFixos()
         novoOrcamento.custoTotalDespesas = CalcularTotalCustosVariaveis()
+//        novoOrcamento.custosVariaveis = custosVariaveisAtual
         novoOrcamento.custoHora = custoPorHora
         novoOrcamento.horasDeTrabalho = Int64(tempoDeTrabalho)
         novoOrcamento.custoTotal = CalcularTotalCustosFixos() + CalcularTotalCustosVariaveis()
@@ -214,7 +212,7 @@ class PlaneeViewModel: ObservableObject {
     
     func CalcularTotalCustosVariaveis() -> Double{
         var soma = 0.0
-        for custoVariavel in custosVariaveis {
+        for custoVariavel in custosVariaveisAtual {
             soma += custoVariavel.valor
         }
         return soma
@@ -231,7 +229,13 @@ class PlaneeViewModel: ObservableObject {
     func CalcularCustosHora(valorDaHora: ValorHoraDeTrabalho) -> Double {
         let totalCustos = CalcularTotalCustosFixos() + CalcularTotalCustosVariaveis()
         let totalHorasTrabalhadas = valorDaHora.dias * valorDaHora.horas
-        return totalCustos / Double(totalHorasTrabalhadas)
+        var custoPorHora = totalCustos / Double(totalHorasTrabalhadas)
+        
+        if custoPorHora.isNaN || custoPorHora.isInfinite {
+            custoPorHora = 0
+        }
+        
+        return custoPorHora
     }
     
     public func ClearDatabase() {
