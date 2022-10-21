@@ -18,6 +18,8 @@ struct TelaDespesas: View {
     
     @State var editando = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let utilitarios = Utilitarios()
     
     var body: some View {
@@ -29,9 +31,13 @@ struct TelaDespesas: View {
                 label: {
                     Text(despesaAtual.nome ?? "")
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
                         .frame(maxWidth: .infinity, alignment: .trailing)
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .onDelete(perform: vm.deletarDespesa)
             if vm.despesas.count > 0 {
@@ -43,6 +49,9 @@ struct TelaDespesas: View {
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
         }
         .toolbar {
