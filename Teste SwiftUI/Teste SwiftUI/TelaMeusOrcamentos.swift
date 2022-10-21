@@ -21,8 +21,10 @@ struct TelaMeusOrcamentos: View {
                 if editando {
                     HStack {
                         Text(orcamento.nome ?? "Novo Orçamento")
+                            .font(.system(.body, design: .rounded))
                         Spacer()
                         Text("R$ " + String(format: "%.2f", orcamento.valorTotal))
+                            .font(.system(.body, design: .rounded))
                     }
                 }
                 else {
@@ -31,10 +33,12 @@ struct TelaMeusOrcamentos: View {
                     }
                 label: {
                     Text(orcamento.nome ?? "Novo Orçamento")
+                        .font(.system(.body, design: .rounded))
                         .lineLimit(1)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), orcamento.valorTotal))
+                        .font(.system(.body, design: .rounded))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
@@ -54,6 +58,7 @@ struct TelaMeusOrcamentos: View {
                 }
             label: {
                 Label("Adicionar Orçamento", systemImage: "plus")
+                    .font(.system(.body, design: .rounded))
             }
             }
         }

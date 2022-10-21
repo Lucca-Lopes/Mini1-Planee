@@ -26,9 +26,11 @@ struct EditarDespesa: View {
         Form {
             HStack {
                 Text("Nome")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField("Nome", text: $nome)
+                    .font(.system(.body, design: .rounded))
                     .focused($focarNome)
                     .multilineTextAlignment(.trailing)
                     .textFieldStyle(.roundedBorder)
@@ -39,6 +41,7 @@ struct EditarDespesa: View {
             
             HStack {
                 Text("Valor")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
@@ -46,6 +49,7 @@ struct EditarDespesa: View {
                     value: $valor,
                     formatter: vm.numFormatacao
                 )
+                .font(.system(.body, design: .rounded))
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
@@ -63,6 +67,7 @@ struct EditarDespesa: View {
                     }
                 }label:{
                     Text("OK")
+                        .font(.system(.body, design: .rounded))
                         .accentColor(vm.ValidaCustoVariavel(nome: nome, valor: valor) ? Color.blue : Color.gray)
                 }
                 .disabled(!vm.ValidaCustoVariavel(nome: nome, valor: valor))

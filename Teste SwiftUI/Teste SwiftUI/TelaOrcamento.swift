@@ -23,6 +23,7 @@ struct TelaOrcamento: View {
         List{
             HStack {
                 Text("Nome do cliente")
+                    .font(.system(.body, design: .rounded))
                 Spacer()
                 Text(entidade.nomeDoCliente!)
             }
@@ -30,18 +31,23 @@ struct TelaOrcamento: View {
             .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             
             Section(header: Text("Custos")
+                .font(.system(.body, design: .rounded))
                 .bold()
                 .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
                    Text("Custos fixos")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
+                        .font(.system(.body, design: .rounded))
                 }
                 HStack {
                     Text("Custos variáveis")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
+                        .font(.system(.body, design: .rounded))
                 }
             }
             .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
@@ -49,29 +55,38 @@ struct TelaOrcamento: View {
             .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             
             Section(header: Text("Mão de obra")
+                .font(.system(.body, design: .rounded))
                 .bold()
                 .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
                     Text("Hora de trabalho")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorDaHora!.valorFinal))
+                        .font(.system(.body, design: .rounded))
                 }
                 HStack {
                     Text("Custos por hora")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoHora))
+                        .font(.system(.body, design: .rounded))
                 }
                 HStack {
                     Text("Tempo de trabalho")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("\(entidade.horasDeTrabalho) horas")
+                        .font(.system(.body, design: .rounded))
                 }
                 HStack {
                     Text("Custo Total")
+                        .font(.system(.body, design: .rounded))
                         .bold()
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotal))
+                        .font(.system(.body, design: .rounded))
                         .bold()
                 }
             }
@@ -82,8 +97,10 @@ struct TelaOrcamento: View {
             Section() {
                 HStack {
                     Text("Lucro")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("\(entidade.lucro)%")
+                        .font(.system(.body, design: .rounded))
                 }
             }
             .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
@@ -91,9 +108,11 @@ struct TelaOrcamento: View {
             
             HStack {
                 Text("Valor total")
+                    .font(.system(.body, design: .rounded))
                     .bold()
                 Spacer()
                 Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorTotal))
+                    .font(.system(.body, design: .rounded))
                     .bold()
             }
             .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
@@ -106,6 +125,7 @@ struct TelaOrcamento: View {
                     TelaEditarOrcamento(vm: vm, entidade: entidade, nomeOrcamento: entidade.nome!, nomeCliente: entidade.nomeDoCliente!, hora: Int(entidade.horasDeTrabalho), lucro: Int(entidade.lucro))
                 } label: {
                     Text("Editar")
+                        .font(.system(.body, design: .rounded))
                 }
             }
         }

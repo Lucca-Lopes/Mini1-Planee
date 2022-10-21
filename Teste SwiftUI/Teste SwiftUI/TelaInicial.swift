@@ -34,7 +34,7 @@ struct TelaInicial: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
-//                    .font(.system(size: 20, weight: .regular, design: .rounded))
+                    .font(.system(size: 20, weight: .regular, design: .rounded))
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 

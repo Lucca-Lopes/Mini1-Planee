@@ -23,9 +23,11 @@ struct TelaValorHdT: View {
         List{
             HStack{
                 Text("Pretensão salarial")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField("R$ 0,00", value: $valor, formatter: vm.formatacao)
+                    .font(.system(.body, design: .rounded))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.3)
                     .multilineTextAlignment(.trailing)
@@ -36,9 +38,11 @@ struct TelaValorHdT: View {
             
             HStack{
                 Text("Dias de trabalho")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField("0 dias", value: $dias, formatter: vm.numFormatacao)
+                    .font(.system(.body, design: .rounded))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.3)
                     .multilineTextAlignment(.trailing)
@@ -49,9 +53,11 @@ struct TelaValorHdT: View {
             
             HStack{
                 Text("Horas diárias")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField("0 horas", value: $horasDiarias, formatter: vm.numFormatacao)
+                    .font(.system(.body, design: .rounded))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.3)
                     .multilineTextAlignment(.trailing)
@@ -64,8 +70,10 @@ struct TelaValorHdT: View {
             {
                 HStack{
                     Text("Valor da hora de trabalho")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
+                        .font(.system(.body, design: .rounded))
                 }
             }
             .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
@@ -82,6 +90,7 @@ struct TelaValorHdT: View {
                     }
                 }label:{
                     Text("Salvar")
+                        .font(.system(.body, design: .rounded))
                         .accentColor(valor != 0 && dias != 0 && horasDiarias != 0 ? Color.blue : Color.gray)
                 }
             }

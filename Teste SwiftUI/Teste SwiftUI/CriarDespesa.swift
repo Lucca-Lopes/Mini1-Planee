@@ -23,6 +23,7 @@ struct CriarDespesa: View {
             Form {
                 HStack {
                     Text("Nome")
+                        .font(.system(.body, design: .rounded))
                         .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField("Nome", text: $nome)
@@ -31,11 +32,13 @@ struct CriarDespesa: View {
                         .frame(maxWidth: vm.screenWidth * 0.4)
                     
                 }
+                .font(.system(.body, design: .rounded))
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 HStack {
                     Text("Valor")
+                        .font(.system(.body, design: .rounded))
                         .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField(
@@ -43,6 +46,7 @@ struct CriarDespesa: View {
                         value: $valor,
                         formatter: vm.numFormatacao
                     )
+                    .font(.system(.body, design: .rounded))
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
@@ -60,6 +64,7 @@ struct CriarDespesa: View {
                         }
                     }label:{
                         Text("Ok")
+                            .font(.system(.body, design: .rounded))
                             .accentColor(vm.ValidaCustoVariavel(nome: nome, valor: valor) ? Color.blue : Color.gray)
                     }
                     .disabled(!vm.ValidaCustoVariavel(nome: nome, valor: valor))

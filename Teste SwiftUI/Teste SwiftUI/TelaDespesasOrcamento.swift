@@ -28,8 +28,10 @@ struct TelaDespesasOrcamento: View {
                 label: {
                     HStack {
                         Text(custoVariavel.nome ?? "")
+                            .font(.system(.body, design: .rounded))
                         Spacer()
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
+                            .font(.system(.body, design: .rounded))
                     }
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
@@ -41,8 +43,10 @@ struct TelaDespesasOrcamento: View {
                 Section() {
                     HStack {
                         Text("Valor total")
+                            .font(.system(.body, design: .rounded))
                         Spacer()
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+                            .font(.system(.body, design: .rounded))
                     }
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
@@ -59,6 +63,7 @@ struct TelaDespesasOrcamento: View {
                     mostrarCriarDespesa = true
                 } label: {
                     Label("Adicionar Custo Variável", systemImage: "plus")
+                        .font(.system(.body, design: .rounded))
                 }
                 .sheet(isPresented: $mostrarCriarDespesa){
                     CriarDespesa(vm: vm, nome: "", valor: 0.0)

@@ -26,8 +26,10 @@ struct TelaGastos: View {
                 }
                 label: {
                     Text(custoFixoAtual.nome ?? "")
+                        .font(.system(.body, design: .rounded))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoFixoAtual.valorMensal))
+                        .font(.system(.body, design: .rounded))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
@@ -45,6 +47,7 @@ struct TelaGastos: View {
                     mostrarSheet = true
                 }, label: {
                     Label("Adicionar custo fixo", systemImage: "plus")
+                        .font(.system(.body, design: .rounded))
                 })
                 .sheet(isPresented: $mostrarSheet){
                     CriarGasto(vm: vm)

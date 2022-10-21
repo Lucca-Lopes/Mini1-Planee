@@ -26,12 +26,14 @@ struct EditarGasto: View {
         Form{
             HStack {
                 Text("Título")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
                     "Nome",
                     text: $nome
                 )
+                .font(.system(.body, design: .rounded))
                 .multilineTextAlignment(.trailing)
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: vm.screenWidth * 0.4)
@@ -41,6 +43,7 @@ struct EditarGasto: View {
             
             HStack{
                 Text("Valor total")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
@@ -48,6 +51,7 @@ struct EditarGasto: View {
                     value: $valor,
                     formatter: vm.formatacao
                 )
+                .font(.system(.body, design: .rounded))
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
@@ -58,6 +62,7 @@ struct EditarGasto: View {
             
             HStack{
                 Text("Vida útil")
+                    .font(.system(.body, design: .rounded))
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
@@ -65,6 +70,7 @@ struct EditarGasto: View {
                     value: $vidaUtil,
                     formatter: vm.numFormatacao
                 )
+                .font(.system(.body, design: .rounded))
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(.roundedBorder)
@@ -82,6 +88,7 @@ struct EditarGasto: View {
                     }
                 }label:{
                     Text("Ok")
+                        .font(.system(.body, design: .rounded))
                         .accentColor(vm.ValidaCustoFixo(nome: nome, valor: valor) ? Color.blue : Color.gray)
                 }
                 .disabled(!vm.ValidaCustoFixo(nome: nome, valor: valor))

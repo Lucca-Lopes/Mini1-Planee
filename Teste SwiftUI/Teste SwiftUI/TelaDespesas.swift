@@ -27,8 +27,10 @@ struct TelaDespesas: View {
             ForEach (vm.custosVariaveis) { custoVariavel in
                 HStack {
                     Text(custoVariavel.nome ?? "")
+                        .font(.system(.body, design: .rounded))
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
+                        .font(.system(.body, design: .rounded))
                 }
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)

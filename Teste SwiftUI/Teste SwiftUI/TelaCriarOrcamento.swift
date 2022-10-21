@@ -33,14 +33,17 @@ struct TelaCriarOrcamento: View {
             List{
                 Section{
                     TextField("Titulo", text: $nomeOrcamento)
+                        .font(.system(.body, design: .rounded))
                         .focused($focusedField, equals: .titulo)
                     TextField("Nome do cliente", text: $nomeCliente)
+                        .font(.system(.body, design: .rounded))
                         .focused($focusedField, equals: .nomeCliente)
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 Section(header: Text("Custos")
+                    .font(.system(.body, design: .rounded))
                     .bold()
                     .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
                 ) {
@@ -49,9 +52,11 @@ struct TelaCriarOrcamento: View {
                    }
                    label: {
                        Text("Custos fixos")
+                           .font(.system(.body, design: .rounded))
                            .frame(maxWidth: .infinity, alignment: .leading)
                        Spacer()
                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosFixos()))
+                           .font(.system(.body, design: .rounded))
                            .frame(maxWidth: .infinity, alignment: .trailing)
                    }
                     NavigationLink {
@@ -59,8 +64,10 @@ struct TelaCriarOrcamento: View {
                     }
                     label: {
                         Text("Custos variáveis")
+                            .font(.system(.body, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+                            .font(.system(.body, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
@@ -69,6 +76,7 @@ struct TelaCriarOrcamento: View {
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 
                 Section(header: Text("Mão de obra")
+                    .font(.system(.body, design: .rounded))
                     .bold()
                     .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
                 ) {
@@ -78,20 +86,25 @@ struct TelaCriarOrcamento: View {
                     }
                 label: {
                     Text("Hora de trabalho")
+                        .font(.system(.body, design: .rounded))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
+                        .font(.system(.body, design: .rounded))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     
                     HStack {
                         Text("Custos por hora")
+                            .font(.system(.body, design: .rounded))
                         Spacer()
                         Text("R$ 0,00")
+                            .font(.system(.body, design: .rounded))
                     }
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     HStack {
                         Text("Tempo de trabalho")
+                            .font(.system(.body, design: .rounded))
                             .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                         Spacer()
                         TextField(
@@ -99,19 +112,23 @@ struct TelaCriarOrcamento: View {
                             value: $hora,
                             formatter: vm.numFormatacao
                         )
+                        .font(.system(.body, design: .rounded))
                         .focused($focusedField, equals: .tempoTrabalho)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .textFieldStyle(.roundedBorder)
                         .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("h")
+                            .font(.system(.body, design: .rounded))
                             .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     }
                     HStack {
                         Text("Custo total")
+                            .font(.system(.body, design: .rounded))
                             .bold()
                         Spacer()
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosVariaveis())))
+                            .font(.system(.body, design: .rounded))
                             .bold()
                     }
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
@@ -122,6 +139,7 @@ struct TelaCriarOrcamento: View {
                 Section() {
                     HStack {
                         Text("Lucro")
+                            .font(.system(.body, design: .rounded))
                             .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                         Spacer()
                         TextField(
@@ -129,12 +147,14 @@ struct TelaCriarOrcamento: View {
                             value: $lucro,
                             formatter: vm.numFormatacao
                         )
+                        .font(.system(.body, design: .rounded))
                         .focused($focusedField, equals: .lucro)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
                         .textFieldStyle(.roundedBorder)
                         .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("%")
+                            .font(.system(.body, design: .rounded))
                             .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     }
                 }
@@ -143,9 +163,11 @@ struct TelaCriarOrcamento: View {
                 Section() {
                     HStack {
                         Text("Valor total")
+                            .font(.system(.body, design: .rounded))
                             .bold()
                         Spacer()
                         Text("R$ 0,00")
+                            .font(.system(.body, design: .rounded))
                             .bold()
                     }
                 }
@@ -163,6 +185,7 @@ struct TelaCriarOrcamento: View {
                         
                     }label:{
                         Text("Adicionar")
+                            .font(.system(.body, design: .rounded))
                             .accentColor(vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) ? Color.blue : Color.gray)
                     }
                     .disabled(!vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora))
