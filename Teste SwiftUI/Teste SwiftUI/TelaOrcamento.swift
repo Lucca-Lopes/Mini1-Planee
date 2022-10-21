@@ -17,6 +17,7 @@ struct TelaOrcamento: View {
     let utilitarios = Utilitarios()
     
     @State var mostrarSheetCP = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         List{
@@ -25,7 +26,12 @@ struct TelaOrcamento: View {
                 Spacer()
                 Text(entidade.nomeDoCliente!)
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+            
             Section(header: Text("Custos")
+                .bold()
+                .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
                    Text("Gastos")
@@ -38,8 +44,13 @@ struct TelaOrcamento: View {
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
                 }
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             
             Section(header: Text("Mão de obra")
+                .bold()
+                .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
                     Text("Hora de trabalho")
@@ -64,6 +75,10 @@ struct TelaOrcamento: View {
                         .bold()
                 }
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+            
             Section() {
                 HStack {
                     Text("Lucro")
@@ -71,6 +86,9 @@ struct TelaOrcamento: View {
                     Text("\(entidade.lucro)%")
                 }
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+            
             HStack {
                 Text("Valor total")
                     .bold()
@@ -78,6 +96,8 @@ struct TelaOrcamento: View {
                 Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorTotal))
                     .bold()
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
         }
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing)
