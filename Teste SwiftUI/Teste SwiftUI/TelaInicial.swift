@@ -19,6 +19,8 @@ struct TelaInicial: View {
     @Environment(\.colorScheme) var colorScheme
     
     init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(red: 0.133, green: 0.472, blue: 0.692, alpha: 1)]
+        
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.133, green: 0.472, blue: 0.692, alpha: 1)]
     }
     
