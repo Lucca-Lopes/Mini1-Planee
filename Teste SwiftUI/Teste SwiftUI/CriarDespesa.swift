@@ -16,11 +16,14 @@ struct CriarDespesa: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         NavigationView {
             Form {
                 HStack {
                     Text("Nome")
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField("Nome", text: $nome)
                         .multilineTextAlignment(.trailing)
@@ -28,8 +31,12 @@ struct CriarDespesa: View {
                         .frame(maxWidth: vm.screenWidth * 0.4)
                     
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                
                 HStack {
                     Text("Valor")
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField(
                         "R$ 0,00",
@@ -41,6 +48,8 @@ struct CriarDespesa: View {
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.4) 
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
