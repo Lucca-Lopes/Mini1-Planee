@@ -14,9 +14,11 @@ struct TelaDespesas: View {
     @State var nome = ""
     @State var valor = 0.0
     @State var valorTotal = 0.0
-    @State var mostrarCriarDespesa = false    
+    @State var mostrarCriarDespesa = false
     
     @State var editando = false
+    
+    @Environment(\.colorScheme) var colorScheme
     
     let utilitarios = Utilitarios()
     
@@ -26,12 +28,16 @@ struct TelaDespesas: View {
                 NavigationLink {
                     EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
                 }
-                label: {
-                    Text(despesaAtual.nome ?? "")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
+            label: {
+                Text(despesaAtual.nome ?? "")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+            }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .onDelete(perform: vm.deletarDespesa)
             if vm.despesas.count > 0 {
@@ -43,6 +49,9 @@ struct TelaDespesas: View {
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
         }
         .toolbar {
@@ -57,10 +66,14 @@ struct TelaDespesas: View {
                 }
                 .sheet(isPresented: $mostrarCriarDespesa){
                     CriarDespesa(vm: vm, nome: "", valor: 0.0)
-            }
+                }
             }
         }
         .navigationTitle("Despesas")
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

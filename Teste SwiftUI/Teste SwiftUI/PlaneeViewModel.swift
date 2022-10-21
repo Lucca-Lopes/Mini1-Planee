@@ -42,13 +42,27 @@ class PlaneeViewModel: ObservableObject {
         return numero
     }()
     
+    let corDark = [Color(red: 0, green: 0.332, blue: 0.546, opacity: 0.84),//0
+                   Color(red: 0, green: 0.167, blue: 0.275, opacity: 1),//1
+                   Color(red: 0.353, green: 0.784, blue: 0.961, opacity: 1),//2
+                   Color(red: 0, green: 0.306, blue: 0.502, opacity: 1),//3
+                   Color(red: 1, green: 1, blue: 1, opacity: 1)//4
+    ]
+    
+    let corLight = [Color(red: 0.188, green: 0.51, blue: 0.718, opacity: 0.84),//0
+                    Color(red: 0.188, green: 0.51, blue: 0.718, opacity: 0.25),//1
+                    Color(red: 0.133, green: 0.472, blue: 0.692, opacity: 1),//2
+                    Color(red: 0.842, green: 0.916, blue: 0.962, opacity: 1),//3
+                    Color(red: 0, green: 0.306, blue: 0.502, opacity: 1)//4
+    ]
+    
     init() {
         fetchOrcamento()
         fetchDespesa()
         fetchGasto()
         fetchVdH()
-//        clearDatabase()
-//        salvar()
+        //        clearDatabase()
+        //        salvar()
         if valorDaHora.count < 1 {
             addVdH()
         }
@@ -225,13 +239,13 @@ class PlaneeViewModel: ObservableObject {
         guard let url = manager.container.persistentStoreDescriptions.first?.url else { return }
         
         let persistentStoreCoordinator = manager.container.persistentStoreCoordinator
-
-         do {
-             try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
-             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-         } catch {
-             print("Attempted to clear persistent store: " + error.localizedDescription)
-         }
+        
+        do {
+            try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
+            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+        } catch {
+            print("Attempted to clear persistent store: " + error.localizedDescription)
+        }
     }
     
     public func ValidaOrcamento(nomeOrcamento: String, nomeCliente: String, qtdHora: Int) -> Bool {

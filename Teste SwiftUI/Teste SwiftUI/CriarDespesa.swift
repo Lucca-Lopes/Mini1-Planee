@@ -10,17 +10,20 @@ import SwiftUI
 struct CriarDespesa: View {
     
     @ObservedObject var vm: PlaneeViewModel
-            
+    
     @State var nome: String
     @State var valor: Double
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
             Form {
                 HStack {
                     Text("Nome")
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField("Nome", text: $nome)
                         .multilineTextAlignment(.trailing)
@@ -28,8 +31,12 @@ struct CriarDespesa: View {
                         .frame(maxWidth: vm.screenWidth * 0.4)
                     
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                
                 HStack {
                     Text("Valor")
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField(
                         "R$ 0,00",
@@ -39,8 +46,10 @@ struct CriarDespesa: View {
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: vm.screenWidth * 0.4) 
+                    .frame(maxWidth: vm.screenWidth * 0.4)
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -59,6 +68,10 @@ struct CriarDespesa: View {
             .navigationBarTitle("Adicionar despesa")
             .navigationBarTitleDisplayMode(.inline)
             .onTapGesture(perform: vm.dismissKeyboard)
+            .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+            .onAppear{
+                UITableView.appearance().backgroundColor = .clear
+            }
         }
     }
 }
