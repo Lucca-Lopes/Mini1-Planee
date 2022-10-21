@@ -30,6 +30,7 @@
 		2BB8E08728DE523200C93D1B /* Extensoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8E08628DE523200C93D1B /* Extensoes.swift */; };
 		2BBC940828F48F8D00B29404 /* TelaEditarOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBC940728F48F8D00B29404 /* TelaEditarOrcamento.swift */; };
 		2BCB0C3D28C2982A006793CC /* Utilitarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCB0C3C28C2982A006793CC /* Utilitarios.swift */; };
+		2BE520FF2903113800FB8B4F /* TelaDespesasOrcamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE520FE2903113800FB8B4F /* TelaDespesasOrcamento.swift */; };
 		2BFD718228CA851B00AA5F29 /* TelaDespesas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		2BB8E08628DE523200C93D1B /* Extensoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensoes.swift; sourceTree = "<group>"; };
 		2BBC940728F48F8D00B29404 /* TelaEditarOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaEditarOrcamento.swift; sourceTree = "<group>"; };
 		2BCB0C3C28C2982A006793CC /* Utilitarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitarios.swift; sourceTree = "<group>"; };
+		2BE520FE2903113800FB8B4F /* TelaDespesasOrcamento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaDespesasOrcamento.swift; sourceTree = "<group>"; };
 		2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaDespesas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				2BB8E08428DE50CF00C93D1B /* TelaExportarPDF.swift */,
 				00826BFF28CBCD4D004B935B /* TelaValorHdT.swift */,
 				2BFD718128CA851B00AA5F29 /* TelaDespesas.swift */,
+				2BE520FE2903113800FB8B4F /* TelaDespesasOrcamento.swift */,
 				2B7310CF28D904DB009CEAB2 /* CriarDespesa.swift */,
 				2BB8E08028DE407E00C93D1B /* EditarDespesa.swift */,
 				0500C47728C8081F008A9042 /* TelaGastos.swift */,
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B666FEB28B00CC3003892A6 /* Persistence.swift in Sources */,
+				2BE520FF2903113800FB8B4F /* TelaDespesasOrcamento.swift in Sources */,
 				2BB8E08528DE50CF00C93D1B /* TelaExportarPDF.swift in Sources */,
 				2B8FA99E28DCD83D005AA1B3 /* CriarGasto.swift in Sources */,
 				057A456328C12089004756EE /* TelaInicial.swift in Sources */,

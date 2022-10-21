@@ -47,7 +47,7 @@ struct TelaCriarOrcamento: View {
                            .frame(maxWidth: .infinity, alignment: .trailing)
                    }
                     NavigationLink {
-                        TelaDespesas(vm: vm)
+                        TelaDespesasOrcamento(vm: vm)
                     }
                     label: {
                         Text("Custos variáveis")
@@ -134,7 +134,7 @@ struct TelaCriarOrcamento: View {
                 {
                     Button{
                         if vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) {
-                            vm.AddOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.CalcularTotalCustosFixos(), totalDespesas: vm.CalcularTotalCustosVariaveis(), valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
+                            vm.AddOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
                             self.mode.wrappedValue.dismiss()
                         }
                         

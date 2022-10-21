@@ -42,7 +42,8 @@ struct EditarDespesa: View {
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: vm.screenWidth * 0.4)                }
+                    .frame(maxWidth: vm.screenWidth * 0.4)
+                }
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {

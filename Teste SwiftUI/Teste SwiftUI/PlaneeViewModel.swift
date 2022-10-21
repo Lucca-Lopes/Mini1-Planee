@@ -59,19 +59,20 @@ class PlaneeViewModel: ObservableObject {
         let custoPorHora = CalcularCustosHora(valorDaHora: valorDaHora)
         let lucroFinal = (Double(lucro) + 100) / 100
         let novoOrcamento = Orcamento(context: manager.context)
-        
+        let set = NSSet(array: custosVariaveisAtual)
         novoOrcamento.nome = nome
         novoOrcamento.nomeDoCliente = nomeCliente
         novoOrcamento.custoTotalGastos = CalcularTotalCustosFixos()
         novoOrcamento.custoTotalDespesas = CalcularTotalCustosVariaveis()
-//        novoOrcamento.custosVariaveis = custosVariaveisAtual
+        novoOrcamento.custosVariaveis = set
         novoOrcamento.custoHora = custoPorHora
         novoOrcamento.horasDeTrabalho = Int64(tempoDeTrabalho)
         novoOrcamento.custoTotal = CalcularTotalCustosFixos() + CalcularTotalCustosVariaveis()
         novoOrcamento.lucro = Int64(lucro)
         novoOrcamento.valorDaHora = valorDaHora
         novoOrcamento.valorTotal = ((Double(tempoDeTrabalho) * valorDaHora.valorFinal) + (custoPorHora * Double(tempoDeTrabalho))) * lucroFinal
-        print(custoPorHora)
+        AddCVAtuais()
+        custosVariaveisAtual = []
         salvar()
     }
     
@@ -79,7 +80,13 @@ class PlaneeViewModel: ObservableObject {
         let novoCustoVariavel = CustoVariavel(context: manager.context)
         novoCustoVariavel.nome = nome
         novoCustoVariavel.valor = valor
-        salvar()
+        custosVariaveisAtual.append(novoCustoVariavel)
+    }
+    
+    func AddCVAtuais() {
+        for custoVariavel in custosVariaveisAtual {
+            custosVariaveis.append(custoVariavel)
+        }
     }
     
     func AddCustoFixo(nome: String, valorTotal: Double, vidaUtil: Int) {
@@ -117,7 +124,7 @@ class PlaneeViewModel: ObservableObject {
     func AtualizarCustoVariavel(entidade: CustoVariavel, nome: String, valor: Double) {
         entidade.nome = nome
         entidade.valor = valor
-        salvar()
+//        salvar()
     }
     
     func AtualizarCustoFixo(entidade: CustoFixo, nome: String, valor: Double, vidaUtil: Int){

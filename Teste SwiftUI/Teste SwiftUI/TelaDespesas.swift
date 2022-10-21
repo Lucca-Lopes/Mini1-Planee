@@ -23,42 +23,38 @@ struct TelaDespesas: View {
     var body: some View {
         List {
             ForEach (vm.custosVariaveis) { custoVariavel in
-                NavigationLink {
-                    EditarDespesa(vm: vm, entidade: custoVariavel, nome: custoVariavel.nome ?? "", valor: custoVariavel.valor)
-                }
-                label: {
+                HStack {
                     Text(custoVariavel.nome ?? "")
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .onDelete(perform: vm.DeletarCustoVariavel)
-            if vm.custosVariaveis.count > 0 {
-                Section() {
-                    HStack {
-                        Text("Valor total")
-                        Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
-                    }
-                }
-            }
+//            .onDelete(perform: vm.DeletarCustoVariavel)
+//            if vm.custosVariaveis.count > 0 {
+//                Section() {
+//                    HStack {
+//                        Text("Valor total")
+//                        Spacer()
+//                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+//                    }
+//                }
+//            }
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            ToolbarItem {
-                Button {
-                    mostrarCriarDespesa = true
-                } label: {
-                    Label("Adicionar Custo Variável", systemImage: "plus")
-                }
-                .sheet(isPresented: $mostrarCriarDespesa){
-                    CriarDespesa(vm: vm, nome: "", valor: 0.0)
-            }
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                EditButton()
+//            }
+//            ToolbarItem {
+//                Button {
+//                    mostrarCriarDespesa = true
+//                } label: {
+//                    Label("Adicionar Custo Variável", systemImage: "plus")
+//                }
+//                .sheet(isPresented: $mostrarCriarDespesa){
+//                    CriarDespesa(vm: vm, nome: "", valor: 0.0)
+//                }
+//            }
+//        }
         .navigationTitle("Custos variáveis")
         .navigationBarTitleDisplayMode(.large)
     }
