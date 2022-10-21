@@ -14,6 +14,8 @@ struct TelaGastos: View {
     @State var editando = false
     @State var mostrarSheet = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let utilitarios = Utilitarios()
     
     var body: some View {
@@ -47,6 +49,9 @@ struct TelaGastos: View {
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), gastoAtual.custo))
                     }
                 }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .onDelete(perform: vm.deletarGasto)
         }
