@@ -22,10 +22,10 @@ struct TelaGastos: View {
         List{
             ForEach (vm.gastos) { gastoAtual in
                 Section(header:
-                    NavigationLink {
+                            NavigationLink {
                     EditarGasto(vm: vm, entidade: gastoAtual, nome: gastoAtual.nome!, valor: gastoAtual.valor, vidaUtil: Int(gastoAtual.vidaUtil))
-                    }
-                label: {
+                }
+                        label: {
                     HStack {
                         Text(gastoAtual.nome ?? "Novo gasto")
                             .lineLimit(1)
@@ -72,5 +72,9 @@ struct TelaGastos: View {
         }
         .navigationTitle("Gastos")
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

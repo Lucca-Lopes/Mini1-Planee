@@ -10,8 +10,8 @@ import SwiftUI
 struct TelaInicial: View {
     
     @StateObject var vm = PlaneeViewModel()
-                
-//    let utilitarios = Utilitarios()
+    
+    let utilitarios = Utilitarios()
     
     @State private var rowHeight: CGFloat = 40
     @State private var headerHeight: CGFloat = 60
@@ -39,7 +39,6 @@ struct TelaInicial: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Form{
-
                     Section{
                         HStack {
                             Text("Criar Orçamento")
@@ -59,7 +58,7 @@ struct TelaInicial: View {
                         )
                     }
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
-
+                    
                     Section{
                         HStack {
                             Text("Meus orçamentos")
@@ -79,7 +78,7 @@ struct TelaInicial: View {
                         )
                     }
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
-
+                    
                     Section{
                         HStack {
                             Text("Calcular hora de trabalho")
@@ -99,7 +98,7 @@ struct TelaInicial: View {
                         )
                     }
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
-
+                    
                     Section{
                         HStack {
                             Text("Despesas")
@@ -119,7 +118,7 @@ struct TelaInicial: View {
                         )
                     }
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
-
+                    
                     Section{
                         HStack {
                             Text("Gastos")
@@ -141,10 +140,10 @@ struct TelaInicial: View {
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
                 }
                 .foregroundColor(colorScheme == .dark ? Color.white : Color.white)
-//                .background(colorScheme == .dark ? vm.corDark[1] : vm.corLight[1])
-//                .onAppear{
-//                    UITableView.appearance().backgroundColor = .clear
-//                }
+                .background(colorScheme == .dark ? vm.corDark[1] : vm.corLight[1])
+                .onAppear{
+                    UITableView.appearance().backgroundColor = .clear
+                }
                 .cornerRadius(40)
                 .ignoresSafeArea()
             }

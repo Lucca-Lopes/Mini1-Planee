@@ -25,7 +25,7 @@ struct TelaCriarOrcamento: View {
     private enum Field: Int {
         case titulo, nomeCliente, tempoTrabalho, lucro
     }
-
+    
     @FocusState private var focusedField: Field?
     
     var body: some View {
@@ -46,23 +46,23 @@ struct TelaCriarOrcamento: View {
                 ) {
                     NavigationLink {
                         TelaGastos(vm: vm)
-                   }
-                   label: {
-                       Text("Gastos")
-                           .frame(maxWidth: .infinity, alignment: .leading)
-                       Spacer()
-                       Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
-                           .frame(maxWidth: .infinity, alignment: .trailing)
-                   }
+                    }
+                label: {
+                    Text("Gastos")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
                     NavigationLink {
                         TelaDespesas(vm: vm)
                     }
-                    label: {
-                        Text("Despesas")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
+                label: {
+                    Text("Despesas")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
@@ -74,15 +74,15 @@ struct TelaCriarOrcamento: View {
                 ) {
                     NavigationLink {
                         TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
-                            
+                        
                     }
-                    label: {
-                        Text("Hora de trabalho")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                label: {
+                    Text("Hora de trabalho")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     
                     HStack {
                         Text("Custos por hora")
@@ -171,6 +171,10 @@ struct TelaCriarOrcamento: View {
             }
             .navigationBarTitle("Novo orçamento")
             .navigationBarTitleDisplayMode(.inline)
+            .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+            .onAppear{
+                UITableView.appearance().backgroundColor = .clear
+            }
             
             if focusedField != nil{
                 Rectangle()

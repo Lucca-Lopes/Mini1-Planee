@@ -61,8 +61,8 @@ class PlaneeViewModel: ObservableObject {
         fetchDespesa()
         fetchGasto()
         fetchVdH()
-//        clearDatabase()
-//        salvar()
+        //        clearDatabase()
+        //        salvar()
         if valorDaHora.count < 1 {
             addVdH()
         }
@@ -239,13 +239,13 @@ class PlaneeViewModel: ObservableObject {
         guard let url = manager.container.persistentStoreDescriptions.first?.url else { return }
         
         let persistentStoreCoordinator = manager.container.persistentStoreCoordinator
-
-         do {
-             try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
-             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-         } catch {
-             print("Attempted to clear persistent store: " + error.localizedDescription)
-         }
+        
+        do {
+            try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
+            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+        } catch {
+            print("Attempted to clear persistent store: " + error.localizedDescription)
+        }
     }
     
     public func ValidaOrcamento(nomeOrcamento: String, nomeCliente: String, qtdHora: Int) -> Bool {

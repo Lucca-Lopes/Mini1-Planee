@@ -18,9 +18,9 @@ struct TelaEditarOrcamento: View {
     @State var lucro: Int
     
     @Environment(\.colorScheme) var colorScheme
-        
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
+    
     var body: some View {
         List{
             Section{
@@ -35,10 +35,10 @@ struct TelaEditarOrcamento: View {
                 .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
-                   Text("Gastos")
-                   Spacer()
-                   Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
-               }
+                    Text("Gastos")
+                    Spacer()
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
+                }
                 HStack {
                     Text("Despesas")
                     Spacer()
@@ -148,5 +148,9 @@ struct TelaEditarOrcamento: View {
         .navigationBarTitle("Editar orçamento")
         .navigationBarTitleDisplayMode(.inline)
         .onTapGesture(perform: vm.dismissKeyboard)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

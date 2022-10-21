@@ -82,11 +82,16 @@ struct TelaValorHdT: View {
                     }
                 }label:{
                     Text("Salvar")
+                        .accentColor(valor != 0 && dias != 0 && horasDiarias != 0 ? Color.blue : Color.gray)
                 }
             }
         }
         .onTapGesture(perform: vm.dismissKeyboard)
         .navigationTitle("Hora de trabalho")
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

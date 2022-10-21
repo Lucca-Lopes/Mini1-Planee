@@ -11,7 +11,7 @@ import CoreData
 struct TelaOrcamento: View {
     
     @ObservedObject var vm: PlaneeViewModel
-        
+    
     var entidade: Orcamento
     
     let utilitarios = Utilitarios()
@@ -34,10 +34,10 @@ struct TelaOrcamento: View {
                 .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
-                   Text("Gastos")
+                    Text("Gastos")
                     Spacer()
-                   Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
-               }
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
+                }
                 HStack {
                     Text("Despesas")
                     Spacer()
@@ -111,5 +111,9 @@ struct TelaOrcamento: View {
         }
         .navigationTitle(entidade.nome!)
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

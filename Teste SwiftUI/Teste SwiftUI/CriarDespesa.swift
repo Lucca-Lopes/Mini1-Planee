@@ -10,7 +10,7 @@ import SwiftUI
 struct CriarDespesa: View {
     
     @ObservedObject var vm: PlaneeViewModel
-            
+    
     @State var nome: String
     @State var valor: Double
     
@@ -46,7 +46,7 @@ struct CriarDespesa: View {
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
-                    .frame(maxWidth: vm.screenWidth * 0.4) 
+                    .frame(maxWidth: vm.screenWidth * 0.4)
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
@@ -68,6 +68,10 @@ struct CriarDespesa: View {
             .navigationBarTitle("Adicionar despesa")
             .navigationBarTitleDisplayMode(.inline)
             .onTapGesture(perform: vm.dismissKeyboard)
+            .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+            .onAppear{
+                UITableView.appearance().backgroundColor = .clear
+            }
         }
     }
 }
