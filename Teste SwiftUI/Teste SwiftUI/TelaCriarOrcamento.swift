@@ -105,7 +105,7 @@ struct TelaCriarOrcamento: View {
                         .textFieldStyle(.roundedBorder)
                         .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("h")
-                            .foregroundColor(.gray)
+                            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     }
                     HStack {
                         Text("Custo total")
@@ -135,7 +135,7 @@ struct TelaCriarOrcamento: View {
                         .textFieldStyle(.roundedBorder)
                         .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("%")
-                            .foregroundColor(.gray)
+                            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     }
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
