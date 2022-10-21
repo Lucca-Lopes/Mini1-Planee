@@ -14,9 +14,11 @@ struct TelaDespesas: View {
     @State var nome = ""
     @State var valor = 0.0
     @State var valorTotal = 0.0
-    @State var mostrarCriarDespesa = false    
+    @State var mostrarCriarDespesa = false
     
     @State var editando = false
+    
+    @Environment(\.colorScheme) var colorScheme
     
     let utilitarios = Utilitarios()
     
@@ -25,9 +27,13 @@ struct TelaDespesas: View {
             ForEach (vm.custosVariaveis) { custoVariavel in
                 HStack {
                     Text(custoVariavel.nome ?? "")
+                      .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
+                      .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
 //            .onDelete(perform: vm.DeletarCustoVariavel)
 //            if vm.custosVariaveis.count > 0 {
@@ -57,5 +63,9 @@ struct TelaDespesas: View {
 //        }
         .navigationTitle("Custos variáveis")
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

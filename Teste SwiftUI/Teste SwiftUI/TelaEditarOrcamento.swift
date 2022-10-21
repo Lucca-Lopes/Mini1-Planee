@@ -16,15 +16,23 @@ struct TelaEditarOrcamento: View {
     @State var nomeCliente: String
     @State var hora: Int
     @State var lucro: Int
-        
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
+    
     var body: some View {
         List{
-            TextField("Nome do orçamento", text: $nomeOrcamento)
-            TextField("Nome do cliente", text: $nomeCliente)
+            Section{
+                TextField("Nome do orçamento", text: $nomeOrcamento)
+                TextField("Nome do cliente", text: $nomeCliente)
+            }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             
             Section(header: Text("Custos")
+                .bold()
+                .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
                    Text("Custos fixos")
@@ -37,21 +45,31 @@ struct TelaEditarOrcamento: View {
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
                 }
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             
             Section(header: Text("Mão de obra")
+                .bold()
+                .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
                     Text("Hora de trabalho")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.valorDaHora!.valorFinal))
                 }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                
                 HStack {
                     Text("Custos por hora")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoHora))
                 }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                
                 HStack {
                     Text("Tempo de trabalho")
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField(
                         "0",
@@ -63,8 +81,9 @@ struct TelaEditarOrcamento: View {
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.25)
                     Text("h")
-                        .foregroundColor(.gray)
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
+                
                 HStack {
                     Text("Custo total")
                         .bold()
@@ -72,11 +91,15 @@ struct TelaEditarOrcamento: View {
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotal))
                         .bold()
                 }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             
             Section() {
                 HStack {
                     Text("Lucro")
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     Spacer()
                     TextField(
                         "0",
@@ -88,9 +111,11 @@ struct TelaEditarOrcamento: View {
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: vm.screenWidth * 0.25)
                     Text("%")
-                        .foregroundColor(.gray)
+                        .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            
             Section() {
                 HStack {
                     Text("Valor total")
@@ -100,8 +125,8 @@ struct TelaEditarOrcamento: View {
                         .bold()
                 }
             }
-            
-            
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
         }
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing)
@@ -122,6 +147,10 @@ struct TelaEditarOrcamento: View {
         }
         .navigationBarTitle("Editar orçamento")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture(perform: vm.DismissKeyboard)
+        .onTapGesture(perform: vm.dismissKeyboard)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

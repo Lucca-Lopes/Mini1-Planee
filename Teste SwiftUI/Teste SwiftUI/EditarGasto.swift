@@ -20,11 +20,13 @@ struct EditarGasto: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View{
         Form{
             HStack {
                 Text("Título")
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
                     "Nome",
@@ -34,8 +36,12 @@ struct EditarGasto: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: vm.screenWidth * 0.4)
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+            
             HStack{
                 Text("Valor total")
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
                     "R$ 0,00",
@@ -47,8 +53,12 @@ struct EditarGasto: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: vm.screenWidth * 0.4)
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+            
             HStack{
                 Text("Vida útil")
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 Spacer()
                 TextField(
                     "R$ 0,00",
@@ -60,6 +70,8 @@ struct EditarGasto: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: vm.screenWidth * 0.4)
             }
+            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
         }
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -77,6 +89,10 @@ struct EditarGasto: View {
         }
         .navigationBarTitle("Editar custo fixo")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture(perform: vm.DismissKeyboard)
+        .onTapGesture(perform: vm.dismissKeyboard)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

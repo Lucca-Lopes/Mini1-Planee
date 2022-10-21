@@ -14,6 +14,8 @@ struct TelaGastos: View {
     @State var editando = false
     @State var mostrarSheet = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let utilitarios = Utilitarios()
     
     var body: some View {
@@ -28,6 +30,9 @@ struct TelaGastos: View {
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoFixoAtual.valorMensal))
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .onDelete(perform: vm.DeletarCustoFixo)
         }
@@ -48,5 +53,9 @@ struct TelaGastos: View {
         }
         .navigationTitle("Custos fixos")
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

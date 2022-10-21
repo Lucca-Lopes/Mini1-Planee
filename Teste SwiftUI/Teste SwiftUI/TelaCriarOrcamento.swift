@@ -16,6 +16,8 @@ struct TelaCriarOrcamento: View {
     @State var hora: Int = 0
     @State var lucro: Int = 0
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let utilitarios = Utilitarios()
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -23,18 +25,24 @@ struct TelaCriarOrcamento: View {
     private enum Field: Int {
         case titulo, nomeCliente, tempoTrabalho, lucro
     }
-
+    
     @FocusState private var focusedField: Field?
     
     var body: some View {
         ZStack {
             List{
-                TextField("Titulo", text: $nomeOrcamento)
-                    .focused($focusedField, equals: .titulo)
-                TextField("Nome do cliente", text: $nomeCliente)
-                    .focused($focusedField, equals: .nomeCliente)
+                Section{
+                    TextField("Titulo", text: $nomeOrcamento)
+                        .focused($focusedField, equals: .titulo)
+                    TextField("Nome do cliente", text: $nomeCliente)
+                        .focused($focusedField, equals: .nomeCliente)
+                }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 Section(header: Text("Custos")
+                    .bold()
+                    .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
                 ) {
                     NavigationLink {
                         TelaGastos(vm: vm)
@@ -56,27 +64,35 @@ struct TelaCriarOrcamento: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 
                 Section(header: Text("Mão de obra")
+                    .bold()
+                    .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
                 ) {
                     NavigationLink {
                         TelaValorHdT(vm: vm, valor: vm.valorDaHora.last!.pretensaoSalarial, dias: Int(vm.valorDaHora.last!.dias), horasDiarias: Int(vm.valorDaHora.last!.horas))
-                            
+                        
                     }
-                    label: {
-                        Text("Hora de trabalho")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
+                label: {
+                    Text("Hora de trabalho")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora.last!.valorFinal))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     
                     HStack {
                         Text("Custos por hora")
                         Spacer()
                         Text("R$ 0,00")
                     }
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     HStack {
                         Text("Tempo de trabalho")
+                            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                         Spacer()
                         TextField(
                             "0",
@@ -89,7 +105,7 @@ struct TelaCriarOrcamento: View {
                         .textFieldStyle(.roundedBorder)
                         .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("h")
-                            .foregroundColor(.gray)
+                            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     }
                     HStack {
                         Text("Custo total")
@@ -98,11 +114,15 @@ struct TelaCriarOrcamento: View {
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosVariaveis())))
                             .bold()
                     }
+                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 
                 Section() {
                     HStack {
                         Text("Lucro")
+                            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                         Spacer()
                         TextField(
                             "0",
@@ -115,9 +135,10 @@ struct TelaCriarOrcamento: View {
                         .textFieldStyle(.roundedBorder)
                         .frame(maxWidth: vm.screenWidth * 0.25)
                         Text("%")
-                            .foregroundColor(.gray)
+                            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 
                 Section() {
                     HStack {
@@ -128,6 +149,8 @@ struct TelaCriarOrcamento: View {
                             .bold()
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing)
@@ -148,6 +171,10 @@ struct TelaCriarOrcamento: View {
             }
             .navigationBarTitle("Novo orçamento")
             .navigationBarTitleDisplayMode(.inline)
+            .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+            .onAppear{
+                UITableView.appearance().backgroundColor = .clear
+            }
             
             if focusedField != nil{
                 Rectangle()
