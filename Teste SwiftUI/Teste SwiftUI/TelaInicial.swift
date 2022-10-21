@@ -28,22 +28,21 @@ struct TelaInicial: View {
         NavigationView{
             VStack {
                 Text("Valor da hora de trabalho:")
+                    .font(.system(.body, design: .rounded))
                     .bold()
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.valorDaHora[0].valorFinal))
-                    .bold()
-                    .font(.system(size: 20))
+//                    .font(.system(size: 20, weight: .regular, design: .rounded))
                     .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Form{
                     Section{
                         HStack {
-                            Text("Criar Orçamento")
-                                .bold()
-                                .font(.system(size: 22))
+                            Text("Criar orçamento")
+                                .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -62,8 +61,7 @@ struct TelaInicial: View {
                     Section{
                         HStack {
                             Text("Meus orçamentos")
-                                .bold()
-                                .font(.system(size: 22))
+                                .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -82,8 +80,7 @@ struct TelaInicial: View {
                     Section{
                         HStack {
                             Text("Calcular hora de trabalho")
-                                .bold()
-                                .font(.system(size: 22))
+                                .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -102,8 +99,7 @@ struct TelaInicial: View {
                     Section{
                         HStack {
                             Text("Despesas")
-                                .bold()
-                                .font(.system(size: 22))
+                                .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -122,8 +118,7 @@ struct TelaInicial: View {
                     Section{
                         HStack {
                             Text("Gastos")
-                                .bold()
-                                .font(.system(size: 22))
+                                .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -149,7 +144,7 @@ struct TelaInicial: View {
             }
             .foregroundColor(vm.corLight[2])
             .navigationBarTitleDisplayMode(.large)
-            .navigationTitle("Planee")
+            .navigationTitle(Text("Planee"))
         }.navigationViewStyle(.stack)
     }
 }

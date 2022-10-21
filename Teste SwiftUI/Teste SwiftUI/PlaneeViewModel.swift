@@ -61,8 +61,8 @@ class PlaneeViewModel: ObservableObject {
         fetchDespesa()
         fetchGasto()
         fetchVdH()
-        //        clearDatabase()
-        //        salvar()
+                clearDatabase()
+                salvar()
         if valorDaHora.count < 1 {
             addVdH()
         }
