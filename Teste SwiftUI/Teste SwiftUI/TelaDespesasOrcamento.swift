@@ -15,10 +15,9 @@ struct TelaDespesasOrcamento: View {
     @State var valor = 0.0
     @State var valorTotal = 0.0
     @State var mostrarCriarDespesa = false
-    
     @State var editando = false
     
-    let utilitarios = Utilitarios()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         List {
@@ -27,11 +26,15 @@ struct TelaDespesasOrcamento: View {
                     EditarDespesa(vm: vm, entidade: custoVariavel, nome: custoVariavel.nome ?? "", valor: custoVariavel.valor)
                 }
                 label: {
-                    Text(custoVariavel.nome ?? "")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    HStack {
+                        Text(custoVariavel.nome ?? "")
+                        Spacer()
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
+                    }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
             .onDelete(perform: vm.DeletarCustoVariavel)
             if vm.custosVariaveisAtual.count > 0 {
@@ -42,6 +45,9 @@ struct TelaDespesasOrcamento: View {
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
                     }
                 }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
         }
         .toolbar {
@@ -61,5 +67,9 @@ struct TelaDespesasOrcamento: View {
         }
         .navigationTitle("Custos variáveis")
         .navigationBarTitleDisplayMode(.large)
+        .background(colorScheme == .dark ? Color.black : vm.corLight[3])
+        .onAppear{
+            UITableView.appearance().backgroundColor = .clear
+        }
     }
 }

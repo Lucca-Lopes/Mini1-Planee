@@ -97,10 +97,7 @@ struct TelaInicial: View {
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
                     
                     Section{
-                        NavigationLink {
-                            TelaGastos(vm: vm)
-                        }
-                        label: {
+                        HStack {
                             Text("Custos fixos")
                                 .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
@@ -112,17 +109,14 @@ struct TelaInicial: View {
                                 .foregroundColor(.white)
                         }
                         .background(
-                            NavigationLink(destination: TelaDespesas(vm: vm)) {}
+                            NavigationLink(destination: TelaGastos(vm: vm)) {}
                                 .opacity(0)
                         )
                     }
                     .listRowBackground(colorScheme == .dark ? vm.corDark[0] : vm.corLight[0])
                     
                     Section{
-                        NavigationLink {
-                            TelaDespesas(vm: vm)
-                        }
-                        label: {
+                        HStack {
                             Text("Custos variáveis")
                                 .font(.system(size: 22, weight: .bold, design: .rounded))
                                 .padding(.vertical)
@@ -134,7 +128,7 @@ struct TelaInicial: View {
                                 .foregroundColor(.white)
                         }
                         .background(
-                            NavigationLink(destination: TelaGastos(vm: vm)) {}
+                            NavigationLink(destination: TelaDespesas(vm: vm)) {}
                                 .opacity(0)
                         )
                     }

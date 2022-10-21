@@ -57,20 +57,20 @@ struct EditarDespesa: View {
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
-                    if vm.ValidaDespesa(nome: nome, valor: valor){
-                        vm.atualizarDespesa(entidade: entidade, nome: nome, valor: valor)
+                    if vm.ValidaCustoVariavel(nome: nome, valor: valor){
+                        vm.AtualizarCustoVariavel(entidade: entidade, nome: nome, valor: valor)
                         self.mode.wrappedValue.dismiss()
                     }
                 }label:{
                     Text("OK")
-                        .accentColor(vm.ValidaDespesa(nome: nome, valor: valor) ? Color.blue : Color.gray)
+                        .accentColor(vm.ValidaCustoVariavel(nome: nome, valor: valor) ? Color.blue : Color.gray)
                 }
-                .disabled(!vm.ValidaDespesa(nome: nome, valor: valor))
+                .disabled(!vm.ValidaCustoVariavel(nome: nome, valor: valor))
             }
         }
         .navigationBarTitle("Editar custo variável")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture(perform: vm.dismissKeyboard)
+        .onTapGesture(perform: vm.DismissKeyboard)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])
         .onAppear{
             UITableView.appearance().backgroundColor = .clear

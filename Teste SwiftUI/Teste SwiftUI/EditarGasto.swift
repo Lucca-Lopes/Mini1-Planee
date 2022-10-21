@@ -89,7 +89,7 @@ struct EditarGasto: View {
         }
         .navigationBarTitle("Editar custo fixo")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture(perform: vm.dismissKeyboard)
+        .onTapGesture(perform: vm.DismissKeyboard)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])
         .onAppear{
             UITableView.appearance().backgroundColor = .clear
