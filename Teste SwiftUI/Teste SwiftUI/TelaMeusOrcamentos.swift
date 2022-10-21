@@ -42,7 +42,7 @@ struct TelaMeusOrcamentos: View {
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 }
             }
-            .onDelete(perform: vm.deletarOrcamento)
+            .onDelete(perform: vm.DeletarOrcamento)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -57,7 +57,7 @@ struct TelaMeusOrcamentos: View {
             }
             }
         }
-        .navigationTitle("Meus Orçamentos")
+        .navigationTitle("Meus orçamentos")
         .navigationBarTitleDisplayMode(.large)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])
         .onAppear{

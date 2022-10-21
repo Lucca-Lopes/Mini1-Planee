@@ -24,52 +24,44 @@ struct TelaDespesas: View {
     
     var body: some View {
         List {
-            ForEach (vm.despesas) { despesaAtual in
-                NavigationLink {
-                    EditarDespesa(vm: vm, entidade: despesaAtual, nome: despesaAtual.nome ?? "", valor: despesaAtual.valor)
-                }
-            label: {
-                Text(despesaAtual.nome ?? "")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
-                Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), despesaAtual.valor))
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
-            }
-            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
-            .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
-            }
-            .onDelete(perform: vm.deletarDespesa)
-            if vm.despesas.count > 0 {
-                Section(header: Text("")
-                ) {
-                    HStack {
-                        Text("Valor total")
-                        Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
-                    }
+            ForEach (vm.custosVariaveis) { custoVariavel in
+                HStack {
+                    Text(custoVariavel.nome ?? "")
+                      .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+                    Spacer()
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoVariavel.valor))
+                      .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
-                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
+//            .onDelete(perform: vm.DeletarCustoVariavel)
+//            if vm.custosVariaveis.count > 0 {
+//                Section() {
+//                    HStack {
+//                        Text("Valor total")
+//                        Spacer()
+//                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+//                    }
+//                }
+//            }
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            ToolbarItem {
-                Button {
-                    mostrarCriarDespesa = true
-                } label: {
-                    Label("Adicionar Despesa", systemImage: "plus")
-                }
-                .sheet(isPresented: $mostrarCriarDespesa){
-                    CriarDespesa(vm: vm, nome: "", valor: 0.0)
-                }
-            }
-        }
-        .navigationTitle("Despesas")
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                EditButton()
+//            }
+//            ToolbarItem {
+//                Button {
+//                    mostrarCriarDespesa = true
+//                } label: {
+//                    Label("Adicionar Custo Variável", systemImage: "plus")
+//                }
+//                .sheet(isPresented: $mostrarCriarDespesa){
+//                    CriarDespesa(vm: vm, nome: "", valor: 0.0)
+//                }
+//            }
+//        }
+        .navigationTitle("Custos variáveis")
         .navigationBarTitleDisplayMode(.large)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])
         .onAppear{

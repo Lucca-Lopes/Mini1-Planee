@@ -75,18 +75,18 @@ struct CriarGasto: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
-                        if vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil){
-                            vm.addGasto(nome: nome, valor: valor, vidaUtil: vidaUtil)
+                        if vm.ValidaCustoFixo(nome: nome, valor: valor){
+                            vm.AddCustoFixo(nome: nome, valorTotal: valor, vidaUtil: vidaUtil)
                             self.mode.wrappedValue.dismiss()
                         }
                     }label:{
-                        Text("OK")
-                            .accentColor(vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil) ? Color.blue : Color.gray)
+                        Text("Ok")
+                            .accentColor(vm.ValidaCustoFixo(nome: nome, valor: valor) ? Color.blue : Color.gray)
                     }
-                    .disabled(!vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil))
+                    .disabled(!vm.ValidaCustoFixo(nome: nome, valor: valor))
                 }
             }
-            .navigationBarTitle("Adicionar gasto")
+            .navigationBarTitle("Adicionar custo fixo")
             .navigationBarTitleDisplayMode(.inline)
             .onTapGesture(perform: vm.dismissKeyboard)
             .background(colorScheme == .dark ? Color.black : vm.corLight[3])

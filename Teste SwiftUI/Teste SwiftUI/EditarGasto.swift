@@ -11,7 +11,7 @@ struct EditarGasto: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    @State var entidade: Gasto
+    @State var entidade: CustoFixo
     
     @State var editando = false
     @State var nome: String
@@ -76,18 +76,18 @@ struct EditarGasto: View {
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
-                    if vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil){
-                        vm.atualizarGasto(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
+                    if vm.ValidaCustoFixo(nome: nome, valor: valor){
+                        vm.AtualizarCustoFixo(entidade: entidade, nome: nome, valor: valor, vidaUtil: vidaUtil)
                         self.mode.wrappedValue.dismiss()
                     }
                 }label:{
-                    Text("OK")
-                        .accentColor(vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil) ? Color.blue : Color.gray)
+                    Text("Ok")
+                        .accentColor(vm.ValidaCustoFixo(nome: nome, valor: valor) ? Color.blue : Color.gray)
                 }
-                .disabled(!vm.ValidaGasto(nome: nome, valor: valor, vidaUtil: vidaUtil))
+                .disabled(!vm.ValidaCustoFixo(nome: nome, valor: valor))
             }
         }
-        .navigationBarTitle("Editar gasto")
+        .navigationBarTitle("Editar custo fixo")
         .navigationBarTitleDisplayMode(.inline)
         .onTapGesture(perform: vm.dismissKeyboard)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])

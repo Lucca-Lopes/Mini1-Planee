@@ -20,40 +20,21 @@ struct TelaGastos: View {
     
     var body: some View {
         List{
-            ForEach (vm.gastos) { gastoAtual in
-                Section(header:
-                            NavigationLink {
-                    EditarGasto(vm: vm, entidade: gastoAtual, nome: gastoAtual.nome!, valor: gastoAtual.valor, vidaUtil: Int(gastoAtual.vidaUtil))
+            ForEach (vm.custosFixos) { custoFixoAtual in
+                NavigationLink {
+                    EditarGasto(vm: vm, entidade: custoFixoAtual, nome: custoFixoAtual.nome ?? "", valor: custoFixoAtual.valorTotal, vidaUtil: Int(custoFixoAtual.vidaUtil))
                 }
-                        label: {
-                    HStack {
-                        Text(gastoAtual.nome ?? "Novo gasto")
-                            .lineLimit(1)
-                        Label("", systemImage: "chevron.right")
-                            .labelStyle(.iconOnly)
-                    }
-                }) {
-                    HStack {
-                        Text("Valor total")
-                        Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), gastoAtual.valor))
-                    }
-                    HStack {
-                        Text("Vida útil")
-                        Spacer()
-                        Text("\(gastoAtual.vidaUtil) meses")
-                    }
-                    HStack {
-                        Text("Custo mensal")
-                        Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), gastoAtual.custo))
-                    }
+                label: {
+                    Text(custoFixoAtual.nome ?? "")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), custoFixoAtual.valorMensal))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
-            .onDelete(perform: vm.deletarGasto)
+            .onDelete(perform: vm.DeletarCustoFixo)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -63,14 +44,14 @@ struct TelaGastos: View {
                 Button(action: {
                     mostrarSheet = true
                 }, label: {
-                    Label("Adicionar Gasto", systemImage: "plus")
+                    Label("Adicionar custo fixo", systemImage: "plus")
                 })
                 .sheet(isPresented: $mostrarSheet){
                     CriarGasto(vm: vm)
                 }
             }
         }
-        .navigationTitle("Gastos")
+        .navigationTitle("Custos fixos")
         .navigationBarTitleDisplayMode(.large)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])
         .onAppear{

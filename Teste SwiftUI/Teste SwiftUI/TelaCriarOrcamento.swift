@@ -46,23 +46,23 @@ struct TelaCriarOrcamento: View {
                 ) {
                     NavigationLink {
                         TelaGastos(vm: vm)
-                    }
-                label: {
-                    Text("Gastos")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalGastos()))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
+                   }
+                   label: {
+                       Text("Custos fixos")
+                           .frame(maxWidth: .infinity, alignment: .leading)
+                       Spacer()
+                       Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosFixos()))
+                           .frame(maxWidth: .infinity, alignment: .trailing)
+                   }
                     NavigationLink {
-                        TelaDespesas(vm: vm)
+                        TelaDespesasOrcamento(vm: vm)
                     }
-                label: {
-                    Text("Despesas")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalDespesa()))
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
+                    label: {
+                        Text("Custos variáveis")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
                 }
                 .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
@@ -111,7 +111,7 @@ struct TelaCriarOrcamento: View {
                         Text("Custo total")
                             .bold()
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.calcularTotalGastos() + vm.calcularTotalDespesa())))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosVariaveis())))
                             .bold()
                     }
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
@@ -157,7 +157,7 @@ struct TelaCriarOrcamento: View {
                 {
                     Button{
                         if vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) {
-                            vm.addOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, totalGastos: vm.calcularTotalGastos(), totalDespesas: vm.calcularTotalDespesa(), valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
+                            vm.AddOrcamento(nome: nomeOrcamento, nomeCliente: nomeCliente, valorDaHora: vm.valorDaHora.last!, tempoDeTrabalho: hora, lucro: lucro)
                             self.mode.wrappedValue.dismiss()
                         }
                         
@@ -181,7 +181,7 @@ struct TelaCriarOrcamento: View {
                     .fill(Color.white)
                     .opacity(0.001)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .onTapGesture(perform: vm.dismissKeyboard)
+                    .onTapGesture(perform: vm.DismissKeyboard)
             }
         }
     }

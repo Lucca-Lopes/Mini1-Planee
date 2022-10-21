@@ -77,7 +77,7 @@ struct TelaValorHdT: View {
             {
                 Button{
                     if valor != 0 && dias != 0 && horasDiarias != 0 {
-                        vm.atualizarVdH(entidade: vm.valorDaHora[0], pretensaoSalarial: valor, dias: dias, horas: horasDiarias)
+                        vm.AtualizarVdH(entidade: vm.valorDaHora[0], pretensaoSalarial: valor, dias: dias, horas: horasDiarias)
                         self.mode.wrappedValue.dismiss()
                     }
                 }label:{
@@ -86,7 +86,7 @@ struct TelaValorHdT: View {
                 }
             }
         }
-        .onTapGesture(perform: vm.dismissKeyboard)
+        .onTapGesture(perform: vm.DismissKeyboard)
         .navigationTitle("Hora de trabalho")
         .navigationBarTitleDisplayMode(.large)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])

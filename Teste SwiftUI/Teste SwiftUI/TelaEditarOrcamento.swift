@@ -35,12 +35,12 @@ struct TelaEditarOrcamento: View {
                 .foregroundColor(colorScheme == .dark ? vm.corDark[2] : vm.corLight[2])
             ) {
                 HStack {
-                    Text("Gastos")
-                    Spacer()
-                    Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
-                }
+                   Text("Custos fixos")
+                   Spacer()
+                   Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalGastos))
+               }
                 HStack {
-                    Text("Despesas")
+                    Text("Custos variáveis")
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotalDespesas))
                 }
@@ -133,7 +133,7 @@ struct TelaEditarOrcamento: View {
             {
                 Button{
                     if vm.ValidaOrcamento(nomeOrcamento: nomeOrcamento, nomeCliente: nomeCliente, qtdHora: hora) {
-                        vm.atualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, tempoDeTrabalho: hora, lucro: lucro)
+                        vm.AtualizarOrcamento(entidade: entidade, nome: nomeOrcamento, nomeCliente: nomeCliente, tempoDeTrabalho: hora, lucro: lucro)
                         self.mode.wrappedValue.dismiss()
                     }
                     

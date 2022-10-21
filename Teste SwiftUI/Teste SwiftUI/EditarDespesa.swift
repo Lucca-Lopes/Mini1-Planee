@@ -11,8 +11,8 @@ struct EditarDespesa: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    var entidade: Despesa
-    
+    var entidade: CustoVariavel
+            
     @State var nome: String
     @State var valor: Double
     
@@ -68,7 +68,7 @@ struct EditarDespesa: View {
                 .disabled(!vm.ValidaDespesa(nome: nome, valor: valor))
             }
         }
-        .navigationBarTitle("Editar despesa")
+        .navigationBarTitle("Editar custo variável")
         .navigationBarTitleDisplayMode(.inline)
         .onTapGesture(perform: vm.dismissKeyboard)
         .background(colorScheme == .dark ? Color.black : vm.corLight[3])
