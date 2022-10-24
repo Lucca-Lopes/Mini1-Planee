@@ -37,6 +37,20 @@ struct TelaGastos: View {
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
             }
             .onDelete(perform: vm.DeletarCustoFixo)
+            if vm.custosFixos.count > 0 {
+                Section() {
+                    HStack {
+                        Text("Valor total")
+                            .font(.system(.body, design: .rounded))
+                        Spacer()
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosFixos()))
+                            .font(.system(.body, design: .rounded))
+                    }
+                }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
