@@ -102,11 +102,11 @@ struct TelaEditarOrcamento: View {
                 HStack {
                     Text("Custo total")
                         .font(.system(.body, design: .rounded))
-                        .bold()
+//                        .bold()
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotal))
                         .font(.system(.body, design: .rounded))
-                        .bold()
+//                        .bold()
                 }
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }

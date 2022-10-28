@@ -21,14 +21,20 @@ struct TelaOrcamento: View {
     
     var body: some View {
         List{
-            HStack {
-                Text("Nome do cliente")
-                    .font(.system(.body, design: .rounded))
-                Spacer()
-                Text(entidade.nomeDoCliente!)
+            Section(header: Text("Criado em \(vm.formatacaoData.string(from: entidade.dataDoOrcamento!))")){
+                HStack {
+                    Text("Nome do cliente")
+                        .font(.system(.body, design: .rounded))
+                    Spacer()
+                    Text(entidade.nomeDoCliente!)
+                        .font(.system(.body, design: .rounded))
+                }
+                .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
+                .listRowInsets(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
-            .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)
-            .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .textCase(nil)
             
             Section(header: Text("Custos")
                 .font(.system(.body, design: .rounded))
@@ -83,11 +89,11 @@ struct TelaOrcamento: View {
                 HStack {
                     Text("Custo Total")
                         .font(.system(.body, design: .rounded))
-                        .bold()
+//                        .bold()
                     Spacer()
                     Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), entidade.custoTotal))
                         .font(.system(.body, design: .rounded))
-                        .bold()
+//                        .bold()
                 }
             }
             .listRowBackground(colorScheme == .dark ? vm.corDark[3] : Color.white)

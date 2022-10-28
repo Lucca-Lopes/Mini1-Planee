@@ -43,6 +43,12 @@ class PlaneeViewModel: ObservableObject {
         return numero
     }()
     
+    let formatacaoData: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
+    
     let corDark = [Color(red: 0, green: 0.332, blue: 0.546, opacity: 0.84),//0
                    Color(red: 0, green: 0.167, blue: 0.275, opacity: 1),//1
                    Color(red: 0.353, green: 0.784, blue: 0.961, opacity: 1),//2
@@ -62,8 +68,8 @@ class PlaneeViewModel: ObservableObject {
         FetchCustoVariavel()
         FetchCustoFixo()
         FetchVdH()
-        ClearDatabase()
-        salvar()
+//        ClearDatabase()
+//        salvar()
         if valorDaHora.count < 1 {
             AddVdH()
         }
@@ -80,6 +86,7 @@ class PlaneeViewModel: ObservableObject {
         novoOrcamento.custoTotalDespesas = CalcularTotalCustosVariaveis()
         novoOrcamento.custosVariaveis = set
         novoOrcamento.custoHora = custoPorHora
+        novoOrcamento.dataDoOrcamento = Date()
         novoOrcamento.horasDeTrabalho = Int64(tempoDeTrabalho)
         novoOrcamento.custoTotal = CalcularTotalCustosFixos() + CalcularTotalCustosVariaveis()
         novoOrcamento.lucro = Int64(lucro)

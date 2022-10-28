@@ -125,11 +125,11 @@ struct TelaCriarOrcamento: View {
                     HStack {
                         Text("Custo total")
                             .font(.system(.body, design: .rounded))
-                            .bold()
+//                            .bold()
                         Spacer()
                         Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosVariaveis())))
                             .font(.system(.body, design: .rounded))
-                            .bold()
+//                            .bold()
                     }
                     .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
                 }
