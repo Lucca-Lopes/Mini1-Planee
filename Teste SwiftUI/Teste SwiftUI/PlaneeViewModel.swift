@@ -17,7 +17,7 @@ class PlaneeViewModel: ObservableObject {
     
     @Published var orcamentos: [Orcamento] = []
     @Published var custosVariaveis: [CustoVariavel] = []
-    @Published var custosVariaveisAtual: [CustoVariavel] = []
+    @Published var custosTemporarios: [CustoTemporario] = []
     @Published var custosFixos: [CustoFixo] = []
     @Published var valorDaHora: [ValorHoraDeTrabalho] = []
     
@@ -83,12 +83,12 @@ class PlaneeViewModel: ObservableObject {
         novoOrcamento.nome = nome
         novoOrcamento.nomeDoCliente = nomeCliente
         novoOrcamento.custoTotalGastos = CalcularTotalCustosFixos()
-        novoOrcamento.custoTotalDespesas = CalcularTotalCustosVariaveis()
+        novoOrcamento.custoTotalDespesas = CalcularTotalCustosTemporarios()
         novoOrcamento.custosVariaveis = set
         novoOrcamento.custoHora = custoPorHora
         novoOrcamento.dataDoOrcamento = Date()
         novoOrcamento.horasDeTrabalho = Int64(tempoDeTrabalho)
-        novoOrcamento.custoTotal = CalcularTotalCustosFixos() + CalcularTotalCustosVariaveis()
+        novoOrcamento.custoTotal = (custoPorHora * Double(tempoDeTrabalho))
         novoOrcamento.lucro = Int64(lucro)
         novoOrcamento.valorDaHora = valorDaHora
         novoOrcamento.valorTotal = ((Double(tempoDeTrabalho) * valorDaHora.valorFinal) + (custoPorHora * Double(tempoDeTrabalho))) * lucroFinal
@@ -97,16 +97,18 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    func AddCustoVariavel(nome: String, valor: Double) {
-        let novoCustoVariavel = CustoVariavel(context: manager.context)
-        novoCustoVariavel.nome = nome
-        novoCustoVariavel.valor = valor
-        custosVariaveisAtual.append(novoCustoVariavel)
+    func AddCustoTemporario(nome: String, valor: Double) {
+        let novoCustoTemporario = CustoTemporario(context: manager.context)
+        novoCustoTemporario.nome = nome
+        novoCustoTemporario.valor = valor
+        salvar()
     }
     
     func AddCVAtuais() {
-        for custoVariavel in custosVariaveisAtual {
-            custosVariaveis.append(custoVariavel)
+        for custoTemporario in custosTemporarios {
+            let novoCustoVariavel = CustoVariavel(context: manager.context)
+            novoCustoVariavel.nome = custoTemporario.nome
+            novoCustoVariavel.valor = custoTemporario.valor
         }
     }
     
@@ -179,6 +181,16 @@ class PlaneeViewModel: ObservableObject {
         }
     }
     
+    func FetchCustoFixo() {
+        let request = NSFetchRequest<CustoFixo>(entityName: "CustoFixo")
+        
+        do {
+            custosFixos = try manager.context.fetch(request)
+        } catch let error {
+            print("Erro ao fazer o fetch. \(error)")
+        }
+    }
+    
     func FetchCustoVariavel() {
         let request = NSFetchRequest<CustoVariavel>(entityName: "CustoVariavel")
         
@@ -189,11 +201,11 @@ class PlaneeViewModel: ObservableObject {
         }
     }
     
-    func FetchCustoFixo() {
-        let request = NSFetchRequest<CustoFixo>(entityName: "CustoFixo")
+    func FetchCustoTemporario() {
+        let request = NSFetchRequest<CustoTemporario>(entityName: "CustoTemporario")
         
         do {
-            custosFixos = try manager.context.fetch(request)
+            custosTemporarios = try manager.context.fetch(request)
         } catch let error {
             print("Erro ao fazer o fetch. \(error)")
         }
@@ -216,9 +228,9 @@ class PlaneeViewModel: ObservableObject {
         salvar()
     }
     
-    func DeletarCustoVariavel(indexSet: IndexSet) {
+    func DeletarCustoTemporario(indexSet: IndexSet) {
         guard let index = indexSet.first else {return}
-        let entidade = custosVariaveis[index]
+        let entidade = custosTemporarios[index]
         manager.container.viewContext.delete(entidade)
         salvar()
     }
@@ -233,15 +245,16 @@ class PlaneeViewModel: ObservableObject {
     func salvar(){
         manager.salvar()
         FetchOrcamento()
-        FetchCustoVariavel()
         FetchCustoFixo()
+        FetchCustoVariavel()
+        FetchCustoTemporario()
         FetchVdH()
     }
     
-    func CalcularTotalCustosVariaveis() -> Double{
+    func CalcularTotalCustosTemporarios() -> Double{
         var soma = 0.0
-        for custoVariavel in custosVariaveisAtual {
-            soma += custoVariavel.valor
+        for custoTemporario in custosTemporarios {
+            soma += custoTemporario.valor
         }
         return soma
     }
@@ -255,7 +268,7 @@ class PlaneeViewModel: ObservableObject {
     }
     
     func CalcularCustosHora(valorDaHora: ValorHoraDeTrabalho) -> Double {
-        let totalCustos = CalcularTotalCustosFixos() + CalcularTotalCustosVariaveis()
+        let totalCustos = CalcularTotalCustosFixos() + CalcularTotalCustosTemporarios()
         let totalHorasTrabalhadas = valorDaHora.dias * valorDaHora.horas
         var custoPorHora = totalCustos / Double(totalHorasTrabalhadas)
         

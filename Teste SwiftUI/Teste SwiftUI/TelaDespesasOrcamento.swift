@@ -15,7 +15,7 @@ struct TelaDespesasOrcamento: View {
     @State var valor = 0.0
     @State var valorTotal = 0.0
     @State var mostrarCriarDespesa = false
-    @State var editando = false
+//    @State var editando = false
     
     @Environment(\.colorScheme) var colorScheme
     
