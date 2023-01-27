@@ -21,7 +21,7 @@ struct TelaDespesasOrcamento: View {
     
     var body: some View {
         List {
-            ForEach (vm.custosVariaveisAtual) { custoVariavel in
+            ForEach (vm.custosTemporarios) { custoVariavel in
                 NavigationLink {
                     EditarDespesa(vm: vm, entidade: custoVariavel, nome: custoVariavel.nome ?? "", valor: custoVariavel.valor)
                 }
@@ -38,14 +38,14 @@ struct TelaDespesasOrcamento: View {
                 .listRowSeparatorTint(colorScheme == .dark ? vm.corDark[4] : vm.corLight[2])
                 .foregroundColor(colorScheme == .dark ? Color.white : vm.corLight[4])
             }
-            .onDelete(perform: vm.DeletarCustoVariavel)
-            if vm.custosVariaveisAtual.count > 0 {
+            .onDelete(perform: vm.DeletarCustoTemporario)
+            if vm.custosTemporarios.count > 0 {
                 Section() {
                     HStack {
                         Text("Valor total")
                             .font(.system(.body, design: .rounded))
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosTemporarios()))
                             .font(.system(.body, design: .rounded))
                     }
                 }

@@ -11,7 +11,7 @@ struct EditarDespesa: View {
     
     @ObservedObject var vm: PlaneeViewModel
     
-    var entidade: CustoVariavel
+    var entidade: CustoTemporario
             
     @State var nome: String
     @State var valor: Double

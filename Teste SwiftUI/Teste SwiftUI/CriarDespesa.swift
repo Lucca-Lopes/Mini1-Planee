@@ -59,7 +59,7 @@ struct CriarDespesa: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button{
                         if vm.ValidaCustoVariavel(nome: nome, valor: valor){
-                            vm.AddCustoVariavel(nome: nome, valor: valor)
+                            vm.AddCustoTemporario(nome: nome, valor: valor)
                             self.mode.wrappedValue.dismiss()
                         }
                     }label:{

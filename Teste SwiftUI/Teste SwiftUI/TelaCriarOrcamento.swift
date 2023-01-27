@@ -66,7 +66,7 @@ struct TelaCriarOrcamento: View {
                         Text("Custos variáveis")
                             .font(.system(.body, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosVariaveis()))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.CalcularTotalCustosTemporarios()))
                             .font(.system(.body, design: .rounded))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
@@ -127,7 +127,7 @@ struct TelaCriarOrcamento: View {
                             .font(.system(.body, design: .rounded))
 //                            .bold()
                         Spacer()
-                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosVariaveis())))
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), (vm.CalcularTotalCustosFixos() + vm.CalcularTotalCustosTemporarios())))
                             .font(.system(.body, design: .rounded))
 //                            .bold()
                     }
@@ -166,7 +166,7 @@ struct TelaCriarOrcamento: View {
                             .font(.system(.body, design: .rounded))
                             .bold()
                         Spacer()
-                        Text("R$ 0,00")
+                        Text("R$ " + String(format: "%.2f", locale: Locale(identifier: "br"), vm.calcularTotalOrcamento(tempoDeTrabalho: hora, valorDaHora: vm.valorDaHora.last!, custoPorHora: nil, lucro: lucro)))
                             .font(.system(.body, design: .rounded))
                             .bold()
                     }
